@@ -1,6 +1,5 @@
-<div class = "page-header"><h2>Hi <%= @user.name %></h2>
+<section class = "page-header"><h2>Hi <%= @user.name %></h2>
   <% if @user.admin? && current_admin? %>
-<span class="label label-info" id = "admin">Admin</span>
-<% end %>
-
-</div>
+    <span class="label label-info" id = "admin">Admin</span>
+  <% end %>
+</section>
