@@ -2,7 +2,7 @@ RSpec.feature "User logs in and out" do
   context "with valid credentials" do
     scenario "they are logged in and see profile page" do
       email = "user@gmail.com"
-      password = "user123"
+      password = "user123456"
       user = create(:user, email: email, password: password)
 
       visit login_path
@@ -22,7 +22,7 @@ RSpec.feature "User logs in and out" do
   context "with invalid password" do
     scenario "they are redirected to login page and shown error message" do
       email = "user@gmail.com"
-      password = "user123"
+      password = "user123456"
       user = create(:user, email: email, password: password)
 
       visit login_path
@@ -38,7 +38,7 @@ RSpec.feature "User logs in and out" do
   context "with invalid email" do
     scenario "they are redirected to login page and shown error message" do
       email = "user@gmail.com"
-      password = "user123"
+      password = "user123456"
       user = create(:user, email: email, password: password)
 
       visit login_path

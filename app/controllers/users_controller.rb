@@ -14,8 +14,10 @@ class UsersController < ApplicationController
       flash[:notice] = "Your account has been created!"
       redirect_to @user
     else
-      #flash the errors
-      render 'new'
+      @user.errors.full_messages.each do |error|
+        flash[:notice] = error
+      end
+      redirect_to new_user_path
     end
   end
 

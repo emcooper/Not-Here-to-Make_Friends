@@ -33,7 +33,7 @@ RSpec.feature "User can sign up for account" do
       click_on "Sign Up!"
 
       expect(current_path).to eq(new_user_path)
-      expect(page).to have_content("Password must be 8 characters.")
+      expect(page).to have_content("Password is too short (minimum is 8 characters)")
       expect(page).to_not have_content("Hi Ellen")
       expect(page).to_not have_content("My Team")
     end
