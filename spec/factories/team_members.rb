@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :team_member do
-    user nil
-    team nil
+    user
+    team
   end
 end

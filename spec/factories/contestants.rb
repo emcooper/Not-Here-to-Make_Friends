@@ -3,6 +3,6 @@ FactoryGirl.define do
     name "MyString"
     headshot "MyString"
     bio "MyString"
-    season nil
+    season 
   end
 end

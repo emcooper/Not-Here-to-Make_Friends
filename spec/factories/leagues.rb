@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :league do
     name "MyString"
-    season nil
+    season 
   end
 end
