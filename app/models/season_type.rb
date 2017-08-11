@@ -1,0 +1,2 @@
+class SeasonType < ApplicationRecord
+end
