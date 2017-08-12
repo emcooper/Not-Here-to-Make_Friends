@@ -5,7 +5,7 @@ class CreateSeasons < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.integer :season_number
       t.references :season_type, foreign_key: true
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

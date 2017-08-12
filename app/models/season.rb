@@ -3,4 +3,6 @@ class Season < ApplicationRecord
   has_many :leagues
   has_many :weeks
   has_many :contestants
+
+  enum role: %w(active retired)
 end

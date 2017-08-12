@@ -4,6 +4,12 @@ FactoryGirl.define do
     last_name "MyString"
     season_number 1
     season_type
-    status 1
+    status 0
+  end
+
+  trait :retired do
+    after(:create) do |season|
+      season.status = 1
+    end
   end
 end
