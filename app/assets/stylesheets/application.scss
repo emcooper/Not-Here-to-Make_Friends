@@ -13,3 +13,12 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "button";
+
+.in-line h2 {
+  display: inline;
+}
+
+.right-float {
+  float: right;
+}

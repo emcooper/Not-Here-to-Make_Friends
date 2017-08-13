@@ -2,9 +2,9 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-user = User.create(name: "User", email: "user@gmail.com", password: "password", password_confirmation: "password")
+user = User.create(name: "User", email: "user@gmail.com", password: "password")
 
-bachelor = SeasonType.create("Bachelor")
+bachelor = SeasonType.create(name: "Bachelor")
 nick_season = Season.create(first_name: "Nick", last_name: "Viall", season_number: 21, season_type: bachelor, status: "active")
 league_1 = League.create(name: "League 1", season: nick_season)
 league_2 = League.create(name: "League 2", season: nick_season)

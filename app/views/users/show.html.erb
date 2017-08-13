@@ -1,28 +1,29 @@
-<section class = "page-header"><h2>Hi <%= @user.name %></h2>
+<section class = "page-header"><span class = "in-line"><h2>Hi <%= @user.name %></h2></span>
   <% if @user.admin? && current_admin? %>
     <span class="label label-info" id = "admin">Admin</span>
   <% end %>
 
-  <div>
+
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
+    <span class="nav right-float" role="tablist">
       <% @user.active_leagues.each do |league| %>
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <%= league.name %> </a></li>
+      <button role="presentation", class = "btn btn-primary" href="#tab-<%= league.id %>" aria-controls="tab-<%= league.id %>" role="tab" data-toggle="tab"><%= league.name %>
 <% end %>
-    </ul>
+    </span>
+    </section>
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="home">...</div>
-      <div role="tabpanel" class="tab-pane" id="profile">...</div>
+      <div role="tabpanel" class="tab-pane active" id="tab-1">1</div>
+      <div role="tabpanel" class="tab-pane" id="tab-2">2</div>
       <div role="tabpanel" class="tab-pane" id="messages">...</div>
       <div role="tabpanel" class="tab-pane" id="settings">...</div>
     </div>
 
-  </div>
 
 
-</section>
+
+
 
 <section>
 
