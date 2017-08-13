@@ -5,9 +5,11 @@ FactoryGirl.define do
   end
 
   trait :in_retired_league do
-    before(:create) do |team|
+    after(:create) do |team|
       team.name.gsub!("Active", "Retired")
-      team.league.season.status = 1
+      team.league.season.update(status: "retired")
+      new_league_name = team.league.name.gsub("Active", "Retired")
+      team.league.update(name: new_league_name)
     end
   end
 end
