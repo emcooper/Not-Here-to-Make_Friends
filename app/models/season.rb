@@ -4,5 +4,5 @@ class Season < ApplicationRecord
   has_many :weeks
   has_many :contestants
 
-  enum role: %w(active retired)
+  enum status: [:active, :retired]
 end

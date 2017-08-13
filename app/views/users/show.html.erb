@@ -2,7 +2,25 @@
   <% if @user.admin? && current_admin? %>
     <span class="label label-info" id = "admin">Admin</span>
   <% end %>
-  <% #@user.active_leagues.each do |league| %>
+
+  <div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <% @user.active_leagues.each do |league| %>
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <%= league.name %> </a></li>
+<% end %>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">...</div>
+      <div role="tabpanel" class="tab-pane" id="profile">...</div>
+      <div role="tabpanel" class="tab-pane" id="messages">...</div>
+      <div role="tabpanel" class="tab-pane" id="settings">...</div>
+    </div>
+
+  </div>
+
 
 </section>
 
