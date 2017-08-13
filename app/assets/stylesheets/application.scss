@@ -13,12 +13,5 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "positioning";
 @import "button";
-
-.in-line * {
-  display: inline;
-}
-
-.right-float {
-  float: right;
-}
