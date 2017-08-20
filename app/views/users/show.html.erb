@@ -5,19 +5,19 @@
 
 
     <!-- Nav tabs -->
-    <span class="nav right-float" role="tablist">
+    <ul class="nav right-float" role="tablist">
       <% @user.active_leagues.each do |league| %>
-      <button role="presentation active", class = "btn btn-primary" href="#league-<%= league.id %>" aria-controls="tab-<%= league.id %>" role="tab" data-toggle="tab"><%= league.name %>
-<% end %>
-    </span>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary" data-toggle="tab" href="#league-<%= league.id %>" role="tab"> <%= league.name %></a>
+        </li>
+      <% end %>
+    </ul>
     </section>
 
     <!-- Tab panes -->
     <div class="tab-content">
       <% @user.active_leagues.each do |league| %>
-        <div role="tabpanel" class="tab-pane active" id="league-<%= league.id %>">
-          <%= league.name %> content
-        </div>
+        <div class="tab-pane <%= "active" if league == @user.active_leagues.first %>" id="league-<%= league.id %>" role="tabpanel"><%= league.name %> content</div>
       <% end %>
 
     </div>
