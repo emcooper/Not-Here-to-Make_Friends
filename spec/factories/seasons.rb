@@ -7,7 +7,6 @@ FactoryGirl.define do
     status 0
   end
 
-
   trait :active_with_existing_users do
     after(:create) do |season|
       user_1 = User.first

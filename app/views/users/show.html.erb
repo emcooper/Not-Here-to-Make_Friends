@@ -7,17 +7,19 @@
     <!-- Nav tabs -->
     <span class="nav right-float" role="tablist">
       <% @user.active_leagues.each do |league| %>
-      <button role="presentation", class = "btn btn-primary" href="#tab-<%= league.id %>" aria-controls="tab-<%= league.id %>" role="tab" data-toggle="tab"><%= league.name %>
+      <button role="presentation active", class = "btn btn-primary" href="#league-<%= league.id %>" aria-controls="tab-<%= league.id %>" role="tab" data-toggle="tab"><%= league.name %>
 <% end %>
     </span>
     </section>
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="tab-1">1</div>
-      <div role="tabpanel" class="tab-pane" id="tab-2">2</div>
-      <div role="tabpanel" class="tab-pane" id="messages">...</div>
-      <div role="tabpanel" class="tab-pane" id="settings">...</div>
+      <% @user.active_leagues.each do |league| %>
+        <div role="tabpanel" class="tab-pane active" id="league-<%= league.id %>">
+          <%= league.name %> content
+        </div>
+      <% end %>
+
     </div>
 
 

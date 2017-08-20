@@ -1,24 +1,47 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-top" id = "navi">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" id = "navi">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand site-logo" href="#">Not Here to Make Friends</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
+    <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "My Team", user_path(current_user) %></li>
-        <li><%= link_to "My League", user_path(current_user)%></li>
-        <li><%= link_to "Weekly Results", user_path(current_user)%></li>
-        <li><%= (link_to "Log Out", logout_path, method: :delete) %><span class="sr-only"></span></li>
+      <ul class="nav justify-content-end">
+        <li class="nav-item"><%= link_to "My Team", user_path(current_user) %></li>
+        <li class="nav-item"><%= link_to "My Team", user_path(current_user) %></li>
+        <li class="nav-item"><%= link_to "My League", user_path(current_user)%></li>
+        <li class="nav-item"><%= link_to "Weekly Results", user_path(current_user)%></li>
+        <li class="nav-item"><%= (link_to "Log Out", logout_path, method: :delete) %><span class="sr-only"></span></li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
+</nav> -->
+<!-- new -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+  <a class="navbar-brand" href="#">Not Here to Make Friends</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">My Team <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">My League </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Weekly Results</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Log Out</a>
+      </li>
+    </ul>
+  </div>
+</div>
 </nav>
 <div class="container">
