@@ -17,7 +17,18 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <% @user.active_leagues.each do |league| %>
-        <div class="tab-pane <%= "active" if league == @user.active_leagues.first %>" id="league-<%= league.id %>" role="tabpanel"><%= league.name %> content</div>
+        <div class="tab-pane <%= "active" if league == @user.active_leagues.first %>" id="league-<%= league.id %>" role="tabpanel">
+          <ul class="nav nav-fill" role="tablist">
+
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#league-<%= league.id %>" role="tab"> Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#league-<%= league.id %>" role="tab">League</a>
+              </li>
+
+          </ul>
+        </div>
       <% end %>
 
     </div>
