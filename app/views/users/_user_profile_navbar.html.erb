@@ -1,0 +1,12 @@
+<section class = "page-header"><span class = "in-line"><h2>Hi <%= current_user.name %></h2></span>
+  <% if current_user.admin? && current_admin? %>
+    <span class="label label-info" id = "admin">Admin</span>
+  <% end %>
+
+    <div class="nav right-float">
+      <% current_user.active_leagues.each do |league| %>
+          <a class="nav-link btn btn-primary" href="#league-<%= league.id %>">
+            <%= link_to league.name, league_path(league) %></a>
+      <% end %>
+    </div>
+</section>
