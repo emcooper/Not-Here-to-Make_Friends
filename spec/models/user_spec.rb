@@ -15,21 +15,15 @@ RSpec.describe User, type: :model do
   end
   describe "instance methods" do
     it "#leagues returns array of user's leagues" do
-      user = create(:user)
-      active_season = create(:season, :active_with_created_users)
-      retired_season = create(:season, :retired_with_created_users)
+      user = create(:user, :full_setup)
 
-      expected = League.all
-
-      expect(user.leagues.pluck(:id)).to eq(expected.pluck(:id))
+      expect(user.leagues).to include(League.first, League.second, League.third)
     end
     it "#active_leagues returns array of user's active leagues" do
-      user = create(:user)
-      active_season = create(:season, :active_with_created_users)
-      retired_season = create(:season, :retired_with_created_users)
-      expected = active_season.leagues
+      user = create(:user, :full_setup)
 
-      expect(user.active_leagues).to eq(expected)
+      expect(user.active_leagues).to include(League.first, League.second)
+      expect(user.active_leagues).to_not include(League.third)
     end
   end
 end

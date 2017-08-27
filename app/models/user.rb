@@ -12,11 +12,13 @@ class User < ApplicationRecord
   enum role: %w(default admin)
 
   def active_leagues
-    self.leagues.select {|league| league.season.active?}
+    League.joins(:season, teams: :team_members)
+          .where("team_members.user_id = ?", id)
+          .where("seasons.status = ?", 0)
   end
 
   def leagues
-    league_ids = self.teams.pluck(:league_id)
-    League.where(id: league_ids)
+    League.joins(teams: :team_members)
+          .where("team_members.user_id = ?", id)
   end
 end
