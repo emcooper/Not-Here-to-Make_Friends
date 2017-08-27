@@ -7,7 +7,7 @@ FactoryGirl.define do
     status 0
   end
 
-  trait :active_with_existing_users do
+  trait :active_with_created_users do
     after(:create) do |season|
       user_1 = User.first
       user_2 = User.second
@@ -21,7 +21,7 @@ FactoryGirl.define do
     end
   end
 
-  trait :retired_with_existing_users do
+  trait :retired_with_created_users do
     after(:create) do |season|
       season.update(status: "retired")
       user_1 = User.first
