@@ -30,5 +30,23 @@
       </tbody>
     </table>
   </div>
-  <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">league stuff</div>
+  <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">
+    <h3 class = text-center>League Overview</h3>
+    <table class="table table-responseive">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th class = "text-center">Total Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @league.teams.each do |team| %>
+        <tr>
+          <td><%= team.name %></td>
+          <td class = "text-center"><%= team.season_points %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -24,9 +24,7 @@ RSpec.feature "Authenticated user visits their profile page" do
 
       visit user_path(user)
 
-      expect(page).to have_content(Contestant.first.name)
       expect(find('tr', text: Contestant.first.name)).to have_content(2)
-      expect(page).to have_content(Contestant.second.name)
       expect(find('tr', text: Contestant.second.name)).to have_content(4)
       expect(page).to_not have_content(Contestant.third.name)
       expect(page).to_not have_content(Contestant.fourth.name)
@@ -39,9 +37,7 @@ RSpec.feature "Authenticated user visits their profile page" do
 
       visit user_path(user)
 
-      expect(page).to have_content(Contestant.first.name)
       expect(find('tr', text: Team.first.name)).to have_content(6)
-      expect(page).to have_content(Contestant.second.name)
       expect(find('tr', text: Team.second.name)).to have_content(4)
       expect(page).to_not have_content(Team.third.name)
     end
