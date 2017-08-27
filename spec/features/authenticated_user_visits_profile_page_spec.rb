@@ -23,11 +23,11 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
-
+      save_and_open_page
       expect(page).to have_content(Contestant.first.name)
-      find('tr', text: Contestant.first.name).should have_content(2)
+      expect(find('tr', text: Contestant.first.name)).to have_content(2)
       expect(page).to have_content(Contestant.second.name)
-      find('tr', text: Contestant.second.name).should have_content(0)
+      expect(find('tr', text: Contestant.second.name)).to have_content(0)
       expect(page).to_not have_content(Contestant.third.name)
       expect(page).to_not have_content(Contestant.fourth.name)
     end

@@ -12,20 +12,19 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="league-<%= @league.id %>-team" role="tabpanel">
+    <h3 class = text-center>Team Roster</h3>
     <table class="table table-responseive">
       <thead>
         <tr>
-          <th></th>
           <th>Contestants</th>
-          <th>Total Points</th>
+          <th class = "text-center">Total Points</th>
         </tr>
       </thead>
       <tbody>
-        <%= @league.team_of_user(current_user).contestants.each do |contestant| %>
+        <% @league.team_of_user(current_user).contestants.each do |contestant| %>
         <tr>
-          <td><img src="<% contestant.headshot %>" alt="contestant-headshot"></td>
-          <td><%= contestant.name %></td>
-          <td><%= contestant.season_points %></td>
+          <td><img class = "circular-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot"><%= contestant.name %></td>
+          <td class = "text-center"><%= contestant.season_points %></td>
         </tr>
         <% end %>
       </tbody>
