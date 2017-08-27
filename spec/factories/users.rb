@@ -12,7 +12,6 @@ FactoryGirl.define do
       retired_season = create(:season, status: "retired")
       week_1 = create(:week, season: active_season)
       week_2 = create(:week, season: active_season)
-      bachelor = create(:season_type, name: "bachelor")
       play_1, play_2 = create_list(:play, 2, season_type: bachelor)
       active_league, retired_league = create_list(:league, 2)
       c1, c2, c3 = create_list(:contestant, 3, season: active_season)
