@@ -1,6 +1,6 @@
 RSpec.feature "User logs in and out" do
   context "with valid credentials" do
-    scenario "they are logged in and see profile page" do
+    scenario "they are logged in and see profile page and can log out" do
       email = "user@gmail.com"
       password = "user123456"
       user = create(:user, email: email, password: password)
@@ -10,12 +10,13 @@ RSpec.feature "User logs in and out" do
       fill_in "session_password", with: password
       click_on "Log In"
 
-      expect(page).to have_content("Hi #{user.name}")
+      expect(page).to have_content("Log Out")
 
       click_on "Log Out"
 
       expect(current_path).to eq(login_path)
-      expect(page).to_not have_content(user.name)
+      expect(page).to_not have_content("Log Out")
+      expect(page).to have_button("Log In")
     end
   end
   context "with invalid password" do
@@ -30,7 +31,8 @@ RSpec.feature "User logs in and out" do
       click_on "Log In"
 
       expect(current_path).to eq(login_path)
-      expect(page).to_not have_content(user.name)
+      expect(page).to_not have_content("Log Out")
+      expect(page).to have_button("Log In")
       expect(page).to have_content("Incorrect email or password. Please try again.")
     end
   end
@@ -46,7 +48,8 @@ RSpec.feature "User logs in and out" do
       click_on "Log In"
 
       expect(current_path).to eq(login_path)
-      expect(page).to_not have_content(user.name)
+      expect(page).to_not have_content("Log Out")
+      expect(page).to have_button("Log In")
       expect(page).to have_content("Incorrect email or password. Please try again.")
     end
   end
