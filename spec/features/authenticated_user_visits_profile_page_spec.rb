@@ -30,7 +30,6 @@ RSpec.feature "Authenticated user visits their profile page" do
       find('tr', text: Contestant.second.name).should have_content(0)
       expect(page).to_not have_content(Contestant.third.name)
       expect(page).to_not have_content(Contestant.fourth.name)
-
     end
   end
 end
