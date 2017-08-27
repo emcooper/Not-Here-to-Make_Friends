@@ -23,13 +23,27 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
-      save_and_open_page
+
       expect(page).to have_content(Contestant.first.name)
       expect(find('tr', text: Contestant.first.name)).to have_content(2)
       expect(page).to have_content(Contestant.second.name)
-      expect(find('tr', text: Contestant.second.name)).to have_content(0)
+      expect(find('tr', text: Contestant.second.name)).to have_content(4)
       expect(page).to_not have_content(Contestant.third.name)
       expect(page).to_not have_content(Contestant.fourth.name)
+    end
+
+    it "sees a table listing league teams with scores" do
+      user = create(:user, :full_setup)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit user_path(user)
+
+      expect(page).to have_content(Contestant.first.name)
+      expect(find('tr', text: Team.first.name)).to have_content(6)
+      expect(page).to have_content(Contestant.second.name)
+      expect(find('tr', text: Team.second.name)).to have_content(4)
+      expect(page).to_not have_content(Team.third.name)
     end
   end
 end

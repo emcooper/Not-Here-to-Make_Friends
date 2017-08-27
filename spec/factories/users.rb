@@ -27,6 +27,9 @@ FactoryGirl.define do
       create(:team_contestant, contestant: c3, team: team_2)
       create(:team_contestant, contestant: retired_contestant, team: retired_team)
       create(:action, contestant: c1, week: week, play: play_1)
+      create(:action, contestant: c2, week: week, play: play_1, count: 2)
+      create(:action, contestant: c3, week: week, play: play_1)
+      create(:action, contestant: c3, week: week, play: play_2)
     end
   end
 
