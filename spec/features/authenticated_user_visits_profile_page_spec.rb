@@ -1,20 +1,18 @@
 RSpec.feature "Authenticated user visits their profile page" do
   context "they are part of multiple leagues" do
   it "sees links to active leagues only" do
-      user = create(:user)
-      active_season = create(:season, :active_with_created_users)
-      retired_season = create(:season, :retired_with_created_users)
-      users_active_leagues = active_season.leagues
-      users_retired_leagues = retired_season.leagues
+      user = create(:user, :full_setup)
+      active_league_1 = League.first
+      active_league_2 = League.second
+      retured_league = League.third
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit root_path
 
-      expect(page).to have_link(users_active_leagues[0].name)
-      expect(page).to have_link(users_active_leagues[1].name)
-      expect(page).to_not have_content(users_retired_leagues[0].name)
-      expect(page).to_not have_content(users_retired_leagues[1].name)
+      expect(page).to have_link(active_league_1.name)
+      expect(page).to have_link(active_league_2.name)
+      expect(page).to_not have_content(retured_league.name)
     end
 
     it "sees a table listing team roster contestants only with scores" do
