@@ -16,8 +16,8 @@ RSpec.describe User, type: :model do
   describe "instance methods" do
     it "#leagues returns array of user's leagues" do
       user = create(:user)
-      active_season = create(:season, :active_with_existing_users)
-      retired_season = create(:season, :retired_with_existing_users)
+      active_season = create(:season, :active_with_created_users)
+      retired_season = create(:season, :retired_with_created_users)
 
       expected = League.all
 
@@ -25,8 +25,8 @@ RSpec.describe User, type: :model do
     end
     it "#active_leagues returns array of user's active leagues" do
       user = create(:user)
-      active_season = create(:season, :active_with_existing_users)
-      retired_season = create(:season, :retired_with_existing_users)
+      active_season = create(:season, :active_with_created_users)
+      retired_season = create(:season, :retired_with_created_users)
       expected = active_season.leagues
 
       expect(user.active_leagues).to eq(expected)
