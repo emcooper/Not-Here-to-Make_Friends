@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :season_type do
-    name "MyString"
+    name "Bachelor"
   end
 end

@@ -13,9 +13,9 @@ RSpec.feature "User can sign up for account" do
       fill_in "user_password_confirmation", with: password
       click_on "Sign Up!"
 
-      expect(current_path).to eq(user_path(User.last))
       expect(page).to have_content("Your account has been created!")
-      expect(page).to have_content("Hi Ellen")
+      expect(page).to have_link("Join a League!")
+      expect(page).to have_link("Make a League!")
     end
   end
   context "with invalid password" do

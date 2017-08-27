@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :team do
-    name "MyString"
-    league 
+    sequence :name {|n| "Active Team #{n}"}
+    league
   end
 end

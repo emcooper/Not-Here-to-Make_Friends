@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :require_login, only: [:show]
 
   def show
+    redirect_to start_path if current_user.active_leagues.empty?
+    redirect_to league_path(current_user.active_leagues.first) unless current_user.active_leagues.empty?
   end
 
   def new
@@ -11,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Your account has been created!"
       redirect_to @user
     else
