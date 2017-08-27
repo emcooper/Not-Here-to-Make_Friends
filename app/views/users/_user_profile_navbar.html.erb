@@ -5,8 +5,7 @@
 
     <div class="nav right-float">
       <% current_user.active_leagues.each do |league| %>
-          <a class="nav-link btn btn-primary" href="#league-<%= league.id %>">
-            <%= link_to league.name, league_path(league) %></a>
+        <%= link_to league.name, league_path(league), :class =>"btn btn-primary"%>
       <% end %>
     </div>
 </section>

@@ -8,10 +8,10 @@ RSpec.feature "Authenticated user visits their profile page" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit user_path(user)
+    visit root_path
 
-    expect(page).to have_button(users_active_leagues[0].name)
-    expect(page).to have_button(users_active_leagues[1].name)
+    expect(page).to have_link(users_active_leagues[0].name)
+    expect(page).to have_link(users_active_leagues[1].name)
     expect(page).to_not have_content(users_retired_leagues[0].name)
     expect(page).to_not have_content(users_retired_leagues[1].name)
   end

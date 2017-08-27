@@ -3,6 +3,7 @@ DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
 user = User.create(name: "User", email: "user@gmail.com", password: "password")
+new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
 
 bachelor = SeasonType.create(name: "Bachelor")
 nick_season = Season.create(first_name: "Nick", last_name: "Viall", season_number: 21, season_type: bachelor, status: "active")

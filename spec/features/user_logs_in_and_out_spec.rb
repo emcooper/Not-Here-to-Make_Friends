@@ -10,7 +10,6 @@ RSpec.feature "User logs in and out" do
       fill_in "session_password", with: password
       click_on "Log In"
 
-      expect(current_path).to eq(user_path(user))
       expect(page).to have_content("Hi #{user.name}")
 
       click_on "Log Out"

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
-
   def show
+    redirect_to start_path if current_user.active_leagues.empty?
+    redirect_to league_path(current_user.active_leagues.first) unless current_user.active_leagues.empty?
   end
 
   def new
