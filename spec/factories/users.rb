@@ -16,7 +16,7 @@ FactoryGirl.define do
       active_league, retired_league = create_list(:league, 2)
       c1, c2, c3 = create_list(:contestant, 3, season: active_season)
       retired_contestant = create(:contestant, season: retired_season)
-      user, user_2 = create_list(:user, 2)
+      user_2 = create(:user)
       team_1, team_2 = create_list(:team, 2, league: active_league)
       retired_team = create(:team, league: retired_league)
       create(:team_member, user: user, team: team_1)
