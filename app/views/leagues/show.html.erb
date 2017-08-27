@@ -11,6 +11,25 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane" id="league-<%= @league.id %>-team" role="tabpanel">team stuff</div>
+  <div class="tab-pane active" id="league-<%= @league.id %>-team" role="tabpanel">
+    <table class="table table-responseive">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Contestants</th>
+          <th>Total Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= @league.team_of_user(current_user).contestants.each do |contestant| %>
+        <tr>
+          <td><img src="<% contestant.headshot %>" alt="contestant-headshot"></td>
+          <td><%= contestant.name %></td>
+          <td><%= contestant.season_points %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">league stuff</div>
 </div>
