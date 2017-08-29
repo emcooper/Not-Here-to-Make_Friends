@@ -1,0 +1,13 @@
+<h1 class = "page-header"><span>Episode <%= current_week.week_number %></span><span class = "season-title"><%= current_season.first_name %>'s Season</span></h1>
+<div class="row">
+  <% current_week.contestants.each do |contestant| %>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail contestant-<%= contestant.id %>">
+      <img src="<%= contestant.headshot %> " alt="contestant headshot">
+      <div class="caption text-center">
+        <h3><%= contestant.name %> </h3>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
