@@ -30,3 +30,10 @@ end
 team_1a.contestants << Contestant.all[0..10]
 team_1b.contestants << Contestant.all[11..20]
 team_2a.contestants << Contestant.all[2..13]
+
+date = Date.new(2017, 8 , 28)
+
+12.times do |n|
+  Week.create(date: date, week_number: n, season: rachel_season)
+  date += 7
+end
