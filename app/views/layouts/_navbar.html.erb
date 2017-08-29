@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">This Week</a>
+        <%= link_to "This Week", week_path(current_week), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Dashboard", user_path(current_user), class: "nav-link" %>
