@@ -1,4 +1,4 @@
-<h1 class = "d-flex justify-content-between"><span>Episode <%= current_week.week_number %></span><span class = "justify-content-end"><%= current_season.first_name %>'s Season</span></h1>
+<h1 class = "d-flex justify-content-between page-header"><span>Episode <%= current_week.week_number %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
 <div class="row">
   <% current_week.contestants.each do |contestant| %>
   <div class="col-sm-6 col-md-3">

@@ -8,8 +8,8 @@ diana = User.create(name: "Diana", email: "diana@gmail.com", password: "password
 new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
 
 
-rachel_season = Season.create(first_name: "Rachel", last_name: "Lindsay", season_number: 13, season_type: "bachelorette", status: "active")
-nick_season = Season.create(first_name: "Nick", last_name: "Vial", season_number: 21, season_type: "bachelor", status: "retired")
+rachel_season = Season.create(first_name: "Rachel", last_name: "Lindsay", headshot: "http://img.etonline.com/1242911076001/201705/288/1242911076001_5434770022001_et-051417-RachelLindsayOutfitshu.jpg?pubId=1242911076001", season_number: 13, season_type: "bachelorette", status: "active")
+nick_season = Season.create(first_name: "Nick", last_name: "Vial", headshot: "https://img.buzzfeed.com/buzzfeed-static/static/2017-04/25/15/campaign_images/buzzfeed-prod-fastlane-03/nick-viall-reveals-why-he-kept-that-yellow-bracel-2-9069-1493149672-2_dblbig.jpg", season_number: 21, season_type: "bachelor", status: "retired")
 league_1 = League.create(name: "League 1", season: rachel_season)
 league_2 = League.create(name: "League 2", season: rachel_season)
 team_1a = Team.create(name: "Team 1a", league: league_1)
