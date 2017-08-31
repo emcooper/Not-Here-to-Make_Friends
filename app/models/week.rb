@@ -9,4 +9,5 @@ class Week < ApplicationRecord
     end_of_week = start_of_week + 7
     Week.where(date: start_of_week..end_of_week).first
   end
+  
 end
