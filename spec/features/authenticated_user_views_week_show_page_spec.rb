@@ -17,6 +17,7 @@ RSpec.feature "Authenticated user visits week show page" do
       user = create(:user)
       season = create(:season, :with_contestants_and_points)
       week_2 = Week.second
+      contestant_1 = Contestant.first
       contestant_2 = Contestant.second
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -26,11 +27,38 @@ RSpec.feature "Authenticated user visits week show page" do
       click_on "This Week"
 
       expect(page).to have_content(contestant_2.name)
+      expect(page).to_not have_content(contestant_1.name)
       expect(page).to have_content("Points this week: 2")
     end
 
     scenario "they see a list of actions for each contestant" do
+      user = create(:user)
+      season = create(:season, :with_contestants_and_points)
+      week_1 = Week.first
+      contestant_1 = Contestant.first
+      contestant_2 = Contestant.second
+      action_1 = Action.first
+      action_2 = Action.second
+      action_3 = Action.third
+      action_4 = Action.third
 
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController).to receive(:current_week).and_return(week_1)
+
+      visit root_path
+      click_on "This Week"
+      within(".contestant-#{contestant_1.id}") do
+        expect(page).to have_content(action_1.play.description)
+        expect(page).to have_content("x 2")
+        expect(page).to have_content(action_2.play.description)
+        expect(page).to have_content("x 1")
+      end
+
+      within(".contestant-#{contestant_2.id}") do
+        expect(page).to have_content(action_3.play.description)
+        expect(page).to have_content("x 1")
+        expect(page).to_not have_content(action_4.play.description)
+      end
     end
   end
 end
