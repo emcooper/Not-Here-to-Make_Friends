@@ -1,0 +1,23 @@
+<h1 class = "d-flex justify-content-between page-header"><span>Episode <%= @week.week_number %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
+<div class="card-columns">
+  <% @week.contestants.each do |contestant| %>
+  <div class="card contestant-<%= contestant.id %>" style="">
+    <div class="text-center">
+      <img class="card-img-top img-fluid justify-content-center" src="<%= contestant.headshot %> " alt="contestant headshot">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= contestant.name %></h5>
+      <h5 class = "card-text text-center">Points this week: <%= contestant.weekly_points(@week) %> </h5>
+      <% contestant.weekly_actions(@week).each do |action| %>
+      <p class = "card-text">
+        <span class="badge points-badge"><%= action.points %> Points</span>
+        <%= action.play.description %> <span class="badge count-badge badge-light">x<%= action.count %></span>
+      </p>
+      <% end %>
+      <div class="text-center">
+      <a href="#" class="btn btn-primary mx-auto"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= contestant.name %>'s Page</a>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

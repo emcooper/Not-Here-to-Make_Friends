@@ -7,16 +7,16 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Dashboard</a>
+        <%= link_to "This Week", (week_path(current_week) if current_week) || "#", class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><%= "The Men" if current_season.bachelorette? %><%= "The Ladies" if current_season.bachelor? %></a>
+        <%= link_to "Dashboard", user_path(current_user), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">MediaZone</a>
       </li>
       <li class="nav-item">
-        <%= link_to "Log Out", logout_path, method: :delete, :class => "nav-link" %>
+        <%= link_to "Log Out", logout_path, method: :delete, class: "nav-link" %>
       </li>
     </ul>
   </div>

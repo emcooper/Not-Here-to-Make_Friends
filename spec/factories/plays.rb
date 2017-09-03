@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :play do
-    description "MyString"
+    sequence :description {|n| "Received a Rose #{n}"}
     point_value 2
     season_type 1
   end
