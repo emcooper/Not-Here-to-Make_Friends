@@ -8,7 +8,7 @@
         <h3><%= contestant.name %> </h3>
         <h3>Points this week: <%= contestant.weekly_points(@week) %> </h3>
         <% contestant.weekly_actions(@week).each do |action| %>
-          <p><%= action.play.description %> <%= action.count %> x</p>
+          <p><%= action.play.description %> x<%= action.count %> </p>
         <% end %>
       </div>
     </div>

@@ -21,6 +21,19 @@ RSpec.describe Contestant, type: :model do
       expect(c2.season_points).to eq(8)
     end
 
+    it "#weekly_actions returns array of contestant's actions for given week" do
+      c1, c2 = create_list(:contestant, 2)
+      week_1, week_2 = create_list(:week, 2)
+      action_1 = create(:action, contestant: c1, count: 2, week: week_1)
+      action_2 = create(:action, contestant: c1, count: 1, week: week_1)
+      action_3 = create(:action, contestant: c2, count: 4, week: week_1)
+      action_4 = create(:action, contestant: c1, count: 3, week: week_2)
+
+      expect(c1.weekly_actions(week_1)).to eq([action_1, action_2])
+      expect(c1.weekly_actions(week_2)).to eq([action_4])
+      expect(c2.weekly_actions(week_1)).to eq([action_3])
+    end
+
     it "#weekly_points returns contestant's total points per season" do
       c1, c2 = create_list(:contestant, 2)
       week_1, week_2 = create_list(:week, 2)

@@ -15,4 +15,8 @@ class Contestant < ApplicationRecord
             .where(week: week)
             .sum("point_value * count")
   end
+
+  def weekly_actions(week)
+    actions.where(week: week)
+  end
 end

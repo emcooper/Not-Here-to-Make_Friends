@@ -40,7 +40,7 @@ RSpec.feature "Authenticated user visits week show page" do
       action_1 = Action.first
       action_2 = Action.second
       action_3 = Action.third
-      action_4 = Action.third
+      action_4 = Action.fourth
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       allow_any_instance_of(ApplicationController).to receive(:current_week).and_return(week_1)
@@ -49,14 +49,14 @@ RSpec.feature "Authenticated user visits week show page" do
       click_on "This Week"
       within(".contestant-#{contestant_1.id}") do
         expect(page).to have_content(action_1.play.description)
-        expect(page).to have_content("x 2")
+        expect(page).to have_content("x2")
         expect(page).to have_content(action_2.play.description)
-        expect(page).to have_content("x 1")
+        expect(page).to have_content("x1")
       end
 
       within(".contestant-#{contestant_2.id}") do
         expect(page).to have_content(action_3.play.description)
-        expect(page).to have_content("x 1")
+        expect(page).to have_content("x1")
         expect(page).to_not have_content(action_4.play.description)
       end
     end
