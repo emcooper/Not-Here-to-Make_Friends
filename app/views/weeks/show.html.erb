@@ -1,17 +1,22 @@
 <h1 class = "d-flex justify-content-between page-header"><span>Episode <%= @week.week_number %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
 <div class="row">
   <% @week.contestants.each do |contestant| %>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail contestant-<%= contestant.id %>">
-      <img src="<%= contestant.headshot %> " alt="contestant headshot">
-      <div class="caption text-center">
-        <h3><%= contestant.name %> </h3>
-        <h3>Points this week: <%= contestant.weekly_points(@week) %> </h3>
-        <% contestant.weekly_actions(@week).each do |action| %>
-          <p><%= action.play.description %> x<%= action.count %> </p>
-        <% end %>
-      </div>
+  <div class="col-md-4">
+  <div class="card contestant-<%= contestant.id %>" style="">
+
+    <img class="card-img-top img-fluid mx-auto" src="<%= contestant.headshot %> " alt="contestant headshot">
+    <div class="card-body">
+      <h4 class="card-title text-center"><%= contestant.name %> </h4>
+      <h5 class = "text-center">Points this week: <%= contestant.weekly_points(@week) %> </h5>
+      <% contestant.weekly_actions(@week).each do |action| %>
+      <p>
+        <span class="badge points-badge"><%= action.points %> Points</span>
+        <%= action.play.description %> <span class="badge count-badge badge-light">x<%= action.count %></span>
+      </p>
+      <% end %>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
+  </div>
   </div>
   <% end %>
 </div>
