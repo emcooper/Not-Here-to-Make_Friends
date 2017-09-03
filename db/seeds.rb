@@ -81,9 +81,11 @@ end
 
 Week.all.each do |week|
   week.contestants.each do |cont|
-    Action.create(week: week, contestant: cont, play: Play.all[rand(40)], count: rand(3))
-    Action.create(week: week, contestant: cont, play: Play.all[rand(40)], count: rand(3))
-    Action.create(week: week, contestant: cont, play: Play.all[rand(40)], count: rand(3))
+    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(3) + 1)
+    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(3) + 1)
+    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(3) + 1)
+    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(3) + 1)
+    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(3) + 1)
   end
 end
 
