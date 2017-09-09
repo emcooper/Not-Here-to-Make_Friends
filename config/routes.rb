@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :leagues, only: [:show]
   get '/start', to: 'start#show'
   resources :weeks, only: [:show]
+  resources :contestants, only: [:show]
 end
