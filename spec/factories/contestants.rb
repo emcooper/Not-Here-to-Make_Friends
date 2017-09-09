@@ -1,8 +1,11 @@
 FactoryGirl.define do
   factory :contestant do
-    sequence(:name, ("A".."Z").cycle) {|n| "Corrine #{n}"}
-    headshot "http://static5.businessinsider.com/image/587e62e8dd0895e1148b4c30-1392/screen%20shot%202017-01-17%20at%20124437%20pm.png"
+    sequence(:name, ("A".."Z").cycle) {|n| "Bryan #{n}"}
+    headshot "https://i.elitestatic.com/content/uploads/2017/07/10202710/bryan-abasolo-bachelor-player.jpg"
     bio "MyString"
     season
+    age 37
+    hometown "Miami, FL"
+    occupation "Chripractor"
   end
 end
