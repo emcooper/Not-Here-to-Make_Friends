@@ -5,7 +5,7 @@ class ContestantShowPresenter
     @contestant = Contestant.find(company_id)
   end
 
-  def twitter_data
-    TwitterService.tweets(@contestant)
+  def watson_data
+    WatsonService.new(@contestant)
   end
 end
