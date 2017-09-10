@@ -49,6 +49,15 @@ RSpec.describe Contestant, type: :model do
       expect(c2.weekly_points(week_2)).to eq(2)
     end
 
-    it "#all_weekly_points returns "
+    it "#all_weekly_points returns collection of all weekly points" do
+      season = create(:season, :with_contestants_and_points)
+      contestant = Contestant.second
+
+      expect(contestant.all_weekly_points.first.week).to eq(1)
+      expect(contestant.all_weekly_points.second.week).to eq(2)
+      expect(contestant.all_weekly_points.first.points).to eq(2)
+      expect(contestant.all_weekly_points.second.points).to eq(2)
+      expect(contestant.all_weekly_points.to_a.count).to eq(2)
+    end
   end
 end

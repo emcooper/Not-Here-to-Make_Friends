@@ -19,4 +19,13 @@ class Contestant < ApplicationRecord
   def weekly_actions(week)
     actions.where(week: week)
   end
+
+  def all_weekly_points
+    Week.select("weeks.week_number AS week, sum(point_value * count) AS points")
+          .joins(actions: :play)
+          .where("contestant_id = ?", id)
+          .group("weeks.week_number")
+          .order("weeks.week_number")
+
+  end
 end
