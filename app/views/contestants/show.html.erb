@@ -45,10 +45,12 @@
     <div id="container"></div>
     <span>Ranking <%= @contestant.ranking %> Place </span>
     <span>Points this Week <%= @contestant.weekly_points(current_week) %></span>
+    <span>Points this Season <%= @contestant.season_points %></span>
+    <span>Highest Scoring Play <%= @contestant.biggest_play.description %> for <%= @contestant.biggest_play.point_value %></span>
   </p>
-  <h4 id="personality-profile">@mdo</h4>
+  <h4 id="personality-profile">Personality</h4>
   <p>...
   </p>
-  <h4 id="social-media">one</h4>
+  <h4 id="social-media">Social Media</h4>
   <p>...</p>
 </div>

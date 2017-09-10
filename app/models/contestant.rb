@@ -5,6 +5,7 @@ class Contestant < ApplicationRecord
   has_many :weekly_contestants
   has_many :weeks, through: :weekly_contestants
   has_many :actions
+  has_many :plays, through: :actions
 
   def season_points
     actions.joins(:play).sum("point_value * count")
@@ -31,5 +32,9 @@ class Contestant < ApplicationRecord
   def ranking
     sorted_contestants = (season.contestants.sort_by {|cont| cont.season_points}).reverse
     (sorted_contestants.index(self) + 1).ordinalize
+  end
+
+  def biggest_play
+    plays.order("point_value DESC").first
   end
 end

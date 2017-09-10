@@ -6,7 +6,7 @@ RSpec.feature "User visits individual contestant page" do
       @cont_2 = Contestant.second
       @cont_3 = Contestant.third
       @week_1 = Week.first
-      @week_2 = Week.first
+      @week_2 = Week.second
       @big_play = Play.first
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)

@@ -70,5 +70,16 @@ RSpec.describe Contestant, type: :model do
       expect(contestant_2.ranking).to eq("3rd")
       expect(contestant_3.ranking).to eq("1st")
     end
+
+    it "#biggest_play returns the highest scoring play for contestant" do
+      season = create(:season, :with_contestants_and_points)
+      contestant_2 = Contestant.second
+      contestant_3 = Contestant.third
+      big_play = Play.first
+
+
+      expect(contestant_2.biggest_play.point_value).to eq(2)
+      expect(contestant_3.biggest_play).to eq(big_play)
+    end
   end
 end
