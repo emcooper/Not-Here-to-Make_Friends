@@ -53,8 +53,8 @@ RSpec.describe Contestant, type: :model do
       season = create(:season, :with_contestants_and_points)
       contestant = Contestant.second
 
-      expect(contestant.all_weekly_points.first.week).to eq(1)
-      expect(contestant.all_weekly_points.second.week).to eq(2)
+      expect(contestant.all_weekly_points.first.week_number).to eq(1)
+      expect(contestant.all_weekly_points.second.week_number).to eq(2)
       expect(contestant.all_weekly_points.first.points).to eq(2)
       expect(contestant.all_weekly_points.second.points).to eq(2)
       expect(contestant.all_weekly_points.to_a.count).to eq(2)

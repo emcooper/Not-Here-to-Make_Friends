@@ -1,5 +1,8 @@
-describe 'technologies api' do
-  it "sends the most 10 most popular technologies with count of frontend and backend users" do
+require 'rails_helper'
+
+
+describe 'contestants api' do
+  xit "sends the point count for a certain contestant for all weeks" do
     user = create(:user)
     season = create(:season, :with_contestants_and_points)
     contestant = Contestant.second
@@ -9,7 +12,7 @@ describe 'technologies api' do
     get "/api/v1/contestants/#{contestant.id}/weekly_points"
 
     expect(response).to be_success
-    response = JSON.parse(response.body)
+    response = JSON.parse(response)
     expect(techs.count).to eq(2)
     expect(response.first["week"]).to eq(1)
     expect(response.last["week"]).to eq(1)
