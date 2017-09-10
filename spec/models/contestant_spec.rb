@@ -48,5 +48,7 @@ RSpec.describe Contestant, type: :model do
       expect(c2.weekly_points(week_1)).to eq(0)
       expect(c2.weekly_points(week_2)).to eq(2)
     end
+
+    it "#all_weekly_points returns "
   end
 end

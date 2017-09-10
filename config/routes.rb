@@ -8,4 +8,12 @@ Rails.application.routes.draw do
   get '/start', to: 'start#show'
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
+
+  namespace :api do
+    namespace :v1 do
+      namespace :contestants do
+        get ':id/weekly_points', to: 'points#show'
+      end
+    end
+  end
 end
