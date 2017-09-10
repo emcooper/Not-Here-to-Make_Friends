@@ -6,6 +6,7 @@ describe TwitterService do
 
   it "tweets returns the contestant's recent tweets" do
     VCR.use_cassette("services/twitter/tweets") do
+      # client.user("sferik")
       tweets = @twitter_service.tweets
 
     end
