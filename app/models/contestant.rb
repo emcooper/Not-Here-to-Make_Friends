@@ -21,10 +21,10 @@ class Contestant < ApplicationRecord
   end
 
   def all_weekly_points
-    Week.select("weeks.*, sum(point_value * count) AS points")
-          .joins(actions: :play)
-          .where("contestant_id = ?", id)
-          .group("weeks.id")
-          .order("weeks.week_number")
+    Week.select("weeks.week_number, sum(point_value * count) AS points")
+        .joins(actions: :play)
+        .where("contestant_id = ?", id)
+        .group("weeks.id")
+        .order("weeks.week_number")
   end
 end

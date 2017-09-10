@@ -1,5 +1,4 @@
-<%= content_tag :div, class: "contestant_information", data: {id: @contestant.id, name: @contestant.name} do %>
-<% end %>
+<%= tag :div, class: "contestant_information", data: {id: @contestant.id, name: @contestant.name} %>
 
 <div class="row">
 <div class="col-md-6">
@@ -43,7 +42,7 @@
 <div data-spy="scroll" data-offset="0">
   <h4 id="stats">Stats</h4>
   <p>
-    <div id="container" style="width:100%; height:400px;"></div>
+    <div id="container"></div>
 
   </p>
   <h4 id="personality-profile">@mdo</h4>

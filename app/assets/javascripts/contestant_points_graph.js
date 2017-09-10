@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  if($('div').is('#container')){
   $.ajax({
     type: 'GET',
     url: `/api/v1/contestants/${$('.contestant_information').data('id')}/weekly_points`,
@@ -57,4 +58,5 @@ $(document).ready(function(){
       });
      }
    });
+ }
  });
