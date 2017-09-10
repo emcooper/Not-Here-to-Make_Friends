@@ -43,7 +43,8 @@
   <h4 id="stats">Stats</h4>
   <p>
     <div id="container"></div>
-
+    <span>Ranking <%= @contestant.ranking %> Place </span>
+    <span>Points this Week <%= @contestant.weekly_points(current_week) %></span>
   </p>
   <h4 id="personality-profile">@mdo</h4>
   <p>...

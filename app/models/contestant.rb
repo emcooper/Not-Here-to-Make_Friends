@@ -27,4 +27,9 @@ class Contestant < ApplicationRecord
         .group("weeks.id")
         .order("weeks.week_number")
   end
+
+  def ranking
+    sorted_contestants = (season.contestants.sort_by {|cont| cont.season_points}).reverse
+    (sorted_contestants.index(self) + 1).ordinalize
+  end
 end
