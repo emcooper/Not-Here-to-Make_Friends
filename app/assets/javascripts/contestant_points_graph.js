@@ -1,8 +1,13 @@
 $(document).ready(function(){
   $.ajax({
     type: 'GET',
-    url: '/api/v1/contestants/1/weekly_points',
+    url: `/api/v1/contestants/${$('.contestant_information').data('id')}/weekly_points`,
     success: function(data) {
+      var points = []
+      $.each(data, function (index, dataItem) {
+          points.push(dataItem.points)
+      })
+
       Highcharts.setOptions({
           chart: {
               style: {
@@ -12,47 +17,41 @@ $(document).ready(function(){
       });
 
       Highcharts.chart('container', {
+        chart: {
+            type: 'spline'
+        },
 
           title: {
-              text: 'Solar Employment Growth by Sector, 2010-2016'
-          },
-
-          subtitle: {
-              text: 'Source: thesolarfoundation.com'
+              text: `${$('.contestant_information').data('name')}'s Points this Season`
           },
 
           yAxis: {
-              title: {
-                  text: 'Number of Employees'
-              }
-          },
-          legend: {
-              layout: 'vertical',
-              align: 'right',
-              verticalAlign: 'middle'
-          },
+             title: {
+                 text: "Points"
+             }},
+
+         xAxis: {
+            title: {
+                text: "Week"
+            }},
+
+        credits: {
+            enabled: false
+        },
 
           plotOptions: {
               series: {
-                  pointStart: 2010
+                  pointStart: 1
               }
           },
 
+          legend: {
+               enabled: false
+           },
+
           series: [{
-              name: 'Installation',
-              data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-          }, {
-              name: 'Manufacturing',
-              data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-          }, {
-              name: 'Sales & Distribution',
-              data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-          }, {
-              name: 'Project Development',
-              data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-          }, {
-              name: 'Other',
-              data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+              name: 'Points',
+              data: points
           }]
 
       });
