@@ -41,13 +41,47 @@
 
 <div data-spy="scroll" data-offset="0">
   <h4 id="stats">Stats</h4>
-  <p>
     <div id="container"></div>
-    <div>Ranking <%= @contestant.ranking %> Place </div>
-    <div>Points this Week <%= @contestant.weekly_points(current_week) %></div>
-    <div>Points this Season <%= @contestant.season_points %></div>
-    <div>Highest Scoring Play <%= @contestant.biggest_play.description %> for <%= @contestant.biggest_play.point_value %></div>
-  </p>
+    <div class="row text-center stats-small-cards">
+
+      <div class = "col-md-3">
+        <div class="card stats-card">
+          <div class="card-body">
+            <h4 class="card-title">Ranking</h4>
+             <%= @contestant.ranking %> Place
+           </div>
+         </div>
+       </div>
+
+       <div class = "col-md-3">
+         <div class="card stats-card">
+           <div class="card-body">
+             <h4 class="card-title">Points this Week</h4>
+              <%= @contestant.weekly_points(current_week) %>
+            </div>
+          </div>
+        </div>
+
+        <div class = "col-md-3">
+          <div class="card stats-card">
+            <div class="card-body">
+              <h4 class="card-title">Points this Season</h4>
+               <%= @contestant.season_points %>
+             </div>
+           </div>
+         </div>
+
+         <div class = "col-md-3">
+           <div class="card stats-card">
+             <div class="card-body">
+               <h4 class="card-title">Highest Scoring Play of the Season</h4>
+                <%= @contestant.biggest_play.description %> for <%= @contestant.biggest_play.point_value %> Points
+              </div>
+            </div>
+          </div>
+
+    </div>
+
   <h4 id="personality-profile">Personality</h4>
   <p>...
   </p>
