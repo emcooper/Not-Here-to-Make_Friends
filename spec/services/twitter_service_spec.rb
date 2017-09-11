@@ -6,9 +6,11 @@ describe TwitterService do
 
   it "tweets returns the contestant's recent tweets" do
     VCR.use_cassette("services/twitter/tweets") do
-      # client.user("sferik")
       tweets = @twitter_service.tweets
 
+      expect(tweets).to be_a(Array)
+      expect(tweets.first).to be_a(String)
+      expect(tweets.last).to be_a(String)
     end
   end
 end
