@@ -6,10 +6,10 @@ class ContestantShowPresenter
   end
 
   def tweets
-    TwitterService.new(@contestant)
+    TwitterService.new(@contestant).tweets
   end
 
   def watson_data
-    # WatsonService.new(@contestant)
+    WatsonService.new(@contestant)
   end
 end
