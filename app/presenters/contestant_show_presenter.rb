@@ -9,7 +9,7 @@ class ContestantShowPresenter
     TwitterService.new(@contestant).tweets
   end
 
-  def watson_data
-    WatsonService.new(tweets)
+  def personality
+    Personality.generate_from_watson(tweets)
   end
 end
