@@ -10,6 +10,6 @@ class ContestantShowPresenter
   end
 
   def watson_data
-    WatsonService.new(@contestant)
+    WatsonService.new(tweets)
   end
 end
