@@ -16,9 +16,9 @@ class WatsonService
     JSON.parse(response.body, symbolize_names: :true)
   end
 
-  def parse_traits(response)
+  def parse_traits
     traits = {}
-    response[:personality].each do |big5_trait|
+    personality_profile[:personality].each do |big5_trait|
       big5_trait[:children].each do |child_trait|
         traits[child_trait[:name]] = child_trait[:percentile]
       end

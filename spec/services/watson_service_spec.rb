@@ -20,8 +20,8 @@ describe WatsonService do
       contestant = create(:contestant, twitter_handle: "@TheAbDoctor")
       tweets = TwitterService.new(contestant).tweets
       @watson_service = WatsonService.new(tweets)
-      profile = @watson_service.personality_profile
-      traits = @watson_service.parse_traits(profile)
+
+      traits = @watson_service.parse_traits
 
       expect(traits.count).to eq(30)
       expect(traits.keys.first).to be_a(String)
