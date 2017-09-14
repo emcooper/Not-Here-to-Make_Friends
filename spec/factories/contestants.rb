@@ -7,5 +7,6 @@ FactoryGirl.define do
     age 37
     hometown "Miami, FL"
     occupation "Chripractor"
+    twitter_handle "@TheAbDoctor"
   end
 end

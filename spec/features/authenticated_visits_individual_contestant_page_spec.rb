@@ -17,28 +17,32 @@ RSpec.feature "User visits individual contestant page" do
     end
 
     it "they see contestant name, picture and basic info" do
-      within(".contestant-#{@cont_2.id}") do
-        find(".cont-page-btn").click
-      end
+      VCR.use_cassette("/features/user_visits_contestant_page") do
+        within(".contestant-#{@cont_2.id}") do
+          find(".cont-page-btn").click
+        end
 
-      expect(page).to have_content(@cont_2.name)
-      expect(page).to have_content(@cont_2.age)
-      expect(page).to have_content(@cont_2.hometown)
-      expect(page).to have_content(@cont_2.occupation)
+        expect(page).to have_content(@cont_2.name)
+        expect(page).to have_content(@cont_2.age)
+        expect(page).to have_content(@cont_2.hometown)
+        expect(page).to have_content(@cont_2.occupation)
+      end
     end
 
     it "they see stats for contestant" do
-      within(".contestant-#{@cont_3.id}") do
-        find(".cont-page-btn").click
-      end
+      VCR.use_cassette("/features/user_visits_contestant_page") do
+        within(".contestant-#{@cont_3.id}") do
+          find(".cont-page-btn").click
+        end
 
-      expect(page).to have_content("1st Place")
-      expect(page).to have_content("Points this Week")
-      expect(page).to have_content("2")
-      expect(page).to have_content("Points this Season")
-      expect(page).to have_content("52")
-      expect(page).to have_content("Highest Scoring Play")
-      expect(page).to have_content(@big_play.description)
+        expect(page).to have_content("1st Place")
+        expect(page).to have_content("Points this Week")
+        expect(page).to have_content("2")
+        expect(page).to have_content("Points this Season")
+        expect(page).to have_content("52")
+        expect(page).to have_content("Highest Scoring Play")
+        expect(page).to have_content(@big_play.description)
+      end
     end
   end
 end
