@@ -2,10 +2,11 @@
 
 
 $( document ).ready(function() {
-$("#your-circle").circliful({
+
+
+$(".circle-chart").circliful({
             animationStep: 5,
-            foregroundBorderWidth: 5,
+            foregroundBorderWidth: 15,
             backgroundBorderWidth: 15,
-            percent: 75
-       });
+   });
 });

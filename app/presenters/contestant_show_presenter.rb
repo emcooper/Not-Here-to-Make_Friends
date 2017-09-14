@@ -12,4 +12,5 @@ class ContestantShowPresenter
   def personality
     Personality.generate_from_watson(tweets)
   end
+
 end
