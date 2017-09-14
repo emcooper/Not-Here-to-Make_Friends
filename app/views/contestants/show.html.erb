@@ -39,7 +39,7 @@
 </nav>
 
 
-<div data-spy="scroll" data-offset="0">
+<div class = "text-center contestant-details" data-spy="scroll" data-offset="0">
   <h4 id="stats">Stats</h4>
     <div id="container"></div>
     <div class="row text-center stats-small-cards">
@@ -47,7 +47,7 @@
       <div class = "col-md-3">
         <div class="card stats-card">
           <div class="card-body">
-            <h4 class="card-title">Ranking</h4>
+            <p class="card-title">Ranking</p>
              <%= @contestant_presenter.contestant.ranking %> Place
            </div>
          </div>
@@ -56,7 +56,7 @@
        <div class = "col-md-3">
          <div class="card stats-card">
            <div class="card-body">
-             <h4 class="card-title">Points this Week</h4>
+             <p class="card-title">Points this Week</p>
               <%= @contestant_presenter.contestant.weekly_points(current_week) %>
             </div>
           </div>
@@ -65,7 +65,7 @@
         <div class = "col-md-3">
           <div class="card stats-card">
             <div class="card-body">
-              <h4 class="card-title">Points this Season</h4>
+              <p class="card-title">Points this Season</p>
                <%= @contestant_presenter.contestant.season_points %>
              </div>
            </div>
@@ -74,12 +74,11 @@
          <div class = "col-md-3">
            <div class="card stats-card">
              <div class="card-body">
-               <h4 class="card-title">Highest Scoring Play of the Season</h4>
+               <p class="card-title">Highest Scoring Play of the Season</p>
                 <%= @contestant_presenter.contestant.biggest_play.description %> for <%= @contestant_presenter.contestant.biggest_play.point_value %> Points
               </div>
             </div>
           </div>
-
     </div>
 
   <h4 id="personality-profile">Personality</h4>

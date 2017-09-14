@@ -1,6 +1,6 @@
 .contestant-info {
-  border-top: 5px solid #6CD4FF;
-  border-bottom: 5px solid #6CD4FF;
+  border-top: 5px solid #16bbff;
+  border-bottom: 5px solid #16bbff;
   height: 80%;
   margin-top: 20px;
 
@@ -19,7 +19,18 @@
     padding: 0;
     margin: 0;
   }
+  .circle-chart {
+
+  }
 }
+
+.contestant-details {
+  h4 {
+    font-size: 40px;
+    margin: 50px;
+  }
+}
+
 
 .stats-small-cards {
   font-size: 20px;
