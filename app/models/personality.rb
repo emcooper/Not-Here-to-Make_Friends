@@ -2,25 +2,7 @@ class Personality
   attr_reader :traits
 
   def initialize(params)
-    # @traits = params.map {|param| Trait.new(param)}
     @traits = create_traits(params)
-
-    #
-    # @adventurousness = data["Adventurousness"]
-    # @imagination = data["Imagination"]
-    # @intellect = data["Intellect"]
-    # @authority_challenging = data["Authority-challenging"]
-    # @cautiousness = data["Cautiousness"]
-    # @self_discipline = data["Self-discipline"]
-    # @assertiveness = data["Assertiveness"]
-    # @cheerfulness = data["Cheerfulness"]
-    # @friendliness = data["Outgoing"]
-    # @altruism = data["Altruism"]
-    # @modesty = data["Modesty"]
-    # @morality = data["Uncompromising"]
-    # @anger = data["Fiery"]
-    # @anxiety = data["Prone to worry"]
-    # @melancholy = data["Melancholy"]
   end
 
   def self.generate_from_watson(text)
