@@ -64,12 +64,39 @@ date = Date.new(2017, 8 , 28)
   date += 7
 end
 
-contestant_names = ["Bryan", "Peter", "Eric", "Dean", "Adam", "Matt", "Alex", "Will", "Kenny", "Josiah", "Anthony", "Lee",
-"Jonathan", "Iggy", "Jack", "Diggy", "Bryce", "Brady", "Fred", "Lucas", "Jamey", "Blake", "DeMario",
-"Rob", "Mohit", "Milton", "Michael", "Kyle", "Jedidiah", "Grant", "Blake"]
+contestant_info = [{name: "Bryan", twitter_handle: "@TheAbDoctor"},
+                    {name: "Peter", twitter_handle: "@PeterWIKraus"},
+                    {name: "Eric", twitter_handle: "@EBigger22"},
+                    {name: "Dean", twitter_handle: "@Dunglert10"},
+                    {name: "Adam", twitter_handle: "@AdamJGottschalk"},
+                    {name: "Matt", twitter_handle: "@PeterWIKraus"},
+                    {name: "Alex", twitter_handle: "@PeterWIKraus"},
+                    {name: "Will", twitter_handle: "@TheReal_BillyG"},
+                    {name: "Kenny", twitter_handle: "@KennyKingPB2"},
+                    {name: "Josiah", twitter_handle: "@PeterWIKraus"},
+                    {name: "Lee", twitter_handle: "@PeterWIKraus"},
+                    {name: "Jonathan", twitter_handle: "@PeterWIKraus"},
+                    {name: "Iggy", twitter_handle: "@PeterWIKraus"},
+                    {name: "Jack", twitter_handle: "@PeterWIKraus"},
+                    {name: "Diggy", twitter_handle: "@PeterWIKraus"},
+                    {name: "Bryce", twitter_handle: "@PeterWIKraus"},
+                    {name: "Brady", twitter_handle: "@PeterWIKraus"},
+                    {name: "Fred", twitter_handle: "@RealFredJohnson"},
+                    {name: "Lucas", twitter_handle: "@PeterWIKraus"},
+                    {name: "Jamey", twitter_handle: "@PeterWIKraus"},
+                    {name: "Blake", twitter_handle: "@PeterWIKraus"},
+                    {name: "DeMario", twitter_handle: "@PeterWIKraus"},
+                    {name: "Rob", twitter_handle: "@PeterWIKraus"},
+                    {name: "Mohit", twitter_handle: "@PeterWIKraus"},
+                    {name: "Milton", twitter_handle: "@PeterWIKraus"},
+                    {name: "Michael", twitter_handle: "@PeterWIKraus"},
+                    {name: "Kyle", twitter_handle: "@PeterWIKraus"},
+                    {name: "Jedidiah", twitter_handle: "@PeterWIKraus"},
+                    {name: "Grant", twitter_handle: "@PeterWIKraus"},
+                    {name: "Blake", twitter_handle: "@PeterWIKraus"}]
 
-contestant_names.each_with_index do |name, n|
-  dude = Contestant.create(name: name, headshot: Faker::Avatar.image, bio: Faker::MostInterestingManInTheWorld.quote, season: rachel_season, age: rand(25..40), hometown: "#{Faker::Address.city}, #{Faker::Address.state_abbr}", occupation: Faker::Company.profession, twitter_handle: "@TheAbDoctor")
+contestant_info.each_with_index do |info, n|
+  dude = Contestant.create(info.merge({headshot: Faker::Avatar.image, bio: Faker::MostInterestingManInTheWorld.quote, season: rachel_season, age: rand(25..40), hometown: "#{Faker::Address.city}, #{Faker::Address.state_abbr}", occupation: Faker::Company.profession,}))
   if n < 2
     dude.weeks << Week.all
   elsif n < 5
