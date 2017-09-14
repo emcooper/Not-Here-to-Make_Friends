@@ -15,7 +15,9 @@
       </p>
       <% end %>
       <div class="text-center">
-      <a href="#" class="btn btn-primary mx-auto"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= contestant.name %>'s Page</a>
+      <%= link_to(contestant, class: "btn btn-primary cont-page-btn") do %>
+        <span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= contestant.name %>'s Page</span>
+      <% end %>
       </div>
     </div>
   </div>

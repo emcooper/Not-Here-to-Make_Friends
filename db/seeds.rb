@@ -69,7 +69,7 @@ contestant_names = ["Bryan", "Peter", "Eric", "Dean", "Adam", "Matt", "Alex", "W
 "Rob", "Mohit", "Milton", "Michael", "Kyle", "Jedidiah", "Grant", "Blake"]
 
 contestant_names.each_with_index do |name, n|
-  dude = Contestant.create(name: name, headshot: Faker::Avatar.image, bio: Faker::MostInterestingManInTheWorld.quote, season: rachel_season)
+  dude = Contestant.create(name: name, headshot: Faker::Avatar.image, bio: Faker::MostInterestingManInTheWorld.quote, season: rachel_season, age: rand(25..40), hometown: "#{Faker::Address.city}, #{Faker::Address.state_abbr}", occupation: Faker::Company.profession, twitter_handle: "@TheAbDoctor")
   if n < 2
     dude.weeks << Week.all
   elsif n < 5

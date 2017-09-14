@@ -9,4 +9,9 @@ body#bootstrap-override {
   color: #998da0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 900;
+  position: relative;
+}
+
+.highcharts-root {
+    font-family: 'Courier New', monospace;
 }

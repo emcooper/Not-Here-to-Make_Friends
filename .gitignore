@@ -18,3 +18,7 @@
 
 .byebug_history
 log.md
+/spec/cassettes
+
+# Ignore application configuration
+/config/application.yml

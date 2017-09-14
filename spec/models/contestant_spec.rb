@@ -48,5 +48,38 @@ RSpec.describe Contestant, type: :model do
       expect(c2.weekly_points(week_1)).to eq(0)
       expect(c2.weekly_points(week_2)).to eq(2)
     end
+
+    it "#all_weekly_points returns collection of all weekly points" do
+      season = create(:season, :with_contestants_and_points)
+      contestant = Contestant.second
+
+      expect(contestant.all_weekly_points.first.week_number).to eq(1)
+      expect(contestant.all_weekly_points.second.week_number).to eq(2)
+      expect(contestant.all_weekly_points.first.points).to eq(2)
+      expect(contestant.all_weekly_points.second.points).to eq(2)
+      expect(contestant.all_weekly_points.to_a.count).to eq(2)
+    end
+
+    it "#ranking returns the rank of the contestant" do
+      season = create(:season, :with_contestants_and_points)
+      contestant_1 = Contestant.first
+      contestant_2 = Contestant.second
+      contestant_3 = Contestant.third
+
+      expect(contestant_1.ranking).to eq("2nd")
+      expect(contestant_2.ranking).to eq("3rd")
+      expect(contestant_3.ranking).to eq("1st")
+    end
+
+    it "#biggest_play returns the highest scoring play for contestant" do
+      season = create(:season, :with_contestants_and_points)
+      contestant_2 = Contestant.second
+      contestant_3 = Contestant.third
+      big_play = Play.first
+
+
+      expect(contestant_2.biggest_play.point_value).to eq(2)
+      expect(contestant_3.biggest_play).to eq(big_play)
+    end
   end
 end

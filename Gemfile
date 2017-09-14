@@ -35,6 +35,11 @@ gem 'jquery-rails'
 gem 'database_cleaner'
 gem 'faker'
 gem 'font-awesome-sass'
+gem 'faraday'
+gem 'figaro'
+gem 'twitter'
+gem 'json'
+gem 'awesome_print'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,6 +49,8 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
