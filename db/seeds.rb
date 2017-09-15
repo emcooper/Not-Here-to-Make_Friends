@@ -66,8 +66,8 @@ end
 
 contestant_info = [{name: "Bryan", twitter_handle: "@TheAbDoctor"},
                     {name: "Peter", twitter_handle: "@PeterWIKraus"},
-                    {name: "Eric", twitter_handle: "@EBigger22"},
-                    {name: "Dean", twitter_handle: "@Dunglert10"},
+                    {name: "Eric", twitter_handle: "@Eric_Bigger"},
+                    {name: "Dean", twitter_handle: "@deanie_babies"},
                     {name: "Adam", twitter_handle: "@AdamJGottschalk"},
                     {name: "Matt", twitter_handle: "@PeterWIKraus"},
                     {name: "Alex", twitter_handle: "@PeterWIKraus"},
