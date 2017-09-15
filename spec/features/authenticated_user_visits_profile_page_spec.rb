@@ -53,7 +53,7 @@ RSpec.feature "Authenticated user visits their profile page" do
 
       visit '/'
       save_and_open_page
-      expect(page).to have_content("You're league hasn't drafted yet! Visit the draft room to set your rankings.")
+      expect(page).to have_content("Visit the draft room to set your rankings!")
       expect(page).to have_link("Draft Room")
 
       click_on "Draft Room"

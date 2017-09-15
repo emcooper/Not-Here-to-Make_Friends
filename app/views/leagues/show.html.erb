@@ -12,6 +12,17 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="league-<%= @league.id %>-team" role="tabpanel">
+    <% if @league.team_of_user(current_user).contestants.empty? %>
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">You're League will draft on <%= @league.draft_date %></h1>
+      <p class="lead">Visit the draft room to set your rankings!</p>
+      <hr class="my-4">
+      <p class="lead text-center">
+        <%= link_to "Draft Room", "#", class: "btn btn-primary btn-lg"%>
+      </p>
+    </div>
+
+    <% else %>
     <h3 class = text-center>Team Roster</h3>
     <table class="table table-responsive">
       <thead>
@@ -29,6 +40,7 @@
         <% end %>
       </tbody>
     </table>
+    <% end %>
   </div>
   <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">
     <h3 class = text-center>League Overview</h3>
