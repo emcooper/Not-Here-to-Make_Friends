@@ -30,11 +30,11 @@ ready = function(){
           });
 
         // send the updated order via ajax
-        $.ajax({
-            type: "PUT",
-            url: '/tasks/sort',
-            data: { order: updated_order }
-        });
+        // $.ajax({
+        //     type: "PUT",
+        //     url: '/tasks/sort',
+        //     data: { order: updated_order }
+        // });
     });
 
 }
