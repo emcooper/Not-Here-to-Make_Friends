@@ -1,1 +1,11 @@
-
+<div class="row">
+  <div class="col-md-5 col-md-offset-4 sortable">
+    <%= current_season.contestants.each do |contestant| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= contestant.name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
