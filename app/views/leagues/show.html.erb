@@ -18,7 +18,7 @@
       <p class="lead">Visit the draft room to set your rankings!</p>
       <hr class="my-4">
       <p class="lead text-center">
-        <%= link_to "Draft Room", new_team_draft_pick_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg"%>
+        <%= link_to "Draft Room", edit_team_draft_pick_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg"%>
       </p>
     </div>
 

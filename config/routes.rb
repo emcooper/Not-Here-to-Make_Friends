@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
   resources :teams, only: [] do
-    resources :draft_picks, only: [:new]
+    resources :draft_picks, only: [:edit, :update]
   end
 
   namespace :api do

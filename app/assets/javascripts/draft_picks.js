@@ -28,6 +28,13 @@ ready = function(){
         $('.card.draft-card').each(function(i){
             updated_order.push({ id: $(this).data("id"), position: i+1 });
           });
+
+        // send the updated order via ajax
+        $.ajax({
+            type: "PUT",
+            url: '/tasks/sort',
+            data: { order: updated_order }
+        });
     });
 
 }
