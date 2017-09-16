@@ -1,6 +1,8 @@
+<%= tag :div, class: "team_information", data: {id: @team.id} %>
+
 <div class="row">
   <div class="col-md-5 col-md-offset-4 sortable">
-    <% @team.draft_picks.contestants.each do |contestant| %>
+    <% current_season.contestants.each do |contestant| %>
       <div class="card draft-card" data-id="<%= contestant.id %>">
         <div class="card-body">
           <%= contestant.name %>

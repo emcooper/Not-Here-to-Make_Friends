@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
   resources :teams, only: [] do
-    resources :draft_picks, only: [:index, :update]
+    resources :draft_picks, only: [:index]
+    put '/draft_picks', to: 'draft_picks#update'
   end
 
   namespace :api do
