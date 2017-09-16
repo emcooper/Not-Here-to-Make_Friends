@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916033736) do
+ActiveRecord::Schema.define(version: 20170916041206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20170916033736) do
     t.string "occupation"
     t.string "twitter_handle"
     t.index ["season_id"], name: "index_contestants_on_season_id"
+  end
+
+  create_table "draft_picks", force: :cascade do |t|
+    t.bigint "contestant_id"
+    t.bigint "team_id"
+    t.integer "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contestant_id"], name: "index_draft_picks_on_contestant_id"
+    t.index ["team_id"], name: "index_draft_picks_on_team_id"
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -128,6 +138,8 @@ ActiveRecord::Schema.define(version: 20170916033736) do
   add_foreign_key "actions", "plays"
   add_foreign_key "actions", "weeks"
   add_foreign_key "contestants", "seasons"
+  add_foreign_key "draft_picks", "contestants"
+  add_foreign_key "draft_picks", "teams"
   add_foreign_key "leagues", "seasons"
   add_foreign_key "team_contestants", "contestants"
   add_foreign_key "team_contestants", "teams"
