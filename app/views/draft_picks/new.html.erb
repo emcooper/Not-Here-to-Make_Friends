@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-5 col-md-offset-4 sortable">
     <% current_season.contestants.each do |contestant| %>
-      <div class="card">
+      <div class="card draft-card" data-id="<%= contestant.id %>">
         <div class="card-body">
           <%= contestant.name %>
         </div>
