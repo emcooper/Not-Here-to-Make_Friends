@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/start', to: 'start#show'
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
+  resources :teams, only: [] do
+    resources :draft_picks, only: [:new]
+  end
 
   namespace :api do
     namespace :v1 do

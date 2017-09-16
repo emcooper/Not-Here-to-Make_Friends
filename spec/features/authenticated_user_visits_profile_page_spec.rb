@@ -52,12 +52,11 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit '/'
-      save_and_open_page
       expect(page).to have_content("Visit the draft room to set your rankings!")
       expect(page).to have_link("Draft Room")
 
       click_on "Draft Room"
-      expect(current_path).to eq("/teams/#{Team.first}/draft")
+      expect(current_path).to eq("/teams/#{Team.first.id}/draft_picks/new")
     end
   end
 end

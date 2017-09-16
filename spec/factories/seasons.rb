@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence :season_number {|n| n}
     season_type 1
     status 0
+    draft_date "2017-08-10"
   end
 
   trait :with_contestants_and_points do
