@@ -51,13 +51,7 @@ rachel_season = Season.create(first_name: "Rachel", last_name: "Lindsay", headsh
 nick_season = Season.create(first_name: "Nick", last_name: "Vial", headshot: "https://img.buzzfeed.com/buzzfeed-static/static/2017-04/25/15/campaign_images/buzzfeed-prod-fastlane-03/nick-viall-reveals-why-he-kept-that-yellow-bracel-2-9069-1493149672-2_dblbig.jpg", season_number: 21, season_type: "bachelor", status: "retired")
 league_1 = League.create(name: "League 1", season: rachel_season)
 league_2 = League.create(name: "League 2", season: rachel_season)
-team_1a = Team.create(name: "Team 1a", league: league_1)
-team_1b = Team.create(name: "Team 1b", league: league_1)
-team_2a = Team.create(name: "Team 2a", league: league_2)
-team_2b = Team.create(name: "Team 2a", league: league_2)
-ellen.teams << [team_1a, team_2b]
-hayley.teams << [team_1a, team_2a]
-diana.teams << [team_1b, team_2a]
+
 
 date = Date.new(2017, 8 , 28)
 12.times do |n|
@@ -116,6 +110,14 @@ Week.all.each do |week|
     Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(3) + 1)
   end
 end
+
+team_1a = Team.create(name: "Team 1a", league: league_1)
+team_1b = Team.create(name: "Team 1b", league: league_1)
+team_2a = Team.create(name: "Team 2a", league: league_2)
+team_2b = Team.create(name: "Team 2b", league: league_2)
+ellen.teams << [team_1a, team_2b]
+hayley.teams << [team_1a, team_2a]
+diana.teams << [team_1b, team_2a]
 
 team_1a.contestants << Contestant.all[0..10]
 team_1b.contestants << Contestant.all[11..20]
