@@ -55,7 +55,7 @@ team_1a = Team.create(name: "Team 1a", league: league_1)
 team_1b = Team.create(name: "Team 1b", league: league_1)
 team_2a = Team.create(name: "Team 2a", league: league_2)
 team_2b = Team.create(name: "Team 2a", league: league_2)
-ellen.teams << [team_1a, team_2a, team_2b]
+ellen.teams << [team_1a, team_2b]
 hayley.teams << [team_1a, team_2a]
 diana.teams << [team_1b, team_2a]
 
