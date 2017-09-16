@@ -7,6 +7,19 @@ RSpec.describe Team, type: :model do
     it {should have_many(:users)}
     it {should have_many(:team_contestants)}
     it {should have_many(:contestants)}
+    it {should have_many(:draft_picks)}
+  end
+
+  describe "callbacks" do
+    it "draft_picks are created upon team creation" do
+      season = create(:season)
+      contestants = create_list(:contestant, 5, season: season)
+      league = create(:league, season: season)
+      team = create(:team, league: league)
+
+      expect(team.draft_picks.count).to eq(5)
+      expect(team.draft_picks.pluck(:contestant_id)).to eq(contestants.pluck(:id))
+    end
   end
 
   describe "instance methods" do
