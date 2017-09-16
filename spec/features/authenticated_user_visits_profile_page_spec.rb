@@ -56,7 +56,7 @@ RSpec.feature "Authenticated user visits their profile page" do
       expect(page).to have_link("Draft Room")
 
       click_on "Draft Room"
-      expect(current_path).to eq("/teams/#{Team.first.id}/draft_picks/new")
+      expect(current_path).to eq("/teams/#{Team.first.id}/draft_picks")
     end
   end
 end
