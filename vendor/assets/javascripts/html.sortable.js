@@ -1,3 +1,12 @@
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    root.sortable = factory();
+  }
+}(this, function() {
 /*
  * HTML5 Sortable library
  * https://github.com/lukasoppermann/html5sortable
@@ -745,32 +754,6 @@ sortable.disable = function (sortableElement) {
   _disableSortable(sortableElement)
 }
 
-/* start-testing */
-sortable.__testing = {
-  // add internal methods here for testing purposes
-  _attached: _attached,
-  _data: _data,
-  _serialize: _serialize,
-  _removeSortableEvents: _removeSortableEvents,
-  _removeItemEvents: _removeItemEvents,
-  _removeItemData: _removeItemData,
-  _removeSortableData: _removeSortableData,
-  _listsConnected: _listsConnected,
-  _attachGhost: _attachGhost,
-  _addGhostPos: _addGhostPos,
-  _getGhost: _getGhost,
-  _getHandles: _getHandles,
-  _makeGhost: _makeGhost,
-  _index: _index,
-  _makeEvent: _makeEvent,
-  _debounce: _debounce,
-  _getPlaceholders: () => placeholders,
-  _resetPlaceholders: () => {
-    placeholders = []
-  }
-}
-/* istanbul ignore next */
-if (typeof module !== 'undefined') {
-  module.exports = sortable
-}
-/* end-testing */
+
+return sortable;
+}));
