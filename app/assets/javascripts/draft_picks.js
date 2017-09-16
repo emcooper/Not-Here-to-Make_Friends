@@ -9,11 +9,27 @@ set_positions = function(){
 }
 
 
+
+
 var ready;
 ready = function(){
     set_positions();
     // call sortable on our div with the sortable class
     sortable('.sortable');
+
+    // after the order changes
+    sortable('.sortable')[0].addEventListener('sortstop', function(e) {
+        // array to store new order
+        updated_order = []
+        // set the updated positions
+        set_positions();
+
+        // populate the updated_order array with the new task positions
+        $('.card.draft-card').each(function(i){
+            updated_order.push({ id: $(this).data("id"), position: i+1 });
+          });
+    });
+
 }
 
 $(document).ready(ready);
