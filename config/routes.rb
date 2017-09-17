@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :draft_picks, only: [:index]
     put '/draft_picks', to: 'draft_picks#update'
   end
+  namespace :admin do
+    get '/control_room', to: 'admin#show'
+  end
 
   namespace :api do
     namespace :v1 do

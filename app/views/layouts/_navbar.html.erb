@@ -14,7 +14,7 @@
       </li>
       <% if current_admin? %>
         <li class="nav-item">
-          <a class="nav-link" href="#">Control Room</a>
+          <%= link_to "Control Room", admin_control_room_path, class: "nav-link" %>
         </li>
       <% end %>
       <li class="nav-item">

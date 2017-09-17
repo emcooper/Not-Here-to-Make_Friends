@@ -6,7 +6,7 @@ RSpec.feature "Admin clicks on admin dashboard link" do
     visit root_path
     click_on "Control Room"
 
-    expect(current_path).to eq("/control_room")
+    expect(current_path).to eq("/admin/control_room")
     expect(page).to have_content("Admin Control Room")
   end
 end
