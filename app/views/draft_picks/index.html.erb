@@ -2,12 +2,13 @@
 
 <div class="row">
   <div class="col-md-5 col-md-offset-4 sortable">
-    <% current_season.contestants.each do |contestant| %>
-      <div class="card draft-card" data-id="<%= contestant.id %>">
+    <% @team.draft_picks.order("rank").each do |pick| %>
+      <div class="card draft-card" data-id="<%= pick.contestant.id %>">
         <div class="card-body">
-          <%= contestant.name %>
+          <%= pick.contestant.name %>
         </div>
       </div>
     <% end %>
+    <button type="button" name="button" class = "btn btn-primary">Submit Draft Picks</button>
   </div>
 </div>
