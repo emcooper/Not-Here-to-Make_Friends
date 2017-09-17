@@ -12,7 +12,7 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="league-<%= @league.id %>-team" role="tabpanel">
-    <% if @league.team_of_user(current_user).contestants.empty? && @league.team_of_user(current_user).has_drafted? %>
+    <% if @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
     <div class="jumbotron text-center">
       <h1 class="display-3 ">This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %></h1>
       <p class="lead">Visit the draft room to set your rankings!</p>
