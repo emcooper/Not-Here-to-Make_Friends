@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20170917041440) do
     t.bigint "league_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "has_drafted?"
+    t.boolean "has_drafted?", default: false
     t.index ["league_id"], name: "index_teams_on_league_id"
   end
 
