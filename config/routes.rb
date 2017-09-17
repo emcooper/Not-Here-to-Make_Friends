@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     get '/control_room', to: 'admin#show'
+    resources :team_contestants, only: [:create]
   end
 
   namespace :api do
