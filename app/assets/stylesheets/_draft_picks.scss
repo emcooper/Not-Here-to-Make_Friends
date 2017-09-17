@@ -10,12 +10,17 @@
     font-size: 20px;
 
     span.cont-name {
-      width: 170px
+      width: 150px
     }
   }
 
-  .align-middle {
-    padding-top: 5px
+  .rank {
+    padding-top: 5px;
+    color: black;
+  }
+
+  .fa-fire {
+    color: #ff0089;
   }
 
   .draft-btn {
