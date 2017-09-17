@@ -17,6 +17,7 @@ class TeamContestant < ApplicationRecord
           end
       end
     end
+    season.update(drafted: true)
   end
 
 end
