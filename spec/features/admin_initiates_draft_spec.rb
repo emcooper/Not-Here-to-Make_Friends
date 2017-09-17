@@ -6,7 +6,7 @@ RSpec.feature "Admin initiates the draft" do
       season = create(:season)
       contestants = create_list(:contestant, 12, season: season)
       league_1, league_2 = create_list(:league, 2, season: season)
-      team_1, team_2, team_3, team_4, team_5 = create_list(:team, 5)
+      team_1, team_2, team_3, team_4, team_5 = create_list(:team, 5, :with_draft_picks)
       league_1.teams << [team_1, team_2]
       league_2.teams << [team_3, team_4, team_5]
 
