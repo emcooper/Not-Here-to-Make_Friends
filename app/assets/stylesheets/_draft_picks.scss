@@ -6,22 +6,37 @@
     margin-bottom: 10px;
   }
 
-  .sortable {
-    // display: list-item;
-  }
+  .card-body {
+    font-size: 20px;
 
-  .borderless-card {
-    border: 1px solid white;
-    height: 65.5556px;
-    font-size: 25px;
-
-    .card-body {
-      padding-right: 0
+    span.cont-name {
+      width: 170px
     }
   }
 
-}
-.pick-number {
-  padding: 10px 0 10px 60px;
-  // margin: 20px 0 20px 0;
+  .align-middle {
+    padding-top: 5px
+  }
+
+  .draft-btn {
+    width: 200px;
+    float: right;
+    font-size: 20px;
+    padding-top: 10px;
+  }
+
+
+
+  .borderless-card {
+    border: 1px solid white;
+    height: 92.22px;
+    font-size: 25px;
+
+    .pick-number {
+      margin: 26.25px 0 26.25px 60px;
+      color: lightcoral;
+    }
+  }
+
+
 }
