@@ -8,6 +8,8 @@ RSpec.describe Contestant, type: :model do
     it {should have_many(:weekly_contestants)}
     it {should have_many(:weeks)}
     it {should have_many(:actions)}
+    it {should have_many(:plays)}
+    it {should have_many(:draft_picks)}
   end
 
   describe "instance methods" do
@@ -80,6 +82,22 @@ RSpec.describe Contestant, type: :model do
 
       expect(contestant_2.biggest_play.point_value).to eq(2)
       expect(contestant_3.biggest_play).to eq(big_play)
+    end
+
+    it "#average_draft_rank returns the average draft rank of player" do
+      season = create(:season)
+      cont_1, cont_2, cont_3 = create_list(:contestant, 3, season: season)
+
+      create(:draft_pick, contestant: cont_1, rank: 2)
+      create(:draft_pick, contestant: cont_1, rank: 1)
+      create(:draft_pick, contestant: cont_1, rank: 1)
+      create(:draft_pick, contestant: cont_2, rank: 1)
+      create(:draft_pick, contestant: cont_2, rank: 3)
+      create(:draft_pick, contestant: cont_3, rank: 3)
+
+      expect(cont_1.average_draft_rank).to eq("1st")
+      expect(cont_2.average_draft_rank).to eq("2nd")
+      expect(cont_3.average_draft_rank).to eq("3rd")
     end
   end
 end
