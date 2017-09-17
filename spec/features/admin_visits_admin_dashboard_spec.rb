@@ -4,9 +4,9 @@ RSpec.feature "Admin clicks on admin dashboard link" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit root_path
-    click_on "Admin Dashboard"
+    click_on "Control Room"
 
-    expect(current_path).to eq("/admin_dashboard")
-    expect(page).to have_content("Admin Dashboard")
+    expect(current_path).to eq("/control_room")
+    expect(page).to have_content("Admin Control Room")
   end
 end
