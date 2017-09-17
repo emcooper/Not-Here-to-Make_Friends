@@ -1,13 +1,22 @@
 <%= tag :div, class: "team_information", data: {id: @team.id} %>
 
-<div class="row">
-  <div class="col-md-5 col-md-offset-4 sortable">
+<div class="row draft-picks">
+    <div class="col-md-1 align-middle">
+      <% @team.draft_picks.count.times do |n| %>
+      <div class="borderless-card align-middle justify-content-end text-center">
+          <div class = "pick-number justify-content-end"> <%= n + 1 %></div>
+      </div>
+      <% end %>
+    </div>
+<div class="sortable col-md-11">
     <% @team.draft_picks.order("rank").each do |pick| %>
+    <div>
       <div class="card draft-card" data-id="<%= pick.contestant.id %>">
         <div class="card-body">
           <%= pick.contestant.name %>
         </div>
       </div>
+    </div>
     <% end %>
     <button type="button" name="button" class = "btn btn-primary">Submit Draft Picks</button>
   </div>
