@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917041440) do
+ActiveRecord::Schema.define(version: 20170917190723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170917041440) do
     t.datetime "updated_at", null: false
     t.string "headshot"
     t.date "draft_date"
+    t.boolean "drafted", default: false
     t.index ["season_type"], name: "index_seasons_on_season_type"
   end
 
