@@ -12,6 +12,12 @@ class Team < ApplicationRecord
     contestants.joins(actions: :play).sum("point_value * count")
   end
 
+  def week_points(week)
+    contestants.joins(actions: :play)
+              .where("actions.week_id = ?", week.id)
+              .sum("point_value * count")
+  end
+
   def set_draft_picks
     league.season.contestants.each_with_index do |contestant, i|
       DraftPick.create(contestant: contestant,
