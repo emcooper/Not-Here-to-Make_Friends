@@ -1,6 +1,8 @@
-<h1>Admin Control Room</h1><br><br>
+<div class="text-center">
+<h1 class = "page-header">Admin Control Room</h1><br><br>
 <% if current_season.drafted %>
 <h4>This season is now drafted.</h4>
 <% else %>
 <%= link_to "Initiate Draft", admin_team_contestants_path, method: :post, class: "btn btn-primary btn-lg" %>
 <% end %>
+</div>

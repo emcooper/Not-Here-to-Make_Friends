@@ -1,8 +1,4 @@
-<section class = "page-header"><span class = "in-line"><h2>Hi <%= current_user.name %></h2></span>
-  <% if current_user.admin? && current_admin? %>
-    <span class="label label-info" id = "admin">Admin</span>
-  <% end %>
-
+<section class = "page-header"><span class = "in-line"><h2>Hi <%= current_user.name %></span></h2>
     <div class="nav right-float">
       <% current_user.active_leagues.each do |league| %>
         <%= link_to league.name, league_path(league), :class =>"btn btn-primary"%>
