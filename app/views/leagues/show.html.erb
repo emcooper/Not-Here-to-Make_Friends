@@ -1,3 +1,4 @@
+<div class="league-show">
 <%= render :partial => "users/user_profile_navbar" %>
 
 <ul class="nav nav-fill nav-pills" role="tablist">
@@ -63,12 +64,13 @@
   </div>
   <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">
     <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
     <h3 class = text-center>League Overview</h3>
     <table class="table table-responseive">
       <thead>
         <tr>
           <th>Team</th>
+          <th class = "text-center">Points this Week</th>
           <th class = "text-center">Total Points</th>
         </tr>
       </thead>
@@ -76,15 +78,26 @@
         <% @league.teams.each do |team| %>
         <tr>
           <td><%= team.name %></td>
+          <td class = "text-center"><%= team.week_points(current_week) %></td>
           <td class = "text-center"><%= team.season_points %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-  <div class="col-md-6 mvp">
-    Season MVP <%= current_season.mvp.name %>
+  <div class="col-md-4 mvp">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Season MVP</h3>
+        <img class = "img-responsive md-circular-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
+        <h4><%= current_season.mvp.name %></h4>
+        <h5><%= current_season.mvp.season_points %> Points</h5>
+        <h5>Owned by <%= @league.team_owner(current_season.mvp) %></h5>
+      </div>
+    </div>
+      </div>
   </div>
   </div>
+</div>
 </div>
 </div>
