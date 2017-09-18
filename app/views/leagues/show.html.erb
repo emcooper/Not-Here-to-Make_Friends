@@ -64,8 +64,10 @@
   </div>
   <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">
     <div class="row">
-    <div class="col-md-8">
-    <h3 class = text-center>League Overview</h3>
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+    <h3 class = text-center>League Overview</h3><br><br>
     <table class="table table-responseive">
       <thead>
         <tr>
@@ -84,9 +86,12 @@
         <% end %>
       </tbody>
     </table>
+
+  </div>
+</div>
   </div>
   <% if current_season && current_season.drafted %>
-  <div class="col-md-4 mvp">
+  <div class="col-md-3 mvp">
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Season MVP</h3>
@@ -96,9 +101,12 @@
         <h5>Owned by team <%= @league.owner_of(current_season.mvp).name %></h5>
       </div>
     </div>
-      </div>
+  </div>
+  </div>
+  <div class="row">
 
-      <div class="col-md-4">
+
+    <div class="col-md-3">
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Biggest Play this Season</h3>
@@ -108,7 +116,17 @@
           <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
         </div>
       </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"></h3>
+          <div id="team-chart"></div>
         </div>
+      </div>
+    </div>
+  </div>
+
           <% end %>
   </div>
   </div>
