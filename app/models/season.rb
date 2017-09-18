@@ -9,4 +9,8 @@ class Season < ApplicationRecord
   def mvp
     (contestants.sort_by {|cont| cont.season_points}).reverse.first
   end
+
+  def contestant_with_biggest_play
+    contestants.joins(actions: :play).order("point_value DESC").first
+  end
 end

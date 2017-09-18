@@ -78,13 +78,14 @@
         <% @league.teams.each do |team| %>
         <tr>
           <td><%= team.name %></td>
-          <td class = "text-center"><%= team.week_points(current_week) %></td>
+          <td class = "text-center"><%= team.week_points(current_week) if current_week %></td>
           <td class = "text-center"><%= team.season_points %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+  <% if current_season && current_season.drafted %>
   <div class="col-md-4 mvp">
     <div class="card">
       <div class="card-body">
@@ -96,6 +97,19 @@
       </div>
     </div>
       </div>
+
+      <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Biggest Play this Season</h3>
+          <img class = "img-responsive md-circular-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+          <h4><%= current_season.contestant_with_biggest_play.name %></h4>
+          <h5><%= current_season.contestant_with_biggest_play.biggest_play.description %> for <%= current_season.contestant_with_biggest_play.biggest_play.point_value %> Points</h5>
+          <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
+        </div>
+      </div>
+        </div>
+          <% end %>
   </div>
   </div>
 </div>
