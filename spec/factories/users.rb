@@ -15,7 +15,7 @@ FactoryGirl.define do
       play_1, play_2 = create_list(:play, 2)
       active_league_1, active_league_2= create_list(:league, 2, season: active_season)
       retired_league = create(:league, season: retired_season)
-      c1, c2, c3 = create_list(:contestant, 3, season: active_season)
+      c1, c2, c3, c4 = create_list(:contestant, 4, season: active_season)
       retired_contestant = create(:contestant, season: retired_season)
       user_2 = create(:user)
       team_1, team_2 = create_list(:team, 2, league: active_league_1)
@@ -33,7 +33,8 @@ FactoryGirl.define do
       create(:action, contestant: c2, week: week_1, play: play_1, count: 2)
       create(:action, contestant: c3, week: week_1, play: play_1)
       create(:action, contestant: c3, week: week_2, play: play_2)
+      create(:action, contestant: c4, week: week_1, play: play_2, count: 3)
+      create(:action, contestant: c4, week: week_2, play: play_2, count: 5)
     end
   end
-
 end
