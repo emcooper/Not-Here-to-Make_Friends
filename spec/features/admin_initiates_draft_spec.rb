@@ -3,7 +3,7 @@ RSpec.feature "Admin initiates the draft" do
     scenario "all teams' rosters are set" do
       admin = create(:user, role: "admin")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-      season = create(:season)
+      season = create(:season, drafted: false)
       allow_any_instance_of(ApplicationController).to receive(:current_season).and_return(season)
       contestants = create_list(:contestant, 12, season: season)
       league_1, league_2 = create_list(:league, 2, season: season)

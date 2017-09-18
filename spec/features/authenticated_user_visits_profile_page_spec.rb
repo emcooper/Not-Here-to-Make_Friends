@@ -47,7 +47,6 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
-
       within(".mvp") do
         expect(page).to have_content("Season MVP")
         expect(page).to have_content(Contestant.fourth.name)
@@ -61,7 +60,7 @@ RSpec.feature "Authenticated user visits their profile page" do
   context "pre-drafting" do
     it "user sees prompt to draft and can navigate to draft room" do
       user = create(:user)
-      season = create(:season)
+      season = create(:season, drafted: false)
       league = create(:league, season: season)
       user.teams << create(:team, league: league)
       create(:team, league: league)
