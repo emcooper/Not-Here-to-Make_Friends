@@ -92,7 +92,7 @@
         <img class = "img-responsive md-circular-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
         <h4><%= current_season.mvp.name %></h4>
         <h5><%= current_season.mvp.season_points %> Points</h5>
-        <h5>Owned by <%= @league.team_owner(current_season.mvp) %></h5>
+        <h5>Owned by team <%= @league.owner_of(current_season.mvp).name %></h5>
       </div>
     </div>
       </div>
