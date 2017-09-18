@@ -1,5 +1,5 @@
 <%= render :partial => "users/user_profile_navbar" %>
-<%= team.has_drafted? %>
+<%= @league.team_of_user(current_user).has_drafted? %>
 
 <ul class="nav nav-fill nav-pills" role="tablist">
     <li class="nav-item">
