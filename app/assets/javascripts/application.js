@@ -13,5 +13,6 @@
 // = require popper
 // = require jquery
 // = require rails-ujs
+// = require html.sortable
 // = require bootstrap-sprockets
 // = require_tree .

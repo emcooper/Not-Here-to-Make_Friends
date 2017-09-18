@@ -6,6 +6,7 @@ class Contestant < ApplicationRecord
   has_many :weeks, through: :weekly_contestants
   has_many :actions
   has_many :plays, through: :actions
+  has_many :draft_picks
 
   def season_points
     actions.joins(:play).sum("point_value * count")
@@ -36,5 +37,9 @@ class Contestant < ApplicationRecord
 
   def biggest_play
     plays.order("point_value DESC").first
+  end
+
+  def average_draft_rank
+    draft_picks.average(:rank).round.ordinalize
   end
 end

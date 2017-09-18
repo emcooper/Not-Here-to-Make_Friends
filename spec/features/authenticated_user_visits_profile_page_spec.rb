@@ -40,4 +40,23 @@ RSpec.feature "Authenticated user visits their profile page" do
       expect(page).to_not have_content(Team.third.name)
     end
   end
+
+  context "pre-drafting" do
+    it "user sees prompt to draft and can navigate to draft room" do
+      user = create(:user)
+      season = create(:season)
+      league = create(:league, season: season)
+      user.teams << create(:team, league: league)
+      create(:team, league: league)
+      contestants = create_list(:contestant, 30)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/'
+      expect(page).to have_content("Visit the draft room to set your rankings!")
+      expect(page).to have_link("Draft Room")
+
+      click_on "Draft Room"
+      expect(current_path).to eq("/teams/#{Team.first.id}/draft_picks")
+    end
+  end
 end

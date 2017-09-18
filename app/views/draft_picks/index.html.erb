@@ -1,0 +1,38 @@
+<%= tag :div, class: "team_information", data: {id: @team.id} %>
+
+<h1 class = "d-flex justify-content-between page-header"><span><%= @team.name %>'s Draft Room</span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
+
+
+<div class="row draft-picks">
+    <div class="col-md-1 align-middle">
+      <% @team.draft_picks.count.times do |n| %>
+      <div class="borderless-card">
+          <div class = "pick-number"> <%= n + 1 %></div>
+      </div>
+      <% end %>
+    </div>
+<div class="sortable col-md-10">
+    <% @team.draft_picks.order("rank").each do |pick| %>
+    <div>
+      <div class="card draft-card" data-id="<%= pick.contestant.id %>">
+        <div class="card-body d-flex justify-content-between">
+          <span class = "cont-name"><img class = "circular-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+          <%= pick.contestant.name %></span>
+          <span class="rank">
+            <% if pick.contestant.average_draft_rank.to_i < 6 %>
+              <i class="fa fa-fire" aria-hidden="true"></i>
+            <% end %>
+              Ranked <%= pick.contestant.average_draft_rank %> on Average </span>
+          <%= link_to(pick.contestant, class: "btn btn-primary cont-page-btn draft-btn") do %>
+            <span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= pick.contestant.name %>'s Page</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div><br>
+
+<div class="text-center">
+  <%= link_to "Submit Draft Picks", league_path(@team.league), class: "btn btn-primary btn-lg" %>
+</div><br>

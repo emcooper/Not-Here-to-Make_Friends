@@ -1,0 +1,47 @@
+.draft-picks {
+  .sortable-placeholder {
+    border: 1px dashed #CCC;
+    background-color: #f9f9f9;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .card-body {
+    font-size: 20px;
+
+    span.cont-name {
+      width: 150px
+    }
+  }
+
+  .rank {
+    padding-top: 5px;
+    color: black;
+  }
+
+  .fa-fire {
+    color: #ff0089;
+  }
+
+  .draft-btn {
+    width: 200px;
+    float: right;
+    font-size: 20px;
+    padding-top: 10px;
+  }
+
+
+
+  .borderless-card {
+    border: 1px solid white;
+    height: 92.22px;
+    font-size: 25px;
+
+    .pick-number {
+      margin: 26.25px 0 26.25px 60px;
+      color: lightcoral;
+    }
+  }
+
+
+}
