@@ -41,7 +41,7 @@ end
 
 
 
-ellen = User.create(name: "User", email: "ellen@gmail.com", password: "password")
+ellen = User.create(name: "User", email: "ellen@gmail.com", password: "password", role: 1)
 hayley = User.create(name: "Hayley", email: "hayley@gmail.com", password: "password")
 diana = User.create(name: "Diana", email: "diana@gmail.com", password: "password")
 new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
@@ -119,8 +119,8 @@ ellen.teams << [team_1a, team_2b]
 hayley.teams << [team_1a, team_2a]
 diana.teams << [team_1b, team_2a]
 
-team_1a.contestants << Contestant.all[0..10]
-team_1b.contestants << Contestant.all[11..20]
-team_2a.contestants << Contestant.all[2..13]
+# team_1a.contestants << Contestant.all[0..10]
+# team_1b.contestants << Contestant.all[11..20]
+# team_2a.contestants << Contestant.all[2..13]
 
 puts("SUCCESSFUL SEEDING!")
