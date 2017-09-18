@@ -39,6 +39,22 @@ RSpec.feature "Authenticated user visits their profile page" do
       expect(find('tr', text: Team.second.name)).to have_content(4)
       expect(page).to_not have_content(Team.third.name)
     end
+
+    it "sees mvp contestant" do
+      user = create(:user, :full_setup)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit user_path(user)
+
+      within(".mvp") do
+        expect(page).to have_content("Season MVP")
+        expect(page).to have_content(Contestant.fourth)
+        expect(page).to have_content(Contestant.third)
+        expect(page).to have_content(Contestant.second)
+        expect(page).to have_content(Contestant.first)
+      end
+    end
   end
 
   context "pre-drafting" do
