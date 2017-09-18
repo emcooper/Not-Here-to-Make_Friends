@@ -3,10 +3,10 @@ $(document).ready(function(){
   $.ajax({
     type: 'GET',
     url: `/api/v1/leagues/${$('.league_information').data('id')}/team_points`,
-    success: function(data) {
-      var points = []
-      $.each(data, function (index, dataItem) {
-          points.push(dataItem.points)
+    success: function(result) {
+      var chart_data = []
+      $.each(result, function (index, dataItem) {
+          chart_data.push({name: dataItem.name, data: dataItem.points})
       })
 
       Highcharts.setOptions({
@@ -47,21 +47,10 @@ $(document).ready(function(){
           },
 
           legend: {
-               enabled: false
+               enabled: true
            },
 
-          series: [{
-              name: 'Team 1',
-              data: [1,6,7,2]
-          },
-          {
-              name: 'Team 2',
-              data: [5,2,6,1]
-          },
-          {
-              name: 'Team 3',
-              data: [1,5,7,2,5,2,6,1,5,2,6,1]
-          }]
+          series: chart_data
 
       });
      }
