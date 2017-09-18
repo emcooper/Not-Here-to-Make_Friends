@@ -1,5 +1,4 @@
 var ready, set_positions;
-
 set_positions = function(){
     // loop through and give each task a data-pos
     // attribute that holds its position in the DOM
@@ -13,11 +12,14 @@ set_positions = function(){
 
 var ready;
 ready = function(){
+  if($('div').is('.sortable')){
+
     set_positions();
     // call sortable on our div with the sortable class
     sortable('.sortable');
 
     // after the order changes
+
     sortable('.sortable')[0].addEventListener('sortstop', function(e) {
         // array to store new order
         updated_order = []
@@ -30,13 +32,17 @@ ready = function(){
           });
 
         // send the updated order via ajax
+
           $.ajax({
               type: "PUT",
               url: `/teams/${$('.team_information').data('id')}/draft_picks`,
               data: { order: updated_order }
           });
+
     });
 
 }
+}
+
 
 $(document).ready(ready);
