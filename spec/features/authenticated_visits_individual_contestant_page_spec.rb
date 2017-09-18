@@ -17,7 +17,7 @@ RSpec.feature "User visits individual contestant page" do
     end
 
     it "they see contestant name, picture and basic info" do
-      VCR.use_cassette("/features/user_visits_contestant_page") do
+      VCR.use_cassette("/features/user_sees_basic_contestant_info") do
         within(".contestant-#{@cont_2.id}") do
           find(".cont-page-btn").click
         end
@@ -30,7 +30,7 @@ RSpec.feature "User visits individual contestant page" do
     end
 
     it "they see stats for contestant" do
-      VCR.use_cassette("/features/user_visits_contestant_page") do
+      VCR.use_cassette("/features/user_sees_contestant_stats") do
         within(".contestant-#{@cont_3.id}") do
           find(".cont-page-btn").click
         end
