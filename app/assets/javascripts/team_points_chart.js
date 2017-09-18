@@ -1,13 +1,13 @@
 $(document).ready(function(){
   if($('div').is('#team-chart')){
-  // $.ajax({
-  //   type: 'GET',
-  //   url: `/api/v1/contestants/${$('.contestant_information').data('id')}/weekly_points`,
-  //   success: function(data) {
-  //     var points = []
-  //     $.each(data, function (index, dataItem) {
-  //         points.push(dataItem.points)
-  //     })
+  $.ajax({
+    type: 'GET',
+    url: `/api/v1/leagues/${$('.league_information').data('id')}/team_points`,
+    success: function(data) {
+      var points = []
+      $.each(data, function (index, dataItem) {
+          points.push(dataItem.points)
+      })
 
       Highcharts.setOptions({
           chart: {
@@ -64,7 +64,7 @@ $(document).ready(function(){
           }]
 
       });
-  //    }
-  //  });
+     }
+   });
  }
  });
