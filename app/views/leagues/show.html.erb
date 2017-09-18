@@ -43,7 +43,7 @@
     </div>
     <% else %>
     <h3 class = text-center>Team Roster</h3>
-    <table class="table table-responsive">
+    <table class="table table-responsive roster">
       <thead>
         <tr>
           <th>Contestants</th>
@@ -83,7 +83,7 @@
     </table>
   </div>
   <div class="col-md-6 mvp">
-    Season MVP <%= current_season.mvp %>
+    Season MVP <%= current_season.mvp.name %>
   </div>
   </div>
 </div>
