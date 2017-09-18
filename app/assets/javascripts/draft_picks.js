@@ -7,9 +7,6 @@ set_positions = function(){
     });
 }
 
-
-
-
 var ready;
 ready = function(){
   if($('div').is('.sortable')){
