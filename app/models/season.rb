@@ -5,4 +5,12 @@ class Season < ApplicationRecord
 
   enum status: [:active, :retired]
   enum season_type: [:bachelor, :bachelorette]
+
+  def mvp
+    (contestants.sort_by {|cont| cont.season_points}).reverse.first
+  end
+
+  def contestant_with_biggest_play
+    contestants.joins(actions: :play).order("point_value DESC").first
+  end
 end

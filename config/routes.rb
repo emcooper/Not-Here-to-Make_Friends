@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       namespace :contestants do
         get ':id/weekly_points', to: 'points#show'
       end
+      namespace :leagues do
+        get ':id/team_points', to: 'team_points#index'
+      end
     end
   end
 end

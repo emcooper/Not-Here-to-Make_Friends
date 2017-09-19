@@ -31,5 +31,15 @@ RSpec.describe Team, type: :model do
       expect(team_1.season_points).to eq(6)
       expect(team_2.season_points).to eq(4)
     end
+
+    it "#week_points returns team's total points for given week" do
+      create(:user, :full_setup)
+      team_1 = Team.first
+      team_2 = Team.second
+      week_1 = Week.first
+
+      expect(team_1.week_points(week_1)).to eq(6)
+      expect(team_2.week_points(week_1)).to eq(2)
+    end
   end
 end

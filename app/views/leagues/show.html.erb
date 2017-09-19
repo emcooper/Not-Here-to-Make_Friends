@@ -1,17 +1,21 @@
+<div class="league-show">
+<%= tag :div, class: "league_information", data: {id: @league.id} %>
+
 <%= render :partial => "users/user_profile_navbar" %>
 
 <ul class="nav nav-fill nav-pills" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League <%= @league.name %></a>
+  </li>
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team <%= @league.team_of_user(current_user).name %></a>
+      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team <%= @league.team_of_user(current_user).name %></a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League <%= @league.name %></a>
-    </li>
+
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="league-<%= @league.id %>-team" role="tabpanel">
+  <div class="tab-pane" id="league-<%= @league.id %>-team" role="tabpanel">
     <% if @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
     <div class="jumbotron text-center">
       <h1 class="display-3 ">This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %></h1>
@@ -43,7 +47,7 @@
     </div>
     <% else %>
     <h3 class = text-center>Team Roster</h3>
-    <table class="table table-responsive">
+    <table class="table table-responsive roster">
       <thead>
         <tr>
           <th>Contestants</th>
@@ -61,12 +65,31 @@
     </table>
     <% end %>
   </div>
-  <div class="tab-pane" id="league-<%= @league.id %>-league" role="tabpanel">
-    <h3 class = text-center>League Overview</h3>
+  <div class="tab-pane active" id="league-<%= @league.id %>-league" role="tabpanel">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">League <%= @league.name %> Members</h4>
+            <% @league.teams.each do |team| %>
+            <h5><%= team.name %></h5>
+            <% team.users.each do |user| %>
+            <p><%= user.name %></p>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+    <h3 class = text-center>League Overview</h3><br><br>
     <table class="table table-responseive">
       <thead>
         <tr>
           <th>Team</th>
+          <th class = "text-center">Points this Week</th>
           <th class = "text-center">Total Points</th>
         </tr>
       </thead>
@@ -74,10 +97,61 @@
         <% @league.teams.each do |team| %>
         <tr>
           <td><%= team.name %></td>
+          <td class = "text-center"><%= team.week_points(current_week) if current_week %></td>
           <td class = "text-center"><%= team.season_points %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+
   </div>
+</div>
+</div>
+  </div>
+
+  <% if current_season && current_season.drafted %>
+  <div class="row">
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title"></h3>
+        <div id="team-chart"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row">
+
+  <div class="col-md-6 mvp">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Season MVP</h3>
+        <img class = "img-responsive md-circular-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
+        <h4><%= current_season.mvp.name %></h4>
+        <h5><%= current_season.mvp.season_points %> Points</h5>
+        <h5>Owned by team <%= @league.owner_of(current_season.mvp).name %></h5>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Highest Scoring Play this Season</h3>
+          <img class = "img-responsive md-circular-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+          <h4><%= current_season.contestant_with_biggest_play.name %></h4>
+          <h5><%= current_season.contestant_with_biggest_play.biggest_play.description %> for <%= current_season.contestant_with_biggest_play.biggest_play.point_value %> Points</h5>
+          <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+  </div>
+  </div>
+</div>
+</div>
 </div>

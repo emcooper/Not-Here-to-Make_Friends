@@ -1,0 +1,11 @@
+.league-show {
+  .card {
+    @extend .text-center;
+    height: 100%;
+  }
+  .row {
+    margin-bottom: 25px;
+    
+    border-bottom: 25px;
+  }
+}

@@ -21,11 +21,12 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
-
-      expect(find('tr', text: Contestant.first.name)).to have_content(2)
-      expect(find('tr', text: Contestant.second.name)).to have_content(4)
-      expect(page).to_not have_content(Contestant.third.name)
-      expect(page).to_not have_content(Contestant.fourth.name)
+      within(".roster") do
+        expect(find('tr', text: Contestant.first.name)).to have_content(2)
+        expect(find('tr', text: Contestant.second.name)).to have_content(4)
+        expect(page).to_not have_content(Contestant.third.name)
+        expect(page).to_not have_content(Contestant.fourth.name)
+      end
     end
 
     it "sees a table listing league teams with scores" do
@@ -39,16 +40,31 @@ RSpec.feature "Authenticated user visits their profile page" do
       expect(find('tr', text: Team.second.name)).to have_content(4)
       expect(page).to_not have_content(Team.third.name)
     end
+
+    it "sees mvp contestant" do
+      user = create(:user, :full_setup)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit user_path(user)
+      within(".mvp") do
+        expect(page).to have_content("Season MVP")
+        expect(page).to have_content(Contestant.fourth.name)
+        expect(page).to_not have_content(Contestant.third.name)
+        expect(page).to_not have_content(Contestant.second.name)
+        expect(page).to_not have_content(Contestant.first.name)
+      end
+    end
   end
 
   context "pre-drafting" do
     it "user sees prompt to draft and can navigate to draft room" do
       user = create(:user)
-      season = create(:season)
+      season = create(:season, drafted: false)
       league = create(:league, season: season)
       user.teams << create(:team, league: league)
       create(:team, league: league)
-      contestants = create_list(:contestant, 30)
+      contestants = create_list(:contestant, 30, season: season)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit '/'
