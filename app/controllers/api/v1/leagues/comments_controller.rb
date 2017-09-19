@@ -1,6 +1,6 @@
 class Api::V1::Leagues::CommentsController < ApplicationController
   def index
-    render json: League.find(params[:id]).comments.all
+    render json: League.find(params[:id]).comments
   end
 
   def create

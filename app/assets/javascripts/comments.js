@@ -4,19 +4,18 @@ $(document).ready(function() {
 })
 
 function fetchComments(){
-  var getPosts = function() {
-    return $.ajax({
-      url: '/api/v1/leagues/:id/comments',
+   $.ajax({
+      url: "/api/v1/leagues/" + $("#league-id").val() + "/comments",
       method: 'GET',
     }).done(function(data){
       for (var i = 0; i < data.length; i++) {
-        $('#league-comments').append('<p class="commment">' + data[i].comment + '</p>');
+        $('#league-comments').append('<p class="commment">' + data[i].message + '</p>');
       }
     }).fail(function(error){
       console.error(error);
     });
+
   };
-};
 
 
 
@@ -34,6 +33,7 @@ function createComment() {
       url:     "/api/v1/leagues/" + $("#league-id").val() + "/comments",
       data:    commentParams,
       success: function(newComment) {
+        $('#league-comments').html('')
         fetchComments()
       },
       error: function(xhr) {
