@@ -2,7 +2,7 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-plays = {"Rose Ceremony Rose" => 10,
+bachelor_plays = {"Rose Ceremony Rose" => 10,
 "Group Date Rose" => 20,
 "First Impression Rose" => 30,
 "One-on-One Rose" => 20,
@@ -35,15 +35,46 @@ plays = {"Rose Ceremony Rose" => 10,
 "Makes another Contestant Cry" => 20,
 "Wins" => 50}
 
-plays.each do |description, points|
-  Play.create!(description: description, point_value: points, season_type: "bachelorette")
+bachelorette_plays = {"Rose Ceremony Rose" => 10,
+"Group Date Rose" => 20,
+"First Impression Rose" => 30,
+"One-on-One Rose" => 20,
+"Sent Home on One-on-One" => 30,
+"Two-on-One Rose" => 30,
+"Sent Home on Two-on-One" => 20,
+"Quits the Show" => 50,
+"Attempts to Return to Show After Being Eliminated" => 30,
+"'Steals' Rachel away (MUST SAY 'STEAL')" => 10,
+"Says 'Fairytale'" => 10,
+"Says 'For the right reasons'" => 10,
+"Says 'Journey'" => 10,
+"Says 'I’m not here to make friends'" => 10,
+"First to tell Rachel he is falling in love" => 20,
+"Tells Rachel she is falling in love, but not first" => 10,
+"Reveals tragic backstory" => 15,
+"Full Nudity" => 25,
+"Requires medical attention" => 25,
+"References parents’ relationship as inspiration" => 10,
+"Helicopter Ride" => 10,
+"Treated to a private concert" => 10,
+"Discusses another Contestant with Bachelor" => 10,
+"Calls someone 'old'" => 10,
+"Drunk at a rose ceremony" => 10,
+"Says set location is 'the perfect place to fall in love'" =>  10,
+"Cries" => 5,
+"Makes another Contestant Cry" => 20,
+"Involved in Physical Altercation" => 20,
+"Wins" => 50}
+
+bachelorette_plays.each do |description, points|
+  Play.create!(description: description.titleize, point_value: points, season_type: "bachelorette")
 end
 
-
-
-ellen = User.create(name: "User", email: "ellen@gmail.com", password: "password", role: 1)
-hayley = User.create(name: "Hayley", email: "hayley@gmail.com", password: "password")
-diana = User.create(name: "Diana", email: "diana@gmail.com", password: "password")
+ellen = User.create(name: "Ellen", email: "ellen@gmail.com", password: "password", role: 1)
+player_2 = User.create(name: Faker::Seinfeld.character, email: "hayley@gmail.com", password: "password")
+player_3 = User.create(name: Faker::Seinfeld.character, email: "user_3@gmail.com", password: "password")
+player_4 = User.create(name: Faker::Seinfeld.character, email: "user_4@gmail.com", password: "password")
+player_5 = User.create(name: Faker::Seinfeld.character, email: "user_5@gmail.com", password: "password")
 new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
 
 
@@ -53,7 +84,7 @@ league_1 = League.create(name: "League 1", season: rachel_season)
 league_2 = League.create(name: "League 2", season: rachel_season)
 
 
-date = Date.new(2017, 8 , 28)
+date = Date.new(2017, 7 , 15)
 12.times do |n|
   Week.create(date: date, week_number: n, season: rachel_season)
   date += 7
@@ -64,20 +95,20 @@ contestant_info = [{name: "Bryan", twitter_handle: "@TheAbDoctor"},
                     {name: "Eric", twitter_handle: "@Eric_Bigger"},
                     {name: "Dean", twitter_handle: "@deanie_babies"},
                     {name: "Adam", twitter_handle: "@AdamJGottschalk"},
-                    {name: "Matt", twitter_handle: "@PeterWIKraus"},
-                    {name: "Alex", twitter_handle: "@PeterWIKraus"},
+                    {name: "Matt", twitter_handle: "@RealMattMunson"},
+                    {name: "Alex", twitter_handle: "@Alex_Bordy"},
                     {name: "Will", twitter_handle: "@TheReal_BillyG"},
                     {name: "Kenny", twitter_handle: "@KennyKingPB2"},
-                    {name: "Josiah", twitter_handle: "@PeterWIKraus"},
-                    {name: "Lee", twitter_handle: "@PeterWIKraus"},
-                    {name: "Jonathan", twitter_handle: "@PeterWIKraus"},
-                    {name: "Iggy", twitter_handle: "@PeterWIKraus"},
-                    {name: "Jack", twitter_handle: "@PeterWIKraus"},
-                    {name: "Diggy", twitter_handle: "@PeterWIKraus"},
-                    {name: "Bryce", twitter_handle: "@PeterWIKraus"},
-                    {name: "Brady", twitter_handle: "@PeterWIKraus"},
+                    {name: "Josiah", twitter_handle: "@JosiahDGraham"},
+                    {name: "Lee", twitter_handle: "@leegarrett_"},
+                    {name: "Jonathan", twitter_handle: "@drticklemonster"},
+                    {name: "Iggy", twitter_handle: "@Iggy_Rodriguez"},
+                    {name: "Jack", twitter_handle: "@JackJ_Stone"},
+                    {name: "Diggy", twitter_handle: "@diggymoreland"},
+                    {name: "Bryce", twitter_handle: "@bdpowers5"},
+                    {name: "Brady", twitter_handle: "@ervgoddi"},
                     {name: "Fred", twitter_handle: "@RealFredJohnson"},
-                    {name: "Lucas", twitter_handle: "@PeterWIKraus"},
+                    {name: "Lucas", twitter_handle: "@LucasYancey"},
                     {name: "Jamey", twitter_handle: "@PeterWIKraus"},
                     {name: "Blake", twitter_handle: "@PeterWIKraus"},
                     {name: "DeMario", twitter_handle: "@PeterWIKraus"},
