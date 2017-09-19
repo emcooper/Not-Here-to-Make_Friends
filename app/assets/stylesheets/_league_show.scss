@@ -5,7 +5,15 @@
   }
   .row {
     margin-bottom: 25px;
-    
+
     border-bottom: 25px;
+  }
+  .comment {
+    small {
+      float: right;
+    }
+    label {
+      color: blue;
+    }
   }
 }

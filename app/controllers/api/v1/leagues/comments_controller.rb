@@ -1,6 +1,8 @@
 class Api::V1::Leagues::CommentsController < ApplicationController
   def index
-    render json: League.find(params[:id]).comments
+    comments = League.find(params[:id]).comments
+    comments_with_user_names = comments.map {|comment| {message: comment.message, user: User.find(comment.user_id).name, date: comment.created_at.to_formatted_s(:long_ordinal)}}
+    render json: comments_with_user_names
   end
 
   def create
