@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       end
       namespace :leagues do
         get ':id/team_points', to: 'team_points#index'
+        get ':id/comments', to: 'comments#index'
+        post ':id/comments', to: 'comments#create'
       end
     end
   end

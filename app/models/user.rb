@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_many :team_members
   has_many :teams, through: :team_members
+  has_many :comments
+  
   validates :password, :presence => true,
                        :confirmation => true,
                        :length => {:within => 8..20}

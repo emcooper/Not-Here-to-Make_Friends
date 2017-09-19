@@ -150,6 +150,16 @@
   </div>
 
 <% end %>
+<h3 class = "text-center">Smack Talk!</h3>
+<div id="league-comments"></div>
+      <div class="text-center">
+        <form class="form-group">
+          <input type="hidden" name="league_id" id = "league-id" value= "<%= @league.id %>" >
+          <input type="text" name="message" placeholder="message" class="form-control" id="comment-message"><br>
+          <button type="button" class="btn btn-success" id="create-comment">Submit</button>
+        </form>
+    </div>
+    </div>
   </div>
   </div>
 </div>
