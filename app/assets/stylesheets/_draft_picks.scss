@@ -11,14 +11,22 @@
     margin-bottom: -10px;
 
 
-    span.cont-name {
-      width: 180px
+    .cont-name {
+      // width: 180px;
+      // float: left;
+      margin-left: -120px;
     }
   }
 
+.text {
+  padding-top: 13px;
+}
+
+
   .rank {
-    padding-top: 5px;
-    color: black;
+    // padding-top: 5px;
+    // color: black;
+    // width: 50%
   }
 
   .fa-fire {
@@ -34,8 +42,8 @@
   }
 
 label {
-  position: relative;
-  transform: translateY(-80%);
+  // position: relative;
+  // transform: translateY(-80%);
 }
 
   .borderless-card {

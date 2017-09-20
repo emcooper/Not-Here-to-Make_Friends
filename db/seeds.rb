@@ -84,7 +84,7 @@ league_1 = League.create(name: "Waboom", season: rachel_season)
 league_2 = League.create(name: "The Final Rose", season: rachel_season)
 
 
-date = Date.new(2017, 7 , 22)
+date = Date.new(2017, 8 , 15)
 12.times do |n|
   Week.create(date: date, week_number: n, season: rachel_season)
   date += 7

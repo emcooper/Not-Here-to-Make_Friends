@@ -38,7 +38,11 @@
         <div class="">
           <div class="d-flex justify-content-between">
             <span class = "cont-name"><%= pick.rank %>.
-              <span class = "text-center"><img class = "circular-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+              <div class="circle-img-container">
+
+              <span class = "text-center"><img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+              </div>
+
             <%= pick.contestant.name %></p></span>
           </div>
         </div>
@@ -132,7 +136,10 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Season MVP</h3>
-        <img class = "img-responsive md-circular-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
+        <div class="md-circle-img-container">
+
+          <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
+        </div>
         <h4><%= current_season.mvp.name %></h4>
         <h5><%= current_season.mvp.season_points %> Points</h5>
         <h5>Owned by team <%= @league.owner_of(current_season.mvp).name %></h5>

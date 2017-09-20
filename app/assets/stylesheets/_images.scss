@@ -6,10 +6,9 @@
 }
 
 .circular-cont-headshots {
-  height: auto;
+  height: 250%;
   width: 100%;
   object-fit: cover;
-  height: 10pc;
 }
 
 
@@ -19,10 +18,19 @@
     overflow: hidden;
     border-radius: 50%;
     display: inline-block;
+    transform: translateY(40%);
+}
+
+.draft-img-container {
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .md-circular-cont-headshots {
-  height: 300%;
+  height: 250%;
   width: 100%;
   object-fit: cover;
   // height: 10pc;
