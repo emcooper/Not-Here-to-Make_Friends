@@ -57,7 +57,12 @@
       <tbody>
         <% @league.team_of_user(current_user).contestants.each do |contestant| %>
         <tr>
-          <td><img class = "circular-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot"><%= contestant.name %></td>
+          <td>
+            <div class="circle-img-container">
+
+            <img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot"><%= contestant.name %></td>
+          </div>
+
           <td class = "text-center"><%= contestant.season_points %></td>
         </tr>
         <% end %>
@@ -140,7 +145,11 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Highest Scoring Play this Season</h3>
-          <img class = "img-responsive md-circular-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+          <div class="md-circle-img-container">
+
+          <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+        </div>
+
           <h4><%= current_season.contestant_with_biggest_play.name %></h4>
           <h5><%= current_season.contestant_with_biggest_play.biggest_play.description %> for <%= current_season.contestant_with_biggest_play.biggest_play.point_value %> Points</h5>
           <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
