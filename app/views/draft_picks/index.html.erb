@@ -16,14 +16,22 @@
     <div>
       <div class="card draft-card" data-id="<%= pick.contestant.id %>">
         <div class="card-body d-flex justify-content-between">
-          <span class = "cont-name"><img class = "circular-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
-          <%= pick.contestant.name %></span>
-          <span class="rank">
+            <div class="draft-img-container">
+            <img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+          </div>
+
+          <span class ="cont-name text"> <%= pick.contestant.name %></span>
+
+
+          <span class = "text">
             <% if pick.contestant.average_draft_rank.to_i < 6 %>
               <i class="fa fa-fire" aria-hidden="true"></i>
+              <% else %>
+              &#160;&#160;
             <% end %>
-              Ranked <%= pick.contestant.average_draft_rank %> on Average </span>
-          <%= link_to(pick.contestant, class: "btn btn-primary cont-page-btn draft-btn") do %>
+              Ranked <%= pick.contestant.average_draft_rank %> on Average
+            </span>
+          <%= link_to(pick.contestant, class: "btn btn-primary draft-btn") do %>
             <span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= pick.contestant.name %>'s Page</span>
           <% end %>
         </div>

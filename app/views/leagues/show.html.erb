@@ -38,7 +38,11 @@
         <div class="">
           <div class="d-flex justify-content-between">
             <span class = "cont-name"><%= pick.rank %>.
-              <span class = "text-center"><img class = "circular-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+              <div class="circle-img-container">
+
+              <span class = "text-center"><img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+              </div>
+
             <%= pick.contestant.name %></p></span>
           </div>
         </div>
@@ -50,15 +54,31 @@
     <table class="table table-responsive roster">
       <thead>
         <tr>
-          <th>Contestants</th>
+          <th></th>
+          <th></th>
+          <th class = "text-center">Points this Week</th>
           <th class = "text-center">Total Points</th>
         </tr>
       </thead>
       <tbody>
         <% @league.team_of_user(current_user).contestants.each do |contestant| %>
         <tr>
-          <td><img class = "circular-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot"><%= contestant.name %></td>
-          <td class = "text-center"><%= contestant.season_points %></td>
+          <td style="width:1%">
+            <div class="circle-img-container-table">
+
+            <img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot">
+          </div>
+        </td>
+          <td style="width:10%">
+          <p> <%= contestant.name %></p>
+        </td>
+        <td class = "text-center">
+          <p><%= contestant.weekly_points(current_week) %></p>
+        </td>
+
+          <td class = "text-center">
+          <p><%= contestant.season_points %></p>
+          </td>
         </tr>
         <% end %>
       </tbody>
@@ -127,7 +147,10 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Season MVP</h3>
-        <img class = "img-responsive md-circular-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
+        <div class="md-circle-img-container">
+
+          <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
+        </div>
         <h4><%= current_season.mvp.name %></h4>
         <h5><%= current_season.mvp.season_points %> Points</h5>
         <h5>Owned by team <%= @league.owner_of(current_season.mvp).name %></h5>
@@ -140,7 +163,11 @@
       <div class="card">
         <div class="card-body">
           <h3 class="card-title">Highest Scoring Play this Season</h3>
-          <img class = "img-responsive md-circular-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+          <div class="md-circle-img-container">
+
+          <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+        </div>
+
           <h4><%= current_season.contestant_with_biggest_play.name %></h4>
           <h5><%= current_season.contestant_with_biggest_play.biggest_play.description %> for <%= current_season.contestant_with_biggest_play.biggest_play.point_value %> Points</h5>
           <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
