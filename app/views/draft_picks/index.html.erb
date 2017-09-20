@@ -1,9 +1,11 @@
+<div class="draft-picks">
+
 <%= tag :div, class: "team_information", data: {id: @team.id} %>
+<h2 class = "text-center"> Draft Room</h2>
+<h3 class = "d-flex justify-content-between page-header"><span class="text">Team <%= @team.name %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <span class="text"><%= current_season.first_name %>'s Season</span> </span></h3>
 
-<h1 class = "d-flex justify-content-between page-header"><span><%= @team.name %>'s Draft Room</span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
 
-
-<div class="row draft-picks">
+<div class="row">
     <div class="col-md-1 align-middle">
       <% @team.draft_picks.count.times do |n| %>
       <div class="borderless-card">
@@ -44,3 +46,4 @@
 <div class="text-center">
   <%= link_to "Submit Draft Picks", league_path(@team.league), class: "btn btn-primary btn-lg" %>
 </div><br>
+</div>
