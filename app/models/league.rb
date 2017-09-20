@@ -1,6 +1,7 @@
 class League < ApplicationRecord
   belongs_to :season
   has_many :teams
+  has_many :comments
 
   def team_of_user(user)
     teams.select("teams.*")
