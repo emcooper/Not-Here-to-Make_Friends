@@ -21,6 +21,23 @@
     display: inline-block;
 }
 
+.md-circular-cont-headshots {
+  height: 300%;
+  width: 100%;
+  object-fit: cover;
+  // height: 10pc;
+}
+
+.md-circle-img-container {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 15px;
+}
+
 
 .square-headshots {
   width: 100%;

@@ -1,9 +1,9 @@
 <h1 class = "d-flex justify-content-between page-header"><span>Episode <%= @week.week_number %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
 <div class="card-columns">
   <% @week.contestants.each do |contestant| %>
-  <div class="card contestant-<%= contestant.id %>" style="">
-    <div class="text-center">
-      <img class="card-img-top img-fluid justify-content-center" src="<%= contestant.headshot %> " alt="contestant headshot">
+  <div class="card contestant-<%= contestant.id %> text-center" style="">
+    <div class="md-circle-img-container">
+      <img class="md-circular-cont-headshots" src="<%= contestant.headshot %> " alt="contestant headshot">
     </div>
     <div class="card-body">
       <h5 class="card-title text-center"><%= contestant.name %></h5>
