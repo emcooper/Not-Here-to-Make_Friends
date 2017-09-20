@@ -55,11 +55,14 @@
     margin-top: 15px;
 }
 
+.big-square-headshot {
+  // height: 250%;
+  width: 50%;
+  object-fit: cover;
+}
 
 .square-headshots {
   width: 100%;
-  // max-height: 400px;
-
 }
 
 .square-img-container {

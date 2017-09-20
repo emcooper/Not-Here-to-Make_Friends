@@ -4,10 +4,17 @@ $color2: rgba(167, 196, 181, 1);
 $color3: rgba(56, 63, 81, 1);
 $color4: rgba(255, 94, 91, 1);
 $color5: rgba(220, 237, 255, 1);
+$jumbotrom-gray: #f1eeef;
+
+
 
 body#bootstrap-override {
-  color: #998da0;
+  // color: #998da0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 900;
   position: relative;
+
+  .jumbotron {
+      background-color: $jumbotrom-gray;
+  }
 }

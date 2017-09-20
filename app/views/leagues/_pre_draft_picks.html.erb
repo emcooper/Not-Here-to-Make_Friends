@@ -1,0 +1,20 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4">The draft for <%= current_season.first_name %>'s season takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %></h1>
+<br>
+  <h3 class="">Visit the draft room to set your rankings!</h3>
+  <div class="text-center">
+
+  <img class = "big-square-headshot" src="<%= current_season.headshot %>" alt="contestant-headshot">
+</div>
+
+  <% current_season.contestants.all[0..15].each do |contestant| %>
+  <div class="circle-img-container">
+
+  <span class = "text-center"><img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot">
+  </div>
+  <% end %>
+  <hr class="my-4">
+  <p class="lead">
+    <%= link_to "Draft Room", team_draft_picks_path(league.team_of_user(current_user)), class: "btn btn-primary btn-lg"%>
+  </p>
+</div>

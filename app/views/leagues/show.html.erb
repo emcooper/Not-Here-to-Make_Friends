@@ -2,7 +2,11 @@
 <%= tag :div, class: "league_information", data: {id: @league.id} %>
 
 <%= render :partial => "users/user_profile_navbar" %>
-
+<% if @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
+  <%= render :partial => "pre_draft_picks", locals: {league: @league} %>
+<% elsif @league.team_of_user(current_user).contestants.empty? %>
+  <%= render :partial => "after_draft_picks", locals: {league: @league} %>
+<% else %>
 <ul class="nav nav-fill nav-pills" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League <%= @league.name %></a>
@@ -16,40 +20,7 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane" id="league-<%= @league.id %>-team" role="tabpanel">
-    <% if @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
-    <div class="jumbotron text-center">
-      <h1 class="display-3 ">This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %></h1>
-      <p class="lead">Visit the draft room to set your rankings!</p>
-      <hr class="my-4">
-      <p class="lead">
-        <%= link_to "Draft Room", team_draft_picks_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg"%>
-      </p>
-    </div>
-    <% elsif @league.team_of_user(current_user).contestants.empty? %>
-      <div class="text-center">
-      <h3>Your Draft Picks </h3><br>
-      <h4>This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal) %>. Visit the draft room to edit your picks. </h4><br>
-      <%= link_to "Edit Draft Picks", team_draft_picks_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg" %>
-    </div><br>
 
-      <div class="row">
-        <% @league.team_of_user(current_user).draft_picks.order(:rank).each do |pick| %>
-        <div class="col-md-4">
-        <div class="">
-          <div class="d-flex justify-content-between">
-            <span class = "cont-name"><%= pick.rank %>.
-              <div class="circle-img-container">
-
-              <span class = "text-center"><img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
-              </div>
-
-            <%= pick.contestant.name %></p></span>
-          </div>
-        </div>
-      </div>
-        <% end %>
-    </div>
-    <% else %>
     <h3 class = text-center>Team Roster</h3>
     <table class="table table-responsive roster">
       <thead>
@@ -80,7 +51,6 @@
           <p><%= contestant.season_points %></p>
           </td>
         </tr>
-        <% end %>
       </tbody>
     </table>
     <% end %>
@@ -192,3 +162,4 @@
 </div>
 </div>
 </div>
+<% end %>
