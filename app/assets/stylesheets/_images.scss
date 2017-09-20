@@ -21,6 +21,15 @@
     transform: translateY(40%);
 }
 
+.circle-img-container-table {
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    // transform: translateY(40%);
+}
+
 .draft-img-container {
     height: 60px;
     width: 60px;
