@@ -97,7 +97,7 @@ contestant_info = [{name: "Bryan", twitter_handle: "@TheAbDoctor"},
                     {name: "Adam", twitter_handle: "@AdamJGottschalk"},
                     {name: "Matt", twitter_handle: "@RealMattMunson"},
                     {name: "Alex", twitter_handle: "@Alex_Bordy"},
-                    {name: "Will", twitter_handle: "@TheReal_BillyG"},
+                    {name: "Will", twitter_handle: "@cwonder88", headshot: "http://img.usmagazine.com/1200-width/will-zoom-7e522621-f92e-435c-99b0-b83df63fa367.jpg"},
                     {name: "Kenny", twitter_handle: "@KennyKingPB2"},
                     {name: "Josiah", twitter_handle: "@JosiahDGraham"},
                     {name: "Lee", twitter_handle: "@leegarrett_"},
@@ -109,20 +109,20 @@ contestant_info = [{name: "Bryan", twitter_handle: "@TheAbDoctor"},
                     {name: "Brady", twitter_handle: "@ervgoddi"},
                     {name: "Fred", twitter_handle: "@RealFredJohnson"},
                     {name: "Lucas", twitter_handle: "@LucasYancey"},
-                    {name: "Jamey", twitter_handle: "@PeterWIKraus"},
-                    {name: "Blake", twitter_handle: "@PeterWIKraus"},
-                    {name: "DeMario", twitter_handle: "@PeterWIKraus"},
-                    {name: "Rob", twitter_handle: "@PeterWIKraus"},
-                    {name: "Mohit", twitter_handle: "@PeterWIKraus"},
-                    {name: "Milton", twitter_handle: "@PeterWIKraus"},
-                    {name: "Michael", twitter_handle: "@PeterWIKraus"},
-                    {name: "Kyle", twitter_handle: "@PeterWIKraus"},
-                    {name: "Jedidiah", twitter_handle: "@PeterWIKraus"},
-                    {name: "Grant", twitter_handle: "@PeterWIKraus"},
-                    {name: "Blake", twitter_handle: "@PeterWIKraus"}]
+                    {name: "Jamey", twitter_handle: "@DarthVader"},
+                    {name: "Blake", twitter_handle: "@BlakeLosAngeles"},
+                    {name: "DeMario", twitter_handle: "@demariojackson_"},
+                    {name: "Rob", twitter_handle: "@DarthVader"},
+                    {name: "Mohit", twitter_handle: "@DarthVader"},
+                    {name: "Milton", twitter_handle: "@DarthVader"},
+                    {name: "Michael", twitter_handle: "@DarthVader"},
+                    {name: "Kyle", twitter_handle: "@DarthVader"},
+                    {name: "Jedidiah", twitter_handle: "@DarthVader"},
+                    {name: "Grant", twitter_handle: "@DarthVader"},
+                    {name: "Blake", twitter_handle: "@DarthVader"}]
 
 contestant_info.each_with_index do |info, n|
-  dude = Contestant.create(info.merge({headshot: Faker::Avatar.image, bio: Faker::MostInterestingManInTheWorld.quote, season: rachel_season, age: rand(25..40), hometown: "#{Faker::Address.city}, #{Faker::Address.state_abbr}", occupation: Faker::Company.profession,}))
+  dude = Contestant.create(info.merge({bio: Faker::MostInterestingManInTheWorld.quote, season: rachel_season, age: rand(25..40), hometown: "#{Faker::Address.city}, #{Faker::Address.state_abbr}", occupation: Faker::Company.profession,}))
   if n < 2
     dude.weeks << Week.all
   elsif n < 5

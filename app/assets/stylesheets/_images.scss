@@ -5,6 +5,35 @@
   border-radius: 50%;
 }
 
+.circular-cont-headshots {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  height: 10pc;
+}
+
+
+.circle-img-container {
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+.square-headshots {
+  width: 100%;
+  // max-height: 400px;
+
+}
+
+.square-img-container {
+    overflow: hidden;
+    height: 290px;
+    border-radius: 5px;
+}
+
 .md-circular-headshots {
   height: 150px;
   width: 150px;

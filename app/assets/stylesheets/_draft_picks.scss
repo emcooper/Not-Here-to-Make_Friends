@@ -8,9 +8,11 @@
 
   .card-body {
     font-size: 20px;
+    margin-bottom: -10px;
+
 
     span.cont-name {
-      width: 150px
+      width: 180px
     }
   }
 
@@ -25,12 +27,16 @@
 
   .draft-btn {
     width: 200px;
+    height: 50px;
     float: right;
     font-size: 20px;
-    padding-top: 10px;
+    padding-top: 12px;
   }
 
-
+label {
+  position: relative;
+  transform: translateY(-80%);
+}
 
   .borderless-card {
     border: 1px solid white;
