@@ -2,11 +2,25 @@ nav.navbar{
   background-color: $navbar-pink;
   font-weight: lighter;
   margin-bottom: 20px;
+
+  li {
+    margin-left: 10px
+  }
 }
 
 nav.navbar a.navbar-brand {
   font-size: 30px;
 }
+
+
+ul div.dropdown-menu  a {
+  color: black;
+}
+
+ul div.dropdown-menu  a:hover {
+  color: $navbar-pink;
+}
+
 
 nav.navbar a:hover {
   color: #5A5766;
