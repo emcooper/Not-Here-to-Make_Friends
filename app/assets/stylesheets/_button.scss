@@ -4,17 +4,17 @@ button {
 }
 
 .btn {
-  background-color: #6B85DB;
+  background-color: $button-blue;
   border: #48B4F5;
   margin: 0 10px;
 }
 
 .nav-pills .nav-link {
-  background-color: #C4D3EA;
-  color: #998da0;
+  background-color: $disabled-tab-blue;
+  color: white;
 }
 
 .nav-pills .nav-link.active, .show > .nav-pills .nav-link {
-  background-color: #94B0DA;
+  background-color: $tab-blue;
   color: white;
 }

@@ -9,10 +9,10 @@
 <% else %>
 <ul class="nav nav-fill nav-pills" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League <%= @league.name %></a>
+    <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League Overview</a>
   </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team <%= @league.team_of_user(current_user).name %></a>
+      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team Roster</a>
     </li>
 
 </ul>
@@ -20,8 +20,11 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane" id="league-<%= @league.id %>-team" role="tabpanel">
-
-    <h3 class = text-center>Team Roster</h3>
+<div class="card">
+  <div class="card-header">
+    <h4 class = text-center>Team <%= @league.team_of_user(current_user).name %>'s Roster</h4>
+  </div>
+  <div class="card-body">
     <table class="table table-responsive roster">
       <thead>
         <tr>
@@ -34,7 +37,7 @@
       <tbody>
         <% @league.team_of_user(current_user).contestants.each do |contestant| %>
         <tr>
-          <td style="width:10%">
+          <td style="width:1%">
             <div class="circle-img-container-table">
 
             <img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot">
@@ -56,26 +59,37 @@
       </tbody>
     </table>
   </div>
+</div>
+  </div>
   <div class="tab-pane active" id="league-<%= @league.id %>-league" role="tabpanel">
     <div class="row">
       <div class="col-md-4">
         <div class="card">
+          <div class="card-header">
+            <h4>League Members</h4>
+          </div>
           <div class="card-body">
-            <h4 class="card-title">League <%= @league.name %> Members</h4>
             <% @league.teams.each do |team| %>
-            <h5><%= team.name %></h5>
+            <div class="team-members">
+
+            <h5 class ="team-name">Team <%= team.name %></h5>
             <% team.users.each do |user| %>
             <p><%= user.name %></p>
             <% end %>
+          </div>
+
             <% end %>
+
           </div>
         </div>
       </div>
 
     <div class="col-md-8">
       <div class="card">
+        <div class="card-header">
+          <h4 class = "text-center">League Overview</h4>
+        </div><br><br>
         <div class="card-body">
-    <h3 class = text-center>League Overview</h3><br><br>
     <table class="table table-responseive">
       <thead>
         <tr>
@@ -116,8 +130,13 @@
 
   <div class="col-md-6 mvp">
     <div class="card">
+      <div class="card-header">
+      <h4><i class="fa fa-star" aria-hidden="true"></i> Season MVP</h4>
+    </div>
+
       <div class="card-body">
-        <h3 class="card-title">Season MVP</h3>
+
+
         <div class="md-circle-img-container">
 
           <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
@@ -132,8 +151,11 @@
 
     <div class="col-md-6">
       <div class="card">
+        <div class="card-header">
+          <h4><i class="fa fa-star" aria-hidden="true"></i>
+Highest Scoring Play this Season</h4>
+        </div>
         <div class="card-body">
-          <h3 class="card-title">Highest Scoring Play this Season</h3>
           <div class="md-circle-img-container">
 
           <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
