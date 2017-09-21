@@ -21,6 +21,16 @@ $fire-red: #ef1616;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
+    .splash-title h1{
+      font-size: 100px;
+      font-family: 'Bad Script', cursive;
+    }
+
+    .splash-text {
+      padding-top: 200px;
+
+    }
 }
 
 .brush-stroke-container {
