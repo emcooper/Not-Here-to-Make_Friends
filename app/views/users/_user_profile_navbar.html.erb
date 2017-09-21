@@ -1,5 +1,5 @@
-<section class = "page-header"><span class = "in-line"><h2>Hi <%= current_user.name %></span></h2>
-    <div class="nav right-float">
+<section class = "page-header"><span class = "in-line"><h2>League <%= @league.name %></span></h2>
+    <div class="nav right-float"> Your Leagues:
       <% current_user.active_leagues.each do |league| %>
         <%= link_to league.name, league_path(league), :class =>"btn btn-primary"%>
       <% end %>

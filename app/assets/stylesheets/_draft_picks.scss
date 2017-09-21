@@ -10,14 +10,22 @@
     font-size: 20px;
     margin-bottom: -10px;
 
-
     .cont-name {
       margin-left: -120px;
     }
   }
 
   .fa-fire {
-    color: #ff0089;
+    color: $fire-red;
+  }
+
+  .text {
+    margin-top: 14px;
+  }
+
+  .avg-rank {
+    font-size: 25px;
+    color: $navbar-pink;
   }
 
   .draft-btn {
@@ -35,7 +43,7 @@
 
     .pick-number {
       margin: 26.25px 0 26.25px 60px;
-      color: lightcoral;
+      color: $navbar-pink;
     }
   }
 }

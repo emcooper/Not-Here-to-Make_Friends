@@ -1,13 +1,71 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script|League+Script|Quicksand|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Bad+Script|Courgette|Grand+Hotel|Sacramento|Satisfy');
 $color1: #E78F8E;
+$navbar-pink: #ff5c5c;
+$button-blue: rgb(104, 148, 255);
+$tab-blue: #1212ab;;
+$disabled-tab-blue: rgba(18, 18, 171, 0.26);;
+$card-header-blue: #C9DDFF;
+$star-gold: #ffeb3b;
+$underline-orange: #ff5722;
 $color2: rgba(167, 196, 181, 1);
 $color3: rgba(56, 63, 81, 1);
 $color4: rgba(255, 94, 91, 1);
 $color5: rgba(220, 237, 255, 1);
+$jumbotrom-gray: #f1eeef;
+$fire-red: #ef1616;
+
+.splash {
+    background: url('https://i.pinimg.com/originals/2d/2c/9d/2d2c9d71e5d7e40d9935834f3b617ca7.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+    .splash-title h1{
+      font-size: 100px;
+      font-family: 'Bad Script', cursive;
+    }
+
+    .splash-text {
+      padding-top: 200px;
+
+    }
+}
+
+.brush-stroke-container {
+  background-image: url("https://t3.ftcdn.net/jpg/01/36/31/12/240_F_136311241_Q7FZe0i4zwsJdMIucNfcyqcThXAUA50R.jpg");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+.section-underline {
+  width: 350px;
+  height: 5px;
+  background-color: $underline-orange
+}
+
 
 body#bootstrap-override {
-  color: #998da0;
+  // color: #998da0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 900;
   position: relative;
+
+  .jumbotron {
+      background-color: $jumbotrom-gray;
+  }
+
+  .navbar-brand {
+    font-family: 'Bad Script', cursive;
+    font-size: 40px;
+  }
+  .card-header {
+    background-color: $card-header-blue;
+    h4, h5 {
+      margin: 0;
+    }
+
+  }
 }

@@ -49,8 +49,8 @@ bachelorette_plays = {"Rose Ceremony Rose" => 10,
 "Says 'For the right reasons'" => 10,
 "Says 'Journey'" => 10,
 "Says 'I’m not here to make friends'" => 10,
-"First to tell Rachel he is falling in love" => 20,
-"Tells Rachel she is falling in love, but not first" => 10,
+"Tell Rachel he is falling in love (first)" => 20,
+"Tells Rachel he is falling in love (not first)" => 10,
 "Reveals tragic backstory" => 15,
 "Full Nudity" => 25,
 "Requires medical attention" => 25,
@@ -71,10 +71,10 @@ bachelorette_plays.each do |description, points|
 end
 
 ellen = User.create(name: "Ellen", email: "ellen@gmail.com", password: "password", role: 1)
-player_2 = User.create(name: Faker::Seinfeld.character, email: "hayley@gmail.com", password: "password")
-player_3 = User.create(name: Faker::Seinfeld.character, email: "user_3@gmail.com", password: "password")
-player_4 = User.create(name: Faker::Seinfeld.character, email: "user_4@gmail.com", password: "password")
-player_5 = User.create(name: Faker::Seinfeld.character, email: "user_5@gmail.com", password: "password")
+player_2 = User.create(name: Faker::Friends.character, email: "user_2@gmail.com", password: "password")
+player_3 = User.create(name: Faker::Friends.character, email: "user_3@gmail.com", password: "password")
+player_4 = User.create(name: Faker::Friends.character, email: "user_4@gmail.com", password: "password")
+player_5 = User.create(name: Faker::Friends.character, email: "user_5@gmail.com", password: "password")
 new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
 
 
@@ -149,8 +149,8 @@ Week.all.each do |week|
 end
 
 team_1a = Team.create(name: "Here for the Wrong Reasons", league: league_1)
-team_1b = Team.create(name: "Here for the Right Reasons", league: league_1)
-team_1c = Team.create(name: "Waboom", league: league_1)
+team_1b = Team.create(name: "Bryan's Cheek Implants", league: league_1)
+team_1c = Team.create(name: "Taylor's Emotional Intelligence", league: league_1)
 
 team_2a = Team.create(name: "Corrine's Nanny", league: league_2)
 team_2b = Team.create(name: "Bryan's Cheek Implants", league: league_2)

@@ -1,0 +1,23 @@
+<div class="text-center">
+<h3>Team <%= @league.team_of_user(current_user).name.possessive %> Draft Picks </h3><br>
+<h5>This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal) %>. Visit the draft room to edit your picks. </h5><br>
+<%= link_to "Edit Draft Picks", team_draft_picks_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg" %>
+</div><br>
+
+<div class="row">
+  <% @league.team_of_user(current_user).draft_picks.order(:rank).each do |pick| %>
+  <div class="col-md-4">
+  <div class="">
+    <div class="d-flex justify-content-between">
+      <span class = "cont-name"><%= pick.rank %>.
+        <div class="circle-img-container">
+
+        <span class = "text-center"><img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
+        </div>
+
+      <%= pick.contestant.name %></p></span>
+    </div>
+  </div>
+</div>
+  <% end %>
+</div>

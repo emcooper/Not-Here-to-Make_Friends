@@ -2,13 +2,17 @@
 <%= tag :div, class: "league_information", data: {id: @league.id} %>
 
 <%= render :partial => "users/user_profile_navbar" %>
-
+<% if @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
+  <%= render :partial => "pre_draft_picks", locals: {league: @league} %>
+<% elsif @league.team_of_user(current_user).contestants.empty? %>
+  <%= render :partial => "after_draft_picks", locals: {league: @league} %>
+<% else %>
 <ul class="nav nav-fill nav-pills" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League <%= @league.name %></a>
+    <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League Overview</a>
   </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team <%= @league.team_of_user(current_user).name %></a>
+      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team Roster</a>
     </li>
 
 </ul>
@@ -16,41 +20,11 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane" id="league-<%= @league.id %>-team" role="tabpanel">
-    <% if @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
-    <div class="jumbotron text-center">
-      <h1 class="display-3 ">This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %></h1>
-      <p class="lead">Visit the draft room to set your rankings!</p>
-      <hr class="my-4">
-      <p class="lead">
-        <%= link_to "Draft Room", team_draft_picks_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg"%>
-      </p>
-    </div>
-    <% elsif @league.team_of_user(current_user).contestants.empty? %>
-      <div class="text-center">
-      <h3>Your Draft Picks </h3><br>
-      <h4>This season's draft takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal) %>. Visit the draft room to edit your picks. </h4><br>
-      <%= link_to "Edit Draft Picks", team_draft_picks_path(@league.team_of_user(current_user)), class: "btn btn-primary btn-lg" %>
-    </div><br>
-
-      <div class="row">
-        <% @league.team_of_user(current_user).draft_picks.order(:rank).each do |pick| %>
-        <div class="col-md-4">
-        <div class="">
-          <div class="d-flex justify-content-between">
-            <span class = "cont-name"><%= pick.rank %>.
-              <div class="circle-img-container">
-
-              <span class = "text-center"><img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
-              </div>
-
-            <%= pick.contestant.name %></p></span>
-          </div>
-        </div>
-      </div>
-        <% end %>
-    </div>
-    <% else %>
-    <h3 class = text-center>Team Roster</h3>
+<div class="card">
+  <div class="card-header">
+    <h4 class = text-center>Team <%= @league.team_of_user(current_user).name %>'s Roster</h4>
+  </div>
+  <div class="card-body">
     <table class="table table-responsive roster">
       <thead>
         <tr>
@@ -81,34 +55,45 @@
           </td>
         </tr>
         <% end %>
+
       </tbody>
     </table>
-    <% end %>
+  </div>
+</div>
   </div>
   <div class="tab-pane active" id="league-<%= @league.id %>-league" role="tabpanel">
     <div class="row">
       <div class="col-md-4">
         <div class="card">
+          <div class="card-header">
+            <h4>League Members</h4>
+          </div>
           <div class="card-body">
-            <h4 class="card-title">League <%= @league.name %> Members</h4>
             <% @league.teams.each do |team| %>
-            <h5><%= team.name %></h5>
+            <div class="team-members">
+
+            <h5 class ="team-name">Team <%= team.name %></h5>
             <% team.users.each do |user| %>
             <p><%= user.name %></p>
             <% end %>
+          </div>
+
             <% end %>
+
           </div>
         </div>
       </div>
 
     <div class="col-md-8">
       <div class="card">
+        <div class="card-header">
+          <h4 class = "text-center">League Overview</h4>
+        </div><br><br>
         <div class="card-body">
-    <h3 class = text-center>League Overview</h3><br><br>
     <table class="table table-responseive">
       <thead>
         <tr>
-          <th>Team</th>
+          <th class = "text-center">Team</th>
           <th class = "text-center">Points this Week</th>
           <th class = "text-center">Total Points</th>
         </tr>
@@ -145,8 +130,13 @@
 
   <div class="col-md-6 mvp">
     <div class="card">
+      <div class="card-header">
+      <h4><i class="fa fa-star" aria-hidden="true"></i> Season MVP</h4>
+    </div>
+
       <div class="card-body">
-        <h3 class="card-title">Season MVP</h3>
+
+
         <div class="md-circle-img-container">
 
           <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.mvp.headshot %> " alt="contestant headshot">
@@ -161,8 +151,11 @@
 
     <div class="col-md-6">
       <div class="card">
+        <div class="card-header">
+          <h4><i class="fa fa-star" aria-hidden="true"></i>
+Highest Scoring Play this Season</h4>
+        </div>
         <div class="card-body">
-          <h3 class="card-title">Highest Scoring Play this Season</h3>
           <div class="md-circle-img-container">
 
           <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
@@ -183,7 +176,7 @@
         <form class="form-group">
           <input type="hidden" name="league_id" id = "league-id" value= "<%= @league.id %>" >
           <input type="text" name="message" placeholder="message" class="form-control" id="comment-message"><br>
-          <button type="button" class="btn btn-success" id="create-comment">Submit</button>
+          <button type="button" class="btn btn-primary" id="create-comment">Submit</button>
         </form>
     </div>
     </div>
@@ -192,3 +185,4 @@
 </div>
 </div>
 </div>
+<% end %>

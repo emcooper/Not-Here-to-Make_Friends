@@ -11,8 +11,11 @@
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
   </head>
-
-  <body id = "bootstrap-override">
+  <% if current_page?(login_path) && !current_user %>
+    <body class="splash" id = "bootstrap-override">
+  <% else %>
+    <body id = "bootstrap-override">
+  <% end %>
     <% if current_user %>
       <%= render partial: "layouts/navbar" %>
     <% end %>

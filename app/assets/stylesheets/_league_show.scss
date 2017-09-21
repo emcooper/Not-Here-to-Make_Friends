@@ -13,11 +13,15 @@
       float: right;
     }
     label {
-      color: blue;
+      color: $navbar-pink;
     }
   }
   td p {
     padding-top: 18px;
+  }
+
+  .team-name {
+    text-decoration: underline;
   }
 
 }
