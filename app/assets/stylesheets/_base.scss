@@ -15,6 +15,14 @@ $color5: rgba(220, 237, 255, 1);
 $jumbotrom-gray: #f1eeef;
 $fire-red: #ef1616;
 
+.splash {
+    background: url('https://i.pinimg.com/originals/2d/2c/9d/2d2c9d71e5d7e40d9935834f3b617ca7.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .brush-stroke-container {
   background-image: url("https://t3.ftcdn.net/jpg/01/36/31/12/240_F_136311241_Q7FZe0i4zwsJdMIucNfcyqcThXAUA50R.jpg");
   background-repeat: no-repeat;
