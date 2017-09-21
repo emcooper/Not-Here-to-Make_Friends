@@ -34,7 +34,7 @@
       <tbody>
         <% @league.team_of_user(current_user).contestants.each do |contestant| %>
         <tr>
-          <td style="width:1%">
+          <td style="width:10%">
             <div class="circle-img-container-table">
 
             <img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot">
@@ -51,9 +51,10 @@
           <p><%= contestant.season_points %></p>
           </td>
         </tr>
+        <% end %>
+        
       </tbody>
     </table>
-    <% end %>
   </div>
   <div class="tab-pane active" id="league-<%= @league.id %>-league" role="tabpanel">
     <div class="row">
