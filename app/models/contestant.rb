@@ -8,6 +8,8 @@ class Contestant < ApplicationRecord
   has_many :plays, through: :actions
   has_many :draft_picks
 
+  after_create :add_empty_actions
+
   def season_points
     actions.joins(:play).sum("point_value * count")
   end
@@ -23,11 +25,12 @@ class Contestant < ApplicationRecord
   end
 
   def all_weekly_points
+
     Week.select("weeks.week_number, sum(point_value * count) AS points")
-        .joins(actions: :play)
-        .where("contestant_id = ?", id)
-        .group("weeks.id")
-        .order("weeks.week_number")
+                .joins(actions: :play)
+                .where("contestant_id = ?", id)
+                .group("weeks.id")
+                .order("weeks.week_number")
   end
 
   def ranking
@@ -41,5 +44,11 @@ class Contestant < ApplicationRecord
 
   def average_draft_rank
     draft_picks.average(:rank).round.ordinalize
+  end
+
+  def add_empty_actions
+    season.weeks.each do |week|
+      Action.create(week: week, contestant: self, play: Play.first, count: 0)
+    end
   end
 end
