@@ -15,8 +15,12 @@ $color5: rgba(220, 237, 255, 1);
 $jumbotrom-gray: #f1eeef;
 $fire-red: #ef1616;
 
-.splash {
-    background: url('https://i.pinimg.com/originals/2d/2c/9d/2d2c9d71e5d7e40d9935834f3b617ca7.jpg') no-repeat center center fixed;
+body, .splash {
+  // // background: url('https://www.wallpapersbrowse.com/images/ur/urqoc8k.jpg') no-repeat center center fixed;
+  // // background: url('http://static1.squarespace.com/static/54b71bcce4b069dab25320b5/t/559de385e4b02cc8af488516/1436410757760/tumblr_static_watercolor_texture3_by_valerianastock.jpg') no-repeat center center fixed;
+  // background: url('https://s-media-cache-ak0.pinimg.com/originals/be/2a/94/be2a940c4ac312bf5abc0aa9677749de.jpg') no-repeat center center fixed;
+  // background-image: url(<%= asset_path 'app/assets/images/pink_background.jpg' %>);
+  background: image-url('pink_background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
