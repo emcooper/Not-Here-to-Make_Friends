@@ -80,8 +80,8 @@ new_user = User.create(name: "New User", email: "new_user@gmail.com", password: 
 
 rachel_season = Season.create(first_name: "Rachel", last_name: "Lindsay", headshot: "http://img.etonline.com/1242911076001/201705/288/1242911076001_5434770022001_et-051417-RachelLindsayOutfitshu.jpg?pubId=1242911076001", season_number: 13, season_type: "bachelorette", status: "active", draft_date: "2017-10-1")
 nick_season = Season.create(first_name: "Nick", last_name: "Vial", headshot: "https://img.buzzfeed.com/buzzfeed-static/static/2017-04/25/15/campaign_images/buzzfeed-prod-fastlane-03/nick-viall-reveals-why-he-kept-that-yellow-bracel-2-9069-1493149672-2_dblbig.jpg", season_number: 21, season_type: "bachelor", status: "retired", draft_date: "2017-10-1")
-league_1 = League.create(name: "Waboom", season: rachel_season)
-league_2 = League.create(name: "The Final Rose", season: rachel_season)
+league_1 = League.create(name: "The Final Rose", season: rachel_season)
+league_2 = League.create(name: "All the Roses", season: rachel_season)
 
 
 date = Date.new(2017, 8 , 15)
@@ -149,12 +149,12 @@ Week.all.each do |week|
 end
 
 team_1a = Team.create(name: "Here for the Wrong Reasons", league: league_1)
-team_1b = Team.create(name: "Bryan's Cheek Implants", league: league_1)
-team_1c = Team.create(name: "Taylor's Emotional Intelligence", league: league_1)
+team_1b = Team.create(name: "Chris Harrison", league: league_1)
+team_1c = Team.create(name: "Here for the Right Reasons", league: league_1)
 
 team_2a = Team.create(name: "Corrine's Nanny", league: league_2)
 team_2b = Team.create(name: "Bryan's Cheek Implants", league: league_2)
-team_2c = Team.create(name: "Tickle Monster", league: league_2)
+team_2c = Team.create(name: "Taylor's Emotional Intelligence", league: league_2)
 
 ellen.teams << [team_1a, team_2b]
 player_2.teams << [team_1a, team_2b]
