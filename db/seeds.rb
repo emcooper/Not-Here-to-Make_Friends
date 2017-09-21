@@ -150,7 +150,7 @@ end
 
 team_1a = Team.create(name: "Here for the Wrong Reasons", league: league_1)
 team_1b = Team.create(name: "Here for the Right Reasons", league: league_1)
-team_1c = Team.create(name: "Waboom", league: league_1)
+team_1c = Team.create(name: "Taylor's Emotional Intelligence", league: league_1)
 
 team_2a = Team.create(name: "Corrine's Nanny", league: league_2)
 team_2b = Team.create(name: "Bryan's Cheek Implants", league: league_2)
