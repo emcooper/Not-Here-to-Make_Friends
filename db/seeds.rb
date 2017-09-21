@@ -160,6 +160,6 @@ ellen.teams << [team_1a, team_2b]
 player_2.teams << [team_1a, team_2b]
 player_3.teams << [team_1c, team_2c]
 player_4.teams << [team_1b, team_2a]
-player_5.teams << [team_1a, team_2c]
+player_5.teams << [team_1b, team_2c]
 
 puts("SUCCESSFUL SEEDING!")
