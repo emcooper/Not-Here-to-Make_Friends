@@ -1,6 +1,6 @@
 .contestant-info {
-  border-top: 5px solid #16bbff;
-  border-bottom: 5px solid #16bbff;
+  border-top: 5px solid $button-blue;
+  border-bottom: 5px solid $button-blue;
   height: 80%;
   margin-top: 20px;
 
@@ -25,8 +25,21 @@
 .contestant-details {
   h4 {
     font-size: 40px;
-    margin: 50px;
   }
+  .section-header {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+}
+
+.stats-header {
+  height: 65px;
+}
+
+.play-points {
+  color: red;
+  font-size: 30px;
+  padding-top: 10px; 
 }
 
 

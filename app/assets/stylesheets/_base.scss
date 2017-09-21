@@ -7,6 +7,7 @@ $tab-blue: #1212ab;;
 $disabled-tab-blue: rgba(18, 18, 171, 0.26);;
 $card-header-blue: #C9DDFF;
 $star-gold: #ffeb3b;
+$underline-orange: #ff5722;
 $color2: rgba(167, 196, 181, 1);
 $color3: rgba(56, 63, 81, 1);
 $color4: rgba(255, 94, 91, 1);
@@ -16,9 +17,15 @@ $fire-red: #ef1616;
 
 .brush-stroke-container {
   background-image: url("https://t3.ftcdn.net/jpg/01/36/31/12/240_F_136311241_Q7FZe0i4zwsJdMIucNfcyqcThXAUA50R.jpg");
-  background-position-y: center;
-  padding: 5px;
+  background-repeat: no-repeat;
   background-position-x: center;
+  background-position-y: center;
+}
+
+.section-underline {
+  width: 350px;
+  height: 5px;
+  background-color: $underline-orange
 }
 
 
@@ -38,7 +45,7 @@ body#bootstrap-override {
   }
   .card-header {
     background-color: $card-header-blue;
-    h4 {
+    h4, h5 {
       margin: 0;
     }
 

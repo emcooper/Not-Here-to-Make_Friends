@@ -28,7 +28,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#stats">Stats</a>
+        <a class="nav-link" href="#stats">Season Stats</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#personality-profile">Personality Profile</a>
@@ -42,47 +42,80 @@
 
 
 <div class = "text-center contestant-details" data-spy="scroll" data-offset="0">
-  <h4 id="stats">Stats</h4>
+  <div class="text-left section-header">
+    <h4 id="stats">Season Stats</h4>
+    <div class = "section-underline"></div>
+  </div>
+
     <div id="container"></div>
     <div class="row text-center stats-small-cards">
 
       <div class = "col-md-3">
         <div class="card stats-card">
+          <div class="card-header stats-header">
+            <h5>Ranking</h5>
+          </div>
           <div class="card-body">
-            <p class="card-title">Ranking</p>
-             <%= @contestant_presenter.contestant.ranking %> Place
+            <br>
+            <div class="medal">
+            <img class = "medal-img" src="https://image.flaticon.com/icons/png/128/179/179249.png" alt="">
+          </div><br>
+
+             <h4><%= @contestant_presenter.contestant.ranking %> Place</h4>
            </div>
          </div>
        </div>
 
        <div class = "col-md-3">
          <div class="card stats-card">
+           <div class="card-header stats-header">
+             <h5>Points this Week</h5>
+           </div>
            <div class="card-body">
-             <p class="card-title">Points this Week</p>
-              <%= @contestant_presenter.contestant.weekly_points(current_week) %>
+             <br>
+             <div class="">
+              <i class="fa fa-star points" aria-hidden="true"></i>
+            </div>
+
+             <h4><%= @contestant_presenter.contestant.weekly_points(current_week) %></h4>
             </div>
           </div>
         </div>
 
         <div class = "col-md-3">
           <div class="card stats-card">
+            <div class="card-header stats-header">
+              <h5>Points this Season</h5>
+            </div>
             <div class="card-body">
-              <p class="card-title">Points this Season</p>
-               <%= @contestant_presenter.contestant.season_points %>
+              <br>
+              <div class="">
+                <i class="fa fa-star points" aria-hidden="true"></i>
+                <i class="fa fa-star points" aria-hidden="true"></i>
+               <i class="fa fa-star points" aria-hidden="true"></i>
+             </div>
+
+              <h4><%= @contestant_presenter.contestant.season_points %></h4>
              </div>
            </div>
          </div>
 
          <div class = "col-md-3">
            <div class="card stats-card">
+             <div class="card-header stats-header">
+               <h5>Highest Scoring Play of the Season</h5>
+             </div>
              <div class="card-body">
-               <p class="card-title">Highest Scoring Play of the Season</p>
-                <%= @contestant_presenter.contestant.biggest_play.description %> for <%= @contestant_presenter.contestant.biggest_play.point_value %> Points
+               <h5 class = "play-points"><i class="fa fa-minus" aria-hidden="true"></i> <%= @contestant_presenter.contestant.biggest_play.point_value %> Points <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                <%= @contestant_presenter.contestant.biggest_play.description %><br>
               </div>
             </div>
           </div>
     </div>
-  <h4 id="personality-profile">Personality</h4>
+    <div class="text-left section-header">
+      <h4 id="personality-profile">Personality</h4>
+      <div class = "section-underline"></div>
+    </div>
   <% cache "contestant-#{@contestant_presenter.contestant.id}-personality" do %>
   <div class="row text-center personality">
     <% @contestant_presenter.personality.traits.each do |trait| %>
@@ -93,7 +126,10 @@
       <% end %>
       <% end %>
   </div>
-  <h4 id="social-media">Social Media</h4>
+  <div class="text-left section-header">
+    <h4 id="social-media">Social Media</h4>
+    <div class = "section-underline"></div>
+  </div>
   <p>
     <a class="twitter-timeline" href="https://twitter.com/<%= @contestant_presenter.contestant.twitter_handle %>">Recent Tweets by <%= @contestant_presenter.contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </p>

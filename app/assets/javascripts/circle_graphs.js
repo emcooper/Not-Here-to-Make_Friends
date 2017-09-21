@@ -9,7 +9,6 @@ $(".circle-chart").circliful({
             foregroundBorderWidth: 15,
             backgroundBorderWidth: 15,
             backgroundColor: '#F5F2FF',
-            // foregroundColor: '#16bbff',
-            progressColor: { 0: '#16bbff', 90: '#FF5E5B'}
+            progressColor: { 0: '#16bbff', 85: 'rgb(166, 243, 67)'}
    });
 });
