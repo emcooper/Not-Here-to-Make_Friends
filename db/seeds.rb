@@ -2,66 +2,65 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-bachelor_plays = {"Rose Ceremony Rose" => 10,
-"Group Date Rose" => 20,
-"First Impression Rose" => 30,
-"One-on-One Rose" => 20,
-"Sent Home on One-on-One" => 30,
-"Two-on-One Rose" => 30,
-"Sent Home on Two-on-One" => 20,
-"Quits the Show" => 50,
-"Attempts to Return to Show After Being Eliminated" => 30,
-"'Steals' Rachel away (MUST SAY 'STEAL')" => 10,
-"'Fairytale'" => 10,
-"'For the right reasons'" => 10,
-"'Journey'" => 10,
-"'I’m not here to make friends'" => 10,
-"'Luckiest girl in the world'" =>  10,
-"First to tell Rachel she is falling in love" => 20,
-"Tells Rachel she is falling in Love (not first)" => 10,
-"Reveals tragic backstory" => 15,
-"Wins non-rose competition on a group date" => 10,
-"Full Nudity" => 25,
-"Requires medical attention" => 25,
-"References parents’ relationship as inspiration" => 10,
-"Helicopter Ride" => 10,
-"Treated to a private concert" => 10,
-"Discusses another Contestant with Bachelor" => 10,
-"Calls someone 'old'" => 10,
-"Drunk at a rose ceremony" => 10,
-"Says set location is 'the perfect place to fall in love'" =>  10,
-"Makes Rachel Cry" => 30,
-"Cries" => 5,
-"Makes another Contestant Cry" => 20,
-"Wins" => 50}
+# bachelor_plays = {"Rose Ceremony Rose" => 10,
+# "Group Date Rose" => 20,
+# "First Impression Rose" => 30,
+# "One-on-One Rose" => 20,
+# "Sent Home on One-on-One" => 35,
+# "Two-on-One Rose" => 25,
+# "Sent Home on Two-on-One" => 20,
+# "Quits the Show" => 50,
+# "Attempts to Return to Show After Being Eliminated" => 45,
+# "'Steals' Rachel away (MUST SAY 'STEAL')" => 10,
+# "'Fairytale'" => 10,
+# "'For the right reasons'" => 10,
+# "'Journey'" => 10,
+# "'I’m not here to make friends'" => 10,
+# "'Luckiest girl in the world'" =>  10,
+# "First to tell Rachel she is falling in love" => 20,
+# "Tells Rachel she is falling in Love (not first)" => 10,
+# "Reveals tragic backstory" => 15,
+# "Wins non-rose competition on a group date" => 10,
+# "Full Nudity" => 20,
+# "Requires medical attention" => 25,
+# "References parents’ relationship as inspiration" => 10,
+# "Helicopter Ride" => 10,
+# "Treated to a private concert" => 10,
+# "Discusses another Contestant with Bachelor" => 10,
+# "Calls someone 'old'" => 10,
+# "Drunk at a rose ceremony" => 10,
+# "Says set location is 'the perfect place to fall in love'" =>  10,
+# "Makes Rachel Cry" => 30,
+# "Cries" => 5,
+# "Makes another Contestant Cry" => 20,
+# "Wins" => 50}
 
 bachelorette_plays = {"Rose Ceremony Rose" => 10,
 "Group Date Rose" => 20,
 "First Impression Rose" => 30,
 "One-on-One Rose" => 20,
-"Sent Home on One-on-One" => 30,
-"Two-on-One Rose" => 30,
-"Sent Home on Two-on-One" => 20,
-"Quits the Show" => 50,
-"Attempts to Return to Show After Being Eliminated" => 30,
+"Sent Home on One-on-One" => 35,
+"Two-on-One Rose" => 25,
+"Sent Home on Two-on-One" => 10,
+"Quits the Show" => 60,
+"Attempts to Return to Show After Being Eliminated" => 45,
 "'Steals' Rachel away (MUST SAY 'STEAL')" => 10,
 "Says 'Fairytale'" => 10,
 "Says 'For the right reasons'" => 10,
 "Says 'Journey'" => 10,
-"Says 'I’m not here to make friends'" => 10,
-"Tell Rachel he is falling in love (first)" => 20,
+"Says 'I’m not here to make friends'" => 40,
+"Says they've 'never felt this way before'" => 10,
+"Tells Rachel he is falling in love (first)" => 20,
 "Tells Rachel he is falling in love (not first)" => 10,
 "Reveals tragic backstory" => 15,
-"Full Nudity" => 25,
-"Requires medical attention" => 25,
+"Full Nudity" => 20,
+"Requires medical attention" => 35,
 "References parents’ relationship as inspiration" => 10,
 "Helicopter Ride" => 10,
 "Treated to a private concert" => 10,
-"Discusses another Contestant with Bachelor" => 10,
-"Calls someone 'old'" => 10,
-"Drunk at a rose ceremony" => 10,
+"Drunk at a rose ceremony" => 20,
 "Says set location is 'the perfect place to fall in love'" =>  10,
-"Cries" => 5,
+"Cries" => 10,
 "Makes another Contestant Cry" => 20,
 "Involved in Physical Altercation" => 20,
 "Wins" => 50}
@@ -138,21 +137,28 @@ contestant_info.each_with_index do |info, n|
   end
 end
 
-Week.all.each do |week|
+Week.all.each_with_index do |week, index|
   week.contestants.each do |cont|
-    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(1..3))
-    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(1..3))
-    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(1..3))
-    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(1..3))
-    Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: rand(1..3))
+    unless (cont.name == "Dean" && index == 7)
+      Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: [1,1,1,2].sample)
+      Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: [1,1,1,2].sample)
+      Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: [1,1,1,2].sample)
+      Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: [1,1,1,2].sample)
+      Action.create(week: week, contestant: cont, play: Play.all[rand(100)], count: [1,1,1,2].sample)
+    end
   end
 end
+## Dean's Actions
+Action.create(week: Week.all[7], contestant: Contestant.find_by(name: "Dean"), play: Play.find_by(description: "Drunk At A Rose Ceremony"), count: 1)
+Action.create(week: Week.all[7], contestant: Contestant.find_by(name: "Dean"), play: Play.find_by(description: "Says They've 'Never Felt This Way Before'"), count: 1)
+Action.create(week: Week.all[7], contestant: Contestant.find_by(name: "Dean"), play: Play.find_by(description: "Cries"), count: 2)
+
 
 team_1a = Team.create(name: "Here for the Wrong Reasons", league: league_1)
 team_1b = Team.create(name: "Chris Harrison", league: league_1)
 team_1c = Team.create(name: "Here for the Right Reasons", league: league_1)
 
-team_2a = Team.create(name: "Corrine's Nanny", league: league_2)
+team_2a = Team.create(name: "Corrine's Naps", league: league_2)
 team_2b = Team.create(name: "Bryan's Cheek Implants", league: league_2)
 team_2c = Team.create(name: "Taylor's Emotional Intelligence", league: league_2)
 
