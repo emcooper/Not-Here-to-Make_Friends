@@ -2,52 +2,54 @@
 "Group Date Rose" => 20,
 "First Impression Rose" => 30,
 "One-on-One Rose" => 20,
-"Sent Home on One-on-One" => 40,
-"Two-on-One Rose" => 30,
+"Sent Home on One-on-One" => 35,
+"Two-on-One Rose" => 25,
 "Sent Home on Two-on-One" => 10,
-"Quits the Show" => 50,
+"Quits the Show" => 60,
 "Wins" => 50,
-"Attempts to Return to Show After Being Eliminated" => 30} %>
+"Attempts to Return to Show After Being Eliminated" => 45} %>
 
-<% things_they_do = {"Reveals tragic backstory" => 15,
-"Full Nudity" => 25,
-"Requires medical attention" => 25,
+<% things_they_do = {
+"Cries" => 10,
+"Makes another Contestant Cry" => 20,
+"Reveals tragic backstory" => 15,
+"Requires medical attention" => 35,
 "Helicopter Ride" => 10,
 "Treated to a private concert" => 10,
-"Drunk at a rose ceremony" => 10,
-"Cries" => 5,
-"Makes another Contestant Cry" => 20,
-"Involved in Physical Altercation" => 20} %>
+"Drunk at a rose ceremony" => 20,
+"Involved in Physical Altercation" => 20,
+"Full Nudity" => 20,
+} %>
 
-<% things_they_say = {"'Steals' Rachel away (MUST SAY 'STEAL')" => 10,
-"Gossips about Other Contestants with Rachel" => 10,
+<% things_they_say = {
+"Says 'I’m not here to make friends'" => 40,
+"Says they've 'never felt this way before'" => 10,
+"'Steals' Rachel away (MUST SAY 'STEAL')" => 10,
 "Says 'Fairytale'" => 10,
 "Says 'For the right reasons'" => 10,
 "Says 'Journey'" => 10,
-"Says 'I’m not here to make friends'" => 10,
 "References parents’ relationship as inspiration" => 10,
 "Says this is 'the perfect place to fall in love'" =>  10,
-"Calls someone 'old'" => 10,
-"Tell Rachel he is falling in love (first)" => 20,
+"Tells Rachel he is falling in love (first)" => 20,
 "Tells Rachel he is falling in love (not first)" => 10} %>
 
 <div class="col-md-4">
-  <h5 class ="text-center">Show Milestones</h5>
+  <h5 class ="text-center pts-milestones">Show Milestones</h5><br>
   <% show_milestones.each do |description, points| %>
-    <p class =""><span class=" action-description"><%= description %></span><span class="float-right"><%= points %></span></p>
+    <p class =""><span class=" action-description"><%= description.titleize %></span><span class="float-right"><%= points %></span></p>
   <% end %>
 </div>
-<div class="col-md-4">
-  <h5 class ="text-center">Things They Do</h5>
+<div class="col-md-4 middle-col">
+  <h5 class ="text-center pts-do">Things They Do</h5><br>
   <% things_they_do.each do |description, points| %>
-    <p class =""><span class=" action-description"><%= description %></span><span class="float-right"><%= points %></span></p>
+    <p class =""><span class=" action-description"><%= description.titleize %></span><span class="float-right"><%= points %></span></p>
   <% end %>
 </div>
 <div class="col-md-4">
 
-  <h5 class ="text-center">Things They Say</h5>
+  <h5 class ="text-center pts-say">Things They Say</h5><br>
   <% things_they_say.each do |description, points| %>
-    <p class =""><span class=" action-description"><%= description %></span><span class="float-right"><%= points %></span></p>
+    <p class =""><span class=" action-description"><%= description.titleize %></span><span class="float-right"><%= points %></span></p>
   <% end %>
 
 

@@ -32,3 +32,18 @@ h5.card-title {
   width: 1300px;
   margin-left: -32%;
 }
+
+.pts-milestones, .pts-do, .pts-say {
+  text-decoration: underline;
+  color: $navbar-pink;
+}
+
+.modal-scoring-header {
+  background-color: $card-header-blue;
+}
+
+
+.middle-col {
+  border-left: black 1px solid;
+  border-right: black 1px solid;
+}
