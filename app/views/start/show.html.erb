@@ -1,10 +1,14 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4">Start or Join a League!</h1>
+<br>
+  <h3 class="">The draft for <%= current_season.first_name %>'s season takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal) %></h3>
+  <div class="text-center">
 
-<div class="jumbotron">
-  <h1 class="display-3 text-center">Let's get started!</h1>
-  <p class="lead">Create a new league and invite your friends, or join an existing league. Each league can have 4 teams and up to 5 people can be on a team!</p>
+  <img class = "big-square-headshot" src="<%= current_season.headshot %>" alt="contestant-headshot">
+</div>
   <hr class="my-4">
-  <p class="lead text-center">
-    <%= link_to "Make a League!", "#", class: "btn btn-primary btn-lg"%>
+  <p class="lead">
+    <%= link_to "Create a League!", "#", class: "btn btn-primary btn-lg"%>
     <%= link_to "Join a League!", "#", class: "btn btn-primary btn-lg"%>
   </p>
 </div>
