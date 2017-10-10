@@ -1,14 +1,43 @@
 <div class="jumbotron text-center">
   <h1 class="display-4">Start or Join a League!</h1>
 <br>
+<% if current_season %>
   <h3 class="">The draft for <%= current_season.first_name %>'s season takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal) %></h3>
   <div class="text-center">
 
   <img class = "big-square-headshot" src="<%= current_season.headshot %>" alt="contestant-headshot">
 </div>
+<% end %>
+
   <hr class="my-4">
   <p class="lead">
-    <%= link_to "Create a League!", "#", class: "btn btn-primary btn-lg"%>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-league-modal">
+      Create a League!
+    </button>
     <%= link_to "Join a League!", "#", class: "btn btn-primary btn-lg"%>
   </p>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="create-league-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create a League</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(:league, url: leagues_path) do |f| %>
+          <%= f.label :name, "League Name" %>
+          <%= f.text_field :name %><br>
+          <%= f.label :team, "Team Name" %>
+          <%= f.text_field :team %><br><br>
+          <%= f.submit 'Create', :class =>"btn btn-primary"%>
+        <% end %>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>

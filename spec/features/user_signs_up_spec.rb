@@ -15,7 +15,7 @@ RSpec.feature "User can sign up for account" do
 
       expect(page).to have_content("Your account has been created!")
       expect(page).to have_link("Join a League!")
-      expect(page).to have_link("Make a League!")
+      expect(page).to have_button("Create a League!")
     end
   end
   context "with invalid password" do
