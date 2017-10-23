@@ -1,8 +1,8 @@
 class ContestantShowPresenter
   attr_reader :contestant
 
-  def initialize(company_id)
-    @contestant = Contestant.find(company_id)
+  def initialize(id)
+    @contestant = Contestant.find(id)
   end
 
   def tweets
@@ -12,5 +12,4 @@ class ContestantShowPresenter
   def personality
     Personality.generate_from_watson(tweets)
   end
-
 end
