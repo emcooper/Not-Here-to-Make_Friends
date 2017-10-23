@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users, only: [:show, :new, :create]
-  resources :leagues, only: [:show]
+  resources :leagues, only: [:show, :create]
   get '/start', to: 'start#show'
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]

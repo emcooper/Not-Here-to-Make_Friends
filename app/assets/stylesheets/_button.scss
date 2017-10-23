@@ -9,6 +9,12 @@ button {
   margin: 0 10px;
 }
 
+.btn-disabled {
+  background-color: rgba(104, 148, 255, 0.36);
+  border: #48B4F5;
+  margin: 0 10px;
+}
+
 .nav-pills .nav-link {
   background-color: $disabled-tab-blue;
   color: white;
