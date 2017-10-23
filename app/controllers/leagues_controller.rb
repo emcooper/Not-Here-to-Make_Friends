@@ -6,7 +6,7 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.create!(league_params)
-    current_user.teams.create!(name: params[:team], league: @league)
+    current_user.teams.create!(name: params[:league][:team], league: @league)
     redirect_to @league
   end
 
