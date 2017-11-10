@@ -15,7 +15,6 @@
     </div>
 <div class="sortable col-md-10">
     <% @team.draft_picks.order("rank").each do |pick| %>
-    <div>
       <div class="card draft-card" data-id="<%= pick.contestant.id %>">
         <div class="card-body d-flex justify-content-between">
             <div class="draft-img-container">
@@ -38,7 +37,6 @@
           <% end %>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div><br>
