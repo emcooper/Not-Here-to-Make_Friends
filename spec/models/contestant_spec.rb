@@ -10,6 +10,8 @@ RSpec.describe Contestant, type: :model do
     it {should have_many(:actions)}
     it {should have_many(:plays)}
     it {should have_many(:draft_picks)}
+    it {should have_many(:contestant_qualities)}
+    it {should have_many(:qualities)}
   end
 
   describe "instance methods" do

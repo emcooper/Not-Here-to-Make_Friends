@@ -7,6 +7,8 @@ class Contestant < ApplicationRecord
   has_many :actions
   has_many :plays, through: :actions
   has_many :draft_picks
+  has_many :contestant_qualities
+  has_many :qualities, through: :contestant_qualities
 
   after_create :add_empty_actions
 
