@@ -77,6 +77,15 @@ player_5 = User.create(name: Faker::Friends.character, email: "user_5@gmail.com"
 new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
 
 
+qualities = ["Adventurousness", "Imagination", "Intellect", "Authority-challenging",
+  "Self-discipline", "Assertiveness", "Cheerfulness", "Outgoing", "Modesty",
+  "Morality", "Anger", "Anxiety"]
+
+qualities.each do |quality_name|
+  Quality.create(name: quality_name)
+end
+
+
 rachel_season = Season.create(first_name: "Rachel", last_name: "Lindsay", headshot: "http://img.etonline.com/1242911076001/201705/288/1242911076001_5434770022001_et-051417-RachelLindsayOutfitshu.jpg?pubId=1242911076001", season_number: 13, season_type: "bachelorette", status: "active", draft_date: "2017-10-1")
 nick_season = Season.create(first_name: "Nick", last_name: "Vial", headshot: "https://img.buzzfeed.com/buzzfeed-static/static/2017-04/25/15/campaign_images/buzzfeed-prod-fastlane-03/nick-viall-reveals-why-he-kept-that-yellow-bracel-2-9069-1493149672-2_dblbig.jpg", season_number: 21, season_type: "bachelor", status: "retired", draft_date: "2017-10-1")
 league_1 = League.create(name: "The Final Rose", season: rachel_season)
@@ -167,5 +176,6 @@ player_2.teams << [team_1a, team_2b]
 player_3.teams << [team_1c, team_2c]
 player_4.teams << [team_1b, team_2a]
 player_5.teams << [team_1b, team_2c]
+
 
 puts("SUCCESSFUL SEEDING!")
