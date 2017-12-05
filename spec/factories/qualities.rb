@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :quality do
-    name "MyString"
+    sequence :name {|n| "Quality #{n}"}
   end
 end
