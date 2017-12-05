@@ -101,5 +101,13 @@ RSpec.describe Contestant, type: :model do
       expect(cont_2.average_draft_rank).to eq("2nd")
       expect(cont_3.average_draft_rank).to eq("3rd")
     end
+
+    it "#analyze_personality is used as a callback and creates contestant qualities" do
+      create_list(:quality, 3)
+      contestant = create(:contestant)
+      expect(contestant.contestant_qualities.count).to eq(3)
+      expect(contestant.contestant_qualities.first.quality.name).to be_a(String)
+      expect(contestant.contestant_qualities.first.percentage).to be_a(Float)
+    end
   end
 end
