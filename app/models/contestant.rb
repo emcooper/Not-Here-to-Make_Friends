@@ -56,7 +56,8 @@ class Contestant < ApplicationRecord
 
   def analyze_personality
     if ENV["RAILS_ENV"] == "production"
-      # make api calls
+      tweets = TwitterService.new(self).tweets
+      WatsonService.new(tweets, self).save_qualities
     else
       Quality.all.each do |quality|
         ContestantQuality.create(percentage: rand(0..100),
