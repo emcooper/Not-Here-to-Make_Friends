@@ -43,8 +43,6 @@ class WatsonService
   end
 
   def desired_traits
-    ["Adventurousness", "Imagination", "Intellect", "Authority-challenging",
-      "Self-discipline", "Assertiveness", "Cheerfulness", "Outgoing", "Modesty",
-      "Morality", "Anger", "Anxiety"]
+    Quality.pluck(:name)
   end
 end
