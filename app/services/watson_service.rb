@@ -29,7 +29,7 @@ class WatsonService
 
   def save_qualities
     Quality.all.each do |quality|
-      ContestantQuality.create(percentage: raw_data[quality.name],
+      ContestantQuality.create(percentage: parse_traits[quality.name] * 100,
                                quality: quality,
                                contestant: @contestant)
     end
