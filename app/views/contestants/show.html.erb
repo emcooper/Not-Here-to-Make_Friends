@@ -1,21 +1,21 @@
-<%= tag :div, class: "contestant_information", data: {id: @contestant_presenter.contestant.id, name: @contestant_presenter.contestant.name} %>
+<%= tag :div, class: "contestant_information", data: {id: @contestant.id, name: @contestant.name} %>
 
 <div class="row">
 <div class="col-md-6">
 <div class="square-img-container">
 
-<img class = "img-responsive img-fluid square-headshots" src="<%= @contestant_presenter.contestant.headshot %> " alt="contestant headshot">
+<img class = "img-responsive img-fluid square-headshots" src="<%= @contestant.headshot %> " alt="contestant headshot">
 </div>
 </div>
 
 <div class="col-md-6">
-<h1 class = "cont-name"><%= @contestant_presenter.contestant.name %></h1>
+<h1 class = "cont-name"><%= @contestant.name %></h1>
 <div class="contestant-info">
 
 
-<p><i class="fa fa-heartbeat" aria-hidden="true"></i>  Age: <%= @contestant_presenter.contestant.age %></p>
-<p><i class="fa fa-map-marker" aria-hidden="true"></i>   Hometown: <%= @contestant_presenter.contestant.hometown %></p>
-<p><i class="fa fa-briefcase" aria-hidden="true"></i> Occupation: <%= @contestant_presenter.contestant.occupation %></p>
+<p><i class="fa fa-heartbeat" aria-hidden="true"></i>  Age: <%= @contestant.age %></p>
+<p><i class="fa fa-map-marker" aria-hidden="true"></i>   Hometown: <%= @contestant.hometown %></p>
+<p><i class="fa fa-briefcase" aria-hidden="true"></i> Occupation: <%= @contestant.occupation %></p>
 </div>
 </div>
 </div>
@@ -61,7 +61,7 @@
             <img class = "medal-img" src="https://image.flaticon.com/icons/png/128/179/179249.png" alt="">
           </div><br>
 
-             <h4><%= @contestant_presenter.contestant.ranking %> Place</h4>
+             <h4><%= @contestant.ranking %> Place</h4>
            </div>
          </div>
        </div>
@@ -77,7 +77,7 @@
               <i class="fa fa-star points" aria-hidden="true"></i>
             </div>
 
-             <h4><%= @contestant_presenter.contestant.weekly_points(current_week) %></h4>
+             <h4><%= @contestant.weekly_points(current_week) %></h4>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
                <i class="fa fa-star points" aria-hidden="true"></i>
              </div>
 
-              <h4><%= @contestant_presenter.contestant.season_points %></h4>
+              <h4><%= @contestant.season_points %></h4>
              </div>
            </div>
          </div>
@@ -106,8 +106,8 @@
                <h5>Highest Scoring Play of the Season</h5>
              </div>
              <div class="card-body">
-               <h5 class = "play-points"><i class="fa fa-minus" aria-hidden="true"></i> <%= @contestant_presenter.contestant.biggest_play.point_value %> Points <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                <%= @contestant_presenter.contestant.biggest_play.description %><br>
+               <h5 class = "play-points"><i class="fa fa-minus" aria-hidden="true"></i> <%= @contestant.biggest_play.point_value %> Points <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                <%= @contestant.biggest_play.description %><br>
               </div>
             </div>
           </div>
@@ -116,12 +116,12 @@
       <h4 id="personality-profile">Personality</h4>
       <div class = "section-underline"></div>
     </div>
-  <% cache "contestant-#{@contestant_presenter.contestant.id}-personality" do %>
+  <% cache "contestant-#{@contestant.id}-personality" do %>
   <div class="row text-center personality">
-    <% @contestant_presenter.personality.traits.each do |trait| %>
+    <% @contestant.contestant_qualities.each do |quality| %>
       <div class="col-md-2">
-        <p><%= trait.title %></p>
-        <div class = "circle-chart" id="trait-<%= trait.title.downcase %>"  data-percent="<%= trait.score * 100 %>"></div>
+        <p><%= quality.quality.name %></p>
+        <div class = "circle-chart" id="trait-<%= quality.quality.name.downcase %>"  data-percent="<%= quality.percentage %>"></div>
       </div>
       <% end %>
       <% end %>
@@ -131,6 +131,6 @@
     <div class = "section-underline"></div>
   </div>
   <p>
-    <a class="twitter-timeline" href="https://twitter.com/<%= @contestant_presenter.contestant.twitter_handle %>">Recent Tweets by <%= @contestant_presenter.contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="twitter-timeline" href="https://twitter.com/<%= @contestant.twitter_handle %>">Recent Tweets by <%= @contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </p>
 </div>

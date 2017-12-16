@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919133139) do
+ActiveRecord::Schema.define(version: 20171202184905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20170919133139) do
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_comments_on_league_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "contestant_qualities", force: :cascade do |t|
+    t.float "percentage"
+    t.bigint "contestant_id"
+    t.bigint "quality_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contestant_id"], name: "index_contestant_qualities_on_contestant_id"
+    t.index ["quality_id"], name: "index_contestant_qualities_on_quality_id"
   end
 
   create_table "contestants", force: :cascade do |t|
@@ -76,6 +86,12 @@ ActiveRecord::Schema.define(version: 20170919133139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["season_type"], name: "index_plays_on_season_type"
+  end
+
+  create_table "qualities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -151,6 +167,8 @@ ActiveRecord::Schema.define(version: 20170919133139) do
   add_foreign_key "actions", "weeks"
   add_foreign_key "comments", "leagues"
   add_foreign_key "comments", "users"
+  add_foreign_key "contestant_qualities", "contestants"
+  add_foreign_key "contestant_qualities", "qualities"
   add_foreign_key "contestants", "seasons"
   add_foreign_key "draft_picks", "contestants"
   add_foreign_key "draft_picks", "teams"

@@ -10,6 +10,8 @@ RSpec.describe Contestant, type: :model do
     it {should have_many(:actions)}
     it {should have_many(:plays)}
     it {should have_many(:draft_picks)}
+    it {should have_many(:contestant_qualities)}
+    it {should have_many(:qualities)}
   end
 
   describe "instance methods" do
@@ -98,6 +100,14 @@ RSpec.describe Contestant, type: :model do
       expect(cont_1.average_draft_rank).to eq("1st")
       expect(cont_2.average_draft_rank).to eq("2nd")
       expect(cont_3.average_draft_rank).to eq("3rd")
+    end
+
+    it "#analyze_personality is used as a callback and creates contestant qualities" do
+      create_list(:quality, 3)
+      contestant = create(:contestant)
+      expect(contestant.contestant_qualities.count).to eq(3)
+      expect(contestant.contestant_qualities.first.quality.name).to be_a(String)
+      expect(contestant.contestant_qualities.first.percentage).to be_a(Float)
     end
   end
 end

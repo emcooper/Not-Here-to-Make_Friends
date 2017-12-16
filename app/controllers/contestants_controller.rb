@@ -1,5 +1,5 @@
 class ContestantsController < ApplicationController
   def show
-    @contestant_presenter = ContestantShowPresenter.new(params[:id])
+    @contestant = Contestant.find(params[:id])
   end
 end

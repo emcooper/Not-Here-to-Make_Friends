@@ -7,8 +7,10 @@ class Contestant < ApplicationRecord
   has_many :actions
   has_many :plays, through: :actions
   has_many :draft_picks
+  has_many :contestant_qualities
+  has_many :qualities, through: :contestant_qualities
 
-  after_create :add_empty_actions
+  after_create :add_empty_actions, :analyze_personality
 
   def season_points
     actions.joins(:play).sum("point_value * count")
@@ -49,6 +51,19 @@ class Contestant < ApplicationRecord
   def add_empty_actions
     season.weeks.each do |week|
       Action.create(week: week, contestant: self, play: Play.first, count: 0)
+    end
+  end
+
+  def analyze_personality
+    if ENV["RAILS_ENV"] == "production"
+      tweets = TwitterService.new(self).tweets
+      WatsonService.new(tweets, self).save_qualities
+    else
+      Quality.all.each do |quality|
+        ContestantQuality.create(percentage: rand(0..100),
+                                 quality: quality,
+                                 contestant: self)
+      end
     end
   end
 end
