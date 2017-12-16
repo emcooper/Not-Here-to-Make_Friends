@@ -28,8 +28,9 @@ class WatsonService
   end
 
   def save_qualities
+    watson_analysis = parse_traits
     Quality.all.each do |quality|
-      ContestantQuality.create(percentage: parse_traits[quality.name] * 100,
+      ContestantQuality.create(percentage: watson_analysis[quality.name] * 100,
                                quality: quality,
                                contestant: @contestant)
     end
