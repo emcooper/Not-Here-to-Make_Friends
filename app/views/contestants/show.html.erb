@@ -106,8 +106,12 @@
                <h5>Highest Scoring Play of the Season</h5>
              </div>
              <div class="card-body">
-               <h5 class = "play-points"><i class="fa fa-minus" aria-hidden="true"></i> <%= @contestant.biggest_play.point_value %> Points <i class="fa fa-minus" aria-hidden="true"></i></h5>
-                <%= @contestant.biggest_play.description %><br>
+               <% if @contestant.biggest_play %>
+                 <h5 class = "play-points"><i class="fa fa-minus" aria-hidden="true"></i> <%= @contestant.biggest_play.point_value %> Points <i class="fa fa-minus" aria-hidden="true"></i></h5>
+                  <%= @contestant.biggest_play.description %><br>
+              <% else %>
+                <br><br><h3>No plays yet!</h3>
+              <% end %>
               </div>
             </div>
           </div>
@@ -116,14 +120,15 @@
       <h4 id="personality-profile">Personality</h4>
       <div class = "section-underline"></div>
     </div>
-  <% cache "contestant-#{@contestant.id}-personality" do %>
   <div class="row text-center personality">
     <% @contestant.contestant_qualities.each do |quality| %>
-      <div class="col-md-2">
-        <p><%= quality.quality.name %></p>
-        <div class = "circle-chart" id="trait-<%= quality.quality.name.downcase %>"  data-percent="<%= quality.percentage %>"></div>
-      </div>
+        <div class="col-md-2">
+          <p><%= quality.quality.name %></p>
+          <div class = "circle-chart" id="trait-<%= quality.quality.name.downcase %>"  data-percent="<%= quality.percentage %>"></div>
+        </div>
       <% end %>
+      <% if @contestant.contestant_qualities.empty? %>
+        <h4><%= @contestant.name %> isn't on twitter, so we can't do a personality analysis &#x1F61E; </h4>
       <% end %>
   </div>
   <div class="text-left section-header">
@@ -131,6 +136,10 @@
     <div class = "section-underline"></div>
   </div>
   <p>
-    <a class="twitter-timeline" href="https://twitter.com/<%= @contestant.twitter_handle %>">Recent Tweets by <%= @contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <% if @contestant.twitter_handle %>
+      <a class="twitter-timeline" href="https://twitter.com/<%= @contestant.twitter_handle %>">Recent Tweets by <%= @contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <% else %>
+      <h4><%= @contestant.name %> isn't on twitter &#x1F615 </h4>
+    <% end %>
   </p>
 </div>
