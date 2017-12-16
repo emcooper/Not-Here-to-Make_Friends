@@ -99,7 +99,7 @@ date = Date.new(2017, 8 , 15)
 end
 
 contestant_info = [{name: "Bryan", twitter_handle: "@TheAbDoctor", headshot: "http://img.usmagazine.com/480-width/bryan-zoom-5d94994e-9cf5-454f-af90-f2c663d96be2.jpg"},
-                    {name: "Peter", twitter_handle: "@PeterWIKraus", headshot: "http://img.usmagazine.com/1200-width/peter-zoom-e4e8df12-62c5-4d24-8dce-f2b2371c262d.jpg"},
+                    {name: "Peter", twitter_handle: "@peterkrauswi", headshot: "http://img.usmagazine.com/1200-width/peter-zoom-e4e8df12-62c5-4d24-8dce-f2b2371c262d.jpg"},
                     {name: "Eric", twitter_handle: "@Eric_Bigger", headshot: "http://img.usmagazine.com/1200-width/eric-zoom-8791f180-30a3-4bb7-86bd-a1e8eec6e570.jpg"},
                     {name: "Dean", twitter_handle: "@deanie_babies", headshot: "http://img.usmagazine.com/480-width/dean-zoom-ddb8ae82-cfe7-4110-84ad-07288bc27117.jpg"},
                     {name: "Adam", twitter_handle: "@AdamJGottschalk", headshot: "http://img.usmagazine.com/480-width/adam-zoom-414f4989-2604-4531-bd02-9b49c925ba33.jpg"},
