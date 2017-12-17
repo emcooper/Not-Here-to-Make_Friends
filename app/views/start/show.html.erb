@@ -55,10 +55,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_for(:league, url: leagues_path) do |f| %>
-          <%= f.label :name, "League Name" %>
-          <%= f.text_field :name %><br>
-          <%= f.submit 'Find League', :class =>"btn btn-primary"%>
+        <%= form_tag("/league_search", method: "get") do %>
+          <%= label_tag(:q, "League Name:") %>
+          <%= text_field_tag(:q) %>
+          <%= submit_tag("Find League", :class =>"btn btn-primary") %>
         <% end %>
         <br>
       </div>
