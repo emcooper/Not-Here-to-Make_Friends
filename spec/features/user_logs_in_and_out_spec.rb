@@ -1,6 +1,9 @@
 RSpec.feature "User logs in and out" do
   context "with valid credentials" do
     scenario "they are logged in and see profile page and can log out" do
+      season = create(:season)
+      allow_any_instance_of(ApplicationController).to receive(:current_season).and_return(season)
+
       email = "user@gmail.com"
       password = "user123456"
       user = create(:user, email: email, password: password)
@@ -38,6 +41,8 @@ RSpec.feature "User logs in and out" do
   end
   context "with invalid email" do
     scenario "they are redirected to login page and shown error message" do
+      season = create(:season)
+      allow_any_instance_of(ApplicationController).to receive(:current_season).and_return(season)
       email = "user@gmail.com"
       password = "user123456"
       user = create(:user, email: email, password: password)

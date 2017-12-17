@@ -1,6 +1,8 @@
 RSpec.feature "User can sign up for account" do
   context "with valid email and password" do
     it "they are able to sign up and are redirected to profile" do
+      season = create(:season)
+      allow_any_instance_of(ApplicationController).to receive(:current_season).and_return(season)
       name = "Ellen"
       email = "ellen@gmail.com"
       password = "password123"
@@ -14,7 +16,7 @@ RSpec.feature "User can sign up for account" do
       click_on "Sign Up!"
 
       expect(page).to have_content("Your account has been created!")
-      expect(page).to have_link("Join a League!")
+      expect(page).to have_button("Join a League!")
       expect(page).to have_button("Create a League!")
     end
   end

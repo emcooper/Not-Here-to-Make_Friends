@@ -4,7 +4,9 @@ RSpec.describe User, type: :model do
   describe "relationships" do
     it {should have_many(:team_members)}
     it {should have_many(:teams)}
+    it {should have_many(:identities)}
   end
+
   describe 'validations' do
     it {should validate_presence_of(:password)}
     it {should validate_confirmation_of(:password)}
