@@ -15,6 +15,7 @@ class LeaguesController < ApplicationController
 
   def league_params
     name = params.require(:league).permit(:name)
+    name[:name].strip!
     name.merge(season_id: current_season.id)
   end
 end
