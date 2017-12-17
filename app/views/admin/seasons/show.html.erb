@@ -27,7 +27,9 @@
         <div class="card-header text-center">
           <h4>Contestants (<%= @season.contestants.count %>)</h4>
         </div><br>
-        <%= link_to "Add Contestant", "#", class: "btn btn-primary" %>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-contestant-modal">
+          Add Contestant
+        </button>
         <div class="card-body row">
           <% @season.contestants.each do |contestant| %>
           <div class="col-md-6">
@@ -56,6 +58,36 @@
   </div>
 
 
-
+  <!-- create contestant modal -->
+  <div class="modal fade" id="create-contestant-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a Contestant</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_for(:contestant, url: admin_contestants_path) do |f| %>
+            <%= f.hidden_field :season_id, :value => @season.id %>
+            <div class="form-group row">
+              <%= f.label :name, "Name", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :name, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :headshot, "Headshot", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :headshot, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :twitter_handle, "Twitter", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :twitter_handle, class: "form-control col-md-8" %>
+            </div>
+            <br><br>
+            <%= f.submit 'Create', :class =>"btn btn-primary"%>
+          <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
   </div>
-</div>

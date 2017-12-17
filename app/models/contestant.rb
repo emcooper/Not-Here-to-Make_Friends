@@ -1,4 +1,5 @@
 class Contestant < ApplicationRecord
+  validates_presence_of :name
   belongs_to :season
   has_many :team_contestants
   has_many :teams, through: :team_contestants
