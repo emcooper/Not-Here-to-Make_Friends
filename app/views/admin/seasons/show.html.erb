@@ -48,9 +48,28 @@
       <div class="card">
         <div class="card-header text-center">
           <h4>Schedule</h4>
-        </div>
+        </div><br>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-week-modal">
+          Add Episode
+        </button>
         <div class="card-body">
 
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Episode #</th>
+                <td scope="col">Date</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @season.weeks.order(:date).each do |week| %>
+              <tr>
+                <th><%= week.week_number %></th>
+                <td><%= week.date %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
     </div>
 
@@ -94,6 +113,36 @@
             <div class="form-group row">
               <%= f.label :occupation, "Occupation", class: "col-md-3 col-form-label" %>
               <%= f.text_field :occupation, class: "form-control col-md-8" %>
+            </div>
+            <br><br>
+            <%= f.submit 'Create', :class =>"btn btn-primary"%>
+          <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- create week modal -->
+  <div class="modal fade" id="create-week-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add an Episode</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_for(:week, url: admin_weeks_path) do |f| %>
+            <%= f.hidden_field :season_id, :value => @season.id %>
+            <div class="form-group row">
+              <%= f.label :week_number, "Episode Number", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :week_number, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :date, "Date", class: "col-md-3 col-form-label" %>
+              <%= f.date_field :date, class: "form-control col-md-8" %>
             </div>
             <br><br>
             <%= f.submit 'Create', :class =>"btn btn-primary"%>
