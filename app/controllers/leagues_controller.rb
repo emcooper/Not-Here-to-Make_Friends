@@ -6,7 +6,8 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.create!(league_params)
-    current_user.teams.create!(name: params[:league][:team], league: @league)
+    @team = current_user.teams.create!(name: params[:league][:team], league: @league)
+    flash[:notice] = "You've created league #{@league.name} and team #{@team.name}!"
     redirect_to @league
   end
 
@@ -14,6 +15,7 @@ class LeaguesController < ApplicationController
 
   def league_params
     name = params.require(:league).permit(:name)
+    name[:name].strip!
     name.merge(season_id: current_season.id)
   end
 end

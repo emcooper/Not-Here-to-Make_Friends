@@ -1,0 +1,48 @@
+<h4 class = "text-center">Join or Create Team! </h4>
+<div class="card">
+<div>
+<table class="table">
+  <thead class ="card-header">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Team Name</th>
+      <td scope="col">Members</td>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @league.teams.each do |team| %>
+      <tr>
+        <th scope="row"></th>
+        <th scope="row"><%= team.name %></th>
+        <td><% team.users.each do |user| %>
+            <%= user.name %><br>
+            <% end %>
+        </td>
+        <td><%= link_to "Join", team_members_path(team_id: team.id, user_id: current_user.id), method: :post, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<% if @league.teams.count < 4 %>
+<button class="btn btn-primary btn-no-margin" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Create a New Team
+</button>
+<% else %>
+  <p class = "card-header">Only 4 teams are allowed per league, but teams can have as many members as you want.</p>
+<% end %>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <%= form_for(:team, url: teams_path) do |f| %>
+      <%= f.hidden_field :league_id, :value => @league.id %>
+      <%= f.label :team_name, "Team Name" %>
+      <%= f.text_field :team_name %>
+      <%= f.submit 'Create', :class =>"btn btn-primary"%>
+    <% end %>
+  </div>
+</div>
+
+
+
+</div>

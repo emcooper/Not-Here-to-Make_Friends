@@ -17,6 +17,10 @@ ul div.dropdown-menu  a {
   color: black;
 }
 
+ul div.dropdown-menu  a.green-text {
+  color: $new-green;
+}
+
 ul div.dropdown-menu  a:hover {
   color: $navbar-pink;
 }

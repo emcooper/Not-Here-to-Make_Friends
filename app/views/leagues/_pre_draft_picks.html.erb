@@ -1,7 +1,8 @@
 <div class="jumbotron text-center">
   <h1 class="display-4">The draft for <%= current_season.first_name %>'s season takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %></h1>
 <br>
-  <h3 class="">Visit the draft room to set your rankings!</h3>
+<h3 class="">Visit the draft room to set rankings for team <%= @league.team_of_user(current_user).name %>!</h3>
+  <p class="">(It's autodraft, picks must be in before <%= current_season.draft_date.to_formatted_s(:long_ordinal)  %>)</p>
   <div class="text-center">
 
   <img class = "big-square-headshot" src="<%= current_season.headshot %>" alt="contestant-headshot">

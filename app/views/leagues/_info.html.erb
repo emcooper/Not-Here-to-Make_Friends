@@ -1,0 +1,19 @@
+<table class="table">
+  <thead class ="card-header">
+    <tr>
+      <th scope="col">Team Name</th>
+      <td scope="col">Members</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @league.teams.each do |team| %>
+      <tr>
+        <th scope="row"><%= team.name %></th>
+        <td><% team.users.each do |user| %>
+            <%= user.name %><br>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

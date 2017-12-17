@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get '/start', to: 'start#show'
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
-  resources :teams, only: [] do
+  get '/league_search', to: 'league_search#show'
+  resources :team_members, only: [:create]
+  resources :teams, only: [:create] do
     resources :draft_picks, only: [:index]
     put '/draft_picks', to: 'draft_picks#update'
   end
