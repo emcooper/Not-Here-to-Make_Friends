@@ -1,0 +1,27 @@
+<h4 class = "text-center">Join or Create Team! </h4>
+<div class="card">
+
+<table class="table">
+  <thead class ="card-header">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Team Name</th>
+      <td scope="col">Members</td>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @league.teams.each do |team| %>
+      <tr>
+        <th scope="row"></th>
+        <th scope="row"><%= team.name %></th>
+        <td><% team.users.each do |user| %>
+            <%= user.name %><br>
+            <% end %>
+        </td>
+        <td><%= link_to "Join", team_members_path, method: :post, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
