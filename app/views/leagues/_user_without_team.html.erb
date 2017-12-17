@@ -19,7 +19,7 @@
             <%= user.name %><br>
             <% end %>
         </td>
-        <td><%= link_to "Join", team_members_path, method: :post, class: "btn btn-primary" %></td>
+        <td><%= link_to "Join", team_members_path(team_id: team.id, user_id: current_user.id), method: :post, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
