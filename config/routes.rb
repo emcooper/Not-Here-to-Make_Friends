@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/auth/facebook', as: 'facebook_login'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   root 'users#show'
   get '/login', to: 'sessions#new'
