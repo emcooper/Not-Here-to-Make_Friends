@@ -12,11 +12,9 @@
     <% current_user.active_leagues.each do |league| %>
       <p><%= link_to league.name, league_path(league), class: "dropdown-item" %></p>
     <% end %>
-    <!-- <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a> -->
+    <% if current_season.draft_date && Time.now < current_season.draft_date %>
+      <p><%= link_to "+ Create or Join", start_path, class: "dropdown-item green-text" %></p>
+    <% end %>
   </div>
 </li>
       <li class="nav-item">
