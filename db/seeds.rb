@@ -69,12 +69,12 @@ bachelorette_plays.each do |description, points|
   Play.create!(description: description.titleize, point_value: points, season_type: "bachelorette")
 end
 
-ellen = User.create(name: "Ellen", email: "ellen@gmail.com", password: "password", role: 1)
-player_2 = User.create(name: Faker::Friends.character, email: "user_2@gmail.com", password: "password")
-player_3 = User.create(name: Faker::Friends.character, email: "user_3@gmail.com", password: "password")
-player_4 = User.create(name: Faker::Friends.character, email: "user_4@gmail.com", password: "password")
-player_5 = User.create(name: Faker::Friends.character, email: "user_5@gmail.com", password: "password")
-new_user = User.create(name: "New User", email: "new_user@gmail.com", password: "password")
+ellen = User.create(name: "Ellen", email: "ellen@gmail.com", role: 1)
+player_2 = User.create(name: Faker::Friends.character, email: "user_2@gmail.com")
+player_3 = User.create(name: Faker::Friends.character, email: "user_3@gmail.com")
+player_4 = User.create(name: Faker::Friends.character, email: "user_4@gmail.com")
+player_5 = User.create(name: Faker::Friends.character, email: "user_5@gmail.com")
+new_user = User.create(name: "New User", email: "new_user@gmail.com")
 
 
 qualities = ["Adventurousness", "Imagination", "Intellect", "Authority-challenging",

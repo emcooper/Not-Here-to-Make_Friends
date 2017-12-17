@@ -35,9 +35,10 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit user_path(user)
-
-      expect(find('tr', text: Team.first.name)).to have_content(6)
-      expect(find('tr', text: Team.second.name)).to have_content(4)
+      within(".tab-content") do
+        expect(find('tr', text: Team.first.name)).to have_content(6)
+        expect(find('tr', text: Team.second.name)).to have_content(4)
+      end
       expect(page).to_not have_content(Team.third.name)
     end
 
@@ -68,7 +69,7 @@ RSpec.feature "Authenticated user visits their profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit '/'
-      expect(page).to have_content("Visit the draft room to set your rankings!")
+      expect(page).to have_content("Visit the draft room")
       expect(page).to have_link("Draft Room")
 
       click_on "Draft Room"

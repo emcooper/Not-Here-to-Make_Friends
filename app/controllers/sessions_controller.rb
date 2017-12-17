@@ -1,15 +1,22 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def new
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
-      redirect_to @user
+    auth = request.env['omniauth.auth']
+    @identity = Identity.find_with_omniauth(auth)
+    if @identity == nil
+      @identity = Identity.create_with_omniauth(auth)
+    end
+    if @identity.user.present?
+      session[:user_id] = @identity.user.id
+      redirect_to @identity.user
     else
-      flash[:notice] = "Incorrect email or password. Please try again."
-      redirect_to login_path
+      User.create_with_omniauth(auth, @identity)
+      session[:user_id] = @identity.user.id
+      redirect_to @identity.user
     end
   end
 
