@@ -1,6 +1,6 @@
 <h4 class = "text-center">Join or Create Team! </h4>
 <div class="card">
-
+<div>
 <table class="table">
   <thead class ="card-header">
     <tr>
@@ -24,4 +24,21 @@
     <% end %>
   </tbody>
 </table>
+</div>
+<button class="btn btn-primary btn-no-margin" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Create a New Team
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <%= form_for(:team, url: teams_path) do |f| %>
+      <%= f.hidden_field :league_id, :value => @league.id %>
+      <%= f.label :team_name, "Team Name" %>
+      <%= f.text_field :team_name %>
+      <%= f.submit 'Create', :class =>"btn btn-primary"%>
+    <% end %>
+  </div>
+</div>
+
+
+
 </div>

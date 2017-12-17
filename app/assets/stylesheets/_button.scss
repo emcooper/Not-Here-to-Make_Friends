@@ -15,6 +15,10 @@ button {
   margin: 0 10px;
 }
 
+.btn-no-margin {
+  margin: 0;
+}
+
 .nav-pills .nav-link {
   background-color: $disabled-tab-blue;
   color: white;
