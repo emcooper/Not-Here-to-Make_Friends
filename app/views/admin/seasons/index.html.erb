@@ -1,10 +1,8 @@
 <div class="text-center">
-<h1 class = "page-header">All Seasons</h1><br><br>
+  <h1 class = "page-header">All Seasons</h1><br><br>
 </div>
 <div class="text-center">
-
-
-<% @seasons.each do |season| %>
-  <h4><%= link_to "#{season.season_number} - #{season.first_name}", '#' %></h4><br>
-<% end %>
+  <% @seasons.each do |season| %>
+    <h4><%= link_to "#{season.season_number} - #{season.first_name}", admin_season_path(season)  %></h4><br>
+  <% end %>
 </div>

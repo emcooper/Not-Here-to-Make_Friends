@@ -1,0 +1,61 @@
+<div class="text-center">
+  <h1 class = "page-header"><%= "#{@season.first_name} #{@season.last_name}" %></h1>
+</div>
+<div class="card">
+  <div class="card-header text-center">
+    <h4>Basic Info</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Season Number: <%= @season.season_number %></p>
+        <p>Season Type: <%= @season.season_type %></p>
+        <p>Status: <%= @season.status %></p>
+        <p>Draft Date: <%= @season.draft_date %></p>
+        <p>Drafted: <%= @season.drafted %></p>
+      </div>
+      <div class="col-md-6">
+        <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot">
+      </div>
+    </div>
+  </div>
+</div><br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h4>Contestants (<%= @season.contestants.count %>)</h4>
+        </div><br>
+        <%= link_to "Add Contestant", "#", class: "btn btn-primary" %>
+        <div class="card-body row">
+          <% @season.contestants.each do |contestant| %>
+          <div class="col-md-6">
+
+          <div class="circle-img-container">
+
+            <span class = "text-center"><img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot"></span>
+          </div>
+            <%= contestant.name %><br>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h4>Schedule</h4>
+        </div>
+        <div class="card-body">
+
+        </div>
+    </div>
+
+    </div>
+  </div>
+
+
+
+  </div>
+</div>

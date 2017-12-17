@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/draft', to: 'team_contestants#show'
     resources :team_contestants, only: [:create]
-    resources :seasons, only: [:new, :index]
+    resources :seasons, only: [:new, :index, :show]
   end
 
   namespace :api do
