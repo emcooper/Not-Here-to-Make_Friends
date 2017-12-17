@@ -10,6 +10,6 @@ class Admin::ContestantsController < Admin::BaseController
   private
 
   def contestant_params
-    params.require(:contestant).permit(:name, :headshot, :twitter_handle, :season_id)
+    params.require(:contestant).permit(:name, :headshot, :twitter_handle, :season_id, :occupation, :age, :hometown)
   end
 end

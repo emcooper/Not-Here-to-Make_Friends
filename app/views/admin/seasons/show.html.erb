@@ -83,6 +83,18 @@
               <%= f.label :twitter_handle, "Twitter", class: "col-md-3 col-form-label" %>
               <%= f.text_field :twitter_handle, class: "form-control col-md-8" %>
             </div>
+            <div class="form-group row">
+              <%= f.label :age, "Age", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :age, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :hometown, "Hometown", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :hometown, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :occupation, "Occupation", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :occupation, class: "form-control col-md-8" %>
+            </div>
             <br><br>
             <%= f.submit 'Create', :class =>"btn btn-primary"%>
           <% end %>
