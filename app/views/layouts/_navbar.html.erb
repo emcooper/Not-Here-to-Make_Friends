@@ -17,9 +17,21 @@
     <% end %>
   </div>
 </li>
+<% if current_week %>
       <li class="nav-item">
         <%= link_to "This Week", (week_path(current_week) if current_week) || "#", class: "nav-link" %>
       </li>
+
+<% end %>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contestants</a>
+  <div class="dropdown-menu">
+    <% current_season.contestants.each do |contestant| %>
+      <p><%= link_to contestant.name, contestant_path(contestant), class: "dropdown-item" %></p>
+    <% end %>
+  </div>
+</li>
+
       <% if current_admin? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Tasks</a>
