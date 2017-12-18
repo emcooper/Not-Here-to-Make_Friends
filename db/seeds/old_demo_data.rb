@@ -66,7 +66,7 @@ bachelorette_plays = {"Rose Ceremony Rose" => 10,
 "Wins" => 50}
 
 bachelorette_plays.each do |description, points|
-  Play.create!(description: description.titleize, point_value: points, season_type: "bachelorette")
+  Play.create!(description: description.titleize, point_value: points, season_type: "bachelorette", play_type: rand(0..2))
 end
 
 ellen = User.create(name: "Ellen", email: "ellen@gmail.com", role: 1)
@@ -92,7 +92,7 @@ league_1 = League.create(name: "The Final Rose", season: rachel_season)
 league_2 = League.create(name: "All the Roses", season: rachel_season)
 
 
-date = Date.new(2017, 8 , 15)
+date = Date.new(2017, 12 , 15)
 12.times do |n|
   Week.create(date: date, week_number: n, season: rachel_season)
   date += 7
