@@ -1,4 +1,5 @@
 class Week < ApplicationRecord
+  validates_presence_of :date
   belongs_to :season
   has_many :actions
   has_many :weekly_contestants
@@ -9,5 +10,5 @@ class Week < ApplicationRecord
     end_of_week = start_of_week + 7
     Week.where(date: start_of_week..end_of_week).first
   end
-  
+
 end
