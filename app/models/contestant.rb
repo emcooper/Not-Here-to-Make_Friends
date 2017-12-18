@@ -57,7 +57,7 @@ class Contestant < ApplicationRecord
 
   def analyze_personality
     if ENV["RAILS_ENV"] == "production"
-      if self.twitter_handle
+      if self.twitter_handle.length > 2
         tweets = TwitterService.new(self).tweets
         WatsonService.new(tweets, self).save_qualities
       end
