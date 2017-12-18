@@ -1,0 +1,61 @@
+<div class="text-center">
+  <h1 class = "page-header">All Seasons</h1><br><br>
+</div>
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-season-modal">
+  Add Season
+</button>
+<div class="text-center">
+  <% @seasons.each do |season| %>
+    <h4><%= link_to "#{season.season_number} - #{season.first_name}", admin_season_path(season)  %></h4><br>
+  <% end %>
+</div>
+
+<!-- create season modal -->
+<div class="modal fade" id="create-season-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a Season</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for(:season, url: admin_seasons_path) do |f| %>
+          <div class="form-group row">
+            <%= f.label :first_name, "First Name", class: "col-md-3 col-form-label" %>
+            <%= f.text_field :first_name, class: "form-control col-md-8" %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :last_name, "Last Name", class: "col-md-3 col-form-label" %>
+            <%= f.text_field :last_name, class: "form-control col-md-8" %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :season_number, "Season #", class: "col-md-3 col-form-label" %>
+            <%= f.text_field :season_number, class: "form-control col-md-8" %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :season_type, "Season Type", class: "col-md-3 col-form-label" %>
+          <div class="col-md-8">
+            <%= f.radio_button :season_type, 'bachelor', :checked => true %>
+            <%= label :season_type_bachelor, 'Bachelor' %>
+            <%= f.radio_button :season_type, 'bachelorette' %>
+            <%= label :season_type_bachelorette, 'Bachelorette' %>
+          </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :headshot, "Headshot", class: "col-md-3 col-form-label" %>
+            <%= f.text_field :headshot, class: "form-control col-md-8" %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :draft_date, "Draft Date", class: "col-md-3 col-form-label" %>
+            <%= f.date_field :draft_date, class: "form-control col-md-8" %>
+          </div>
+          <br><br>
+          <%= f.submit 'Create', :class =>"btn btn-primary"%>
+        <% end %>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

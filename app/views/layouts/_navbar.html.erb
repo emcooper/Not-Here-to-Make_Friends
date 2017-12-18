@@ -21,9 +21,14 @@
         <%= link_to "This Week", (week_path(current_week) if current_week) || "#", class: "nav-link" %>
       </li>
       <% if current_admin? %>
-        <li class="nav-item">
-          <%= link_to "Control Room", admin_control_room_path, class: "nav-link" %>
-        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Tasks</a>
+        <div class="dropdown-menu">
+          <p><%= link_to "Draft", admin_draft_path, class: "dropdown-item" %></p>
+          <p><%= link_to "Manage Seasons", admin_seasons_path, class: "dropdown-item" %></p>
+          <p><%= link_to "Enter Results", '#', class: "dropdown-item" %></p>
+        </div>
+      </li>
       <% end %>
       <li class="nav-item">
         <%= link_to "Log Out", logout_path, method: :delete, class: "nav-link" %>

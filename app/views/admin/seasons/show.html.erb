@@ -1,0 +1,154 @@
+<div class="text-center">
+  <h1 class = "page-header"><%= "#{@season.first_name} #{@season.last_name}" %></h1>
+</div>
+<div class="card">
+  <div class="card-header text-center">
+    <h4>Basic Info</h4>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Season Number: <%= @season.season_number %></p>
+        <p>Season Type: <%= @season.season_type %></p>
+        <p>Status: <%= @season.status %></p>
+        <p>Draft Date: <%= @season.draft_date %></p>
+        <p>Drafted: <%= @season.drafted %></p>
+      </div>
+      <div class="col-md-6">
+        <img class = "circular-headshots" src="<%= @season.headshot %>" alt="bachelor/bachelorette headshot">
+      </div>
+    </div>
+  </div>
+</div><br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h4>Contestants (<%= @season.contestants.count %>)</h4>
+        </div><br>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-contestant-modal">
+          Add Contestant
+        </button>
+        <div class="card-body row">
+          <% @season.contestants.each do |contestant| %>
+          <div class="col-md-6">
+
+          <div class="circle-img-container">
+
+            <span class = "text-center"><img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot"></span>
+          </div>
+            <%= contestant.name %><br>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h4>Schedule</h4>
+        </div><br>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#create-week-modal">
+          Add Episode
+        </button>
+        <div class="card-body">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Episode #</th>
+                <td scope="col">Date</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% @season.weeks.order(:date).each do |week| %>
+              <tr>
+                <th><%= week.week_number %></th>
+                <td><%= week.date %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+    </div>
+  </div>
+
+
+  <!-- create contestant modal -->
+  <div class="modal fade" id="create-contestant-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a Contestant</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_for(:contestant, url: admin_contestants_path) do |f| %>
+            <%= f.hidden_field :season_id, :value => @season.id %>
+            <div class="form-group row">
+              <%= f.label :name, "Name", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :name, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :headshot, "Headshot", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :headshot, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :twitter_handle, "Twitter", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :twitter_handle, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :age, "Age", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :age, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :hometown, "Hometown", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :hometown, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :occupation, "Occupation", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :occupation, class: "form-control col-md-8" %>
+            </div>
+            <br><br>
+            <%= f.submit 'Create', :class =>"btn btn-primary"%>
+          <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- create week modal -->
+  <div class="modal fade" id="create-week-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add an Episode</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_for(:week, url: admin_weeks_path) do |f| %>
+            <%= f.hidden_field :season_id, :value => @season.id %>
+            <div class="form-group row">
+              <%= f.label :week_number, "Episode Number", class: "col-md-3 col-form-label" %>
+              <%= f.text_field :week_number, class: "form-control col-md-8" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :date, "Date", class: "col-md-3 col-form-label" %>
+              <%= f.date_field :date, class: "form-control col-md-8" %>
+            </div>
+            <br><br>
+            <%= f.submit 'Create', :class =>"btn btn-primary"%>
+          <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
