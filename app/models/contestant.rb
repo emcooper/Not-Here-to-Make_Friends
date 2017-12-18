@@ -11,7 +11,7 @@ class Contestant < ApplicationRecord
   has_many :contestant_qualities, dependent: :destroy
   has_many :qualities, through: :contestant_qualities
 
-  after_create :add_empty_actions, :analyze_personality
+  after_create :analyze_personality
 
   def season_points
     actions.joins(:play).sum("point_value * count")

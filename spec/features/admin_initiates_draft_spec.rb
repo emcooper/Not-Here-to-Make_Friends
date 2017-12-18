@@ -18,7 +18,7 @@ RSpec.feature "Admin initiates the draft" do
       expect(team_5.contestants.count).to eq(0)
 
       visit root_path
-      click_on "Control Room"
+      click_on "Draft"
       click_on "Initiate Draft"
 
       expect(page).to have_content("This season is now drafted.")

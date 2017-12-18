@@ -15,7 +15,7 @@
         <span class = "text-center"><img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
         </div>
 
-      <%= pick.contestant.name %></p></span>
+      <%= link_to pick.contestant.name, contestant_path(pick.contestant) %></p></span>
     </div>
   </div>
 </div>
