@@ -1,14 +1,14 @@
 class Contestant < ApplicationRecord
   validates_presence_of :name
   belongs_to :season
-  has_many :team_contestants
+  has_many :team_contestants, dependent: :destroy
   has_many :teams, through: :team_contestants
-  has_many :weekly_contestants
+  has_many :weekly_contestants, dependent: :destroy
   has_many :weeks, through: :weekly_contestants
-  has_many :actions
+  has_many :actions, dependent: :destroy
   has_many :plays, through: :actions
-  has_many :draft_picks
-  has_many :contestant_qualities
+  has_many :draft_picks, dependent: :destroy
+  has_many :contestant_qualities, dependent: :destroy
   has_many :qualities, through: :contestant_qualities
 
   after_create :add_empty_actions, :analyze_personality
