@@ -127,6 +127,9 @@
           <div class = "circle-chart" id="trait-<%= quality.quality.name.downcase %>"  data-percent="<%= quality.percentage %>"></div>
         </div>
       <% end %>
+      <div class="col-md-12">
+        <small>Personality analysis powered by Watson and Twitter.</small>
+      </div>
       <% if @contestant.contestant_qualities.empty? %>
         <h4><%= @contestant.name %> isn't on twitter, so we can't do a personality analysis &#x1F61E; </h4>
       <% end %>
@@ -136,7 +139,7 @@
     <div class = "section-underline"></div>
   </div>
   <p>
-    <% if @contestant.twitter_handle %>
+    <% if @contestant.twitter_handle.length > 2 %>
       <a class="twitter-timeline" href="https://twitter.com/<%= @contestant.twitter_handle %>">Recent Tweets by <%= @contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <% else %>
       <h4><%= @contestant.name %> isn't on twitter &#x1F615 </h4>
