@@ -3,7 +3,7 @@
 
 <%= render :partial => "users/user_profile_navbar" %>
 <% if @league.team_of_user(current_user) == nil %>
-  <%= render :partial => "user_without_team", locals: {league: @league} %>
+  <%= render :partial => "manage_league", locals: {league: @league} %>
 <% elsif @league.team_of_user(current_user).contestants.empty? && !@league.team_of_user(current_user).has_drafted? %>
   <%= render :partial => "pre_draft_picks", locals: {league: @league} %>
 <% elsif @league.team_of_user(current_user).contestants.empty? %>

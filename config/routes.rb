@@ -7,13 +7,15 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users, only: [:show, :create]
-  resources :leagues, only: [:show, :create]
+  resources :leagues, only: [:show, :create] do
+    resources :teams, only: [:index]
+  end
   get '/start', to: 'start#show'
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
   get '/league_search', to: 'league_search#show'
   resources :team_members, only: [:create]
-  resources :teams, only: [:create] do
+  resources :teams, only: [:create, :destroy] do
     resources :draft_picks, only: [:index]
     put '/draft_picks', to: 'draft_picks#update'
   end
