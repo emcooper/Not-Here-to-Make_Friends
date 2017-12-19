@@ -6,4 +6,8 @@ class TeamsController < ApplicationController
     flash[:notice] = "You've created team #{team.name}!"
     redirect_to team.league
   end
+
+  def index
+    @league = League.find(params[:league_id])
+  end
 end

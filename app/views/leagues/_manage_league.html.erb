@@ -1,4 +1,8 @@
+<% unless current_user.leagues.include?(@league) %>
 <h4 class = "text-center">Join or Create Team! </h4>
+<% end %>
+<h5 class = "text-center">There are up to 4 teams allowed per league, but unlimited players on each team.</h5>
+<br>
 <div class="card">
 <div>
 <table class="table">
@@ -29,8 +33,6 @@
 <button class="btn btn-primary btn-no-margin" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Create a New Team
 </button>
-<% else %>
-  <p class = "card-header">Only 4 teams are allowed per league, but teams can have as many members as you want.</p>
 <% end %>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
