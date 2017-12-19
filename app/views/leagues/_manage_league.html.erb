@@ -23,19 +23,23 @@
             <%= user.name %><br>
             <% end %>
         </td>
-        <td><%= link_to "Join", team_members_path(team_id: team.id, user_id: current_user.id), method: :post, class: "btn btn-primary" %></td>
+        <% if current_user.teams.include?(team) %>
+          <td><%= link_to "Delete Team", team_path(team), method: :delete, class: "btn btn-red btn-sm" %></td>
+        <% elsif @league.team_of_user(current_user) == nil %>
+          <td><%= link_to "Join", team_members_path(team_id: team.id, user_id: current_user.id), method: :post, class: "btn btn-primary" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
-<% if @league.teams.count < 4 %>
+<% if @league.teams.count < 4 && @league.team_of_user(current_user) == nil %>
 <button class="btn btn-primary btn-no-margin" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Create a New Team
 </button>
 <% end %>
 <div class="collapse" id="collapseExample">
-  <div class="card card-body">
+  <div class="card card-body text-center">
     <%= form_for(:team, url: teams_path) do |f| %>
       <%= f.hidden_field :league_id, :value => @league.id %>
       <%= f.label :team_name, "Team Name" %>
