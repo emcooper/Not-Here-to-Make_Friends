@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
   # validates :password, :length => {:within => 8..20}
 
-  validates :email, :uniqueness => true,
-                    :presence => true
-  validates :name, :presence => true
+  # validates :email, :uniqueness => true,
+  #                   :presence => true
+  # validates :name, :presence => true
 
   enum role: %w(default admin)
 
