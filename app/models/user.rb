@@ -14,8 +14,11 @@ class User < ApplicationRecord
   enum role: %w(default admin)
 
   def self.create_with_omniauth(auth, identity)
-    user = User.create(name: auth[:info][:name],
+    puts "creating new user #{auth[:info][:name]} (#{auth[:info][:email]}) with omniauth"
+    user = User.create!(name: auth[:info][:name],
                       email: auth[:info][:email])
+    puts "user #{auth[:info][:name]} (#{auth[:info][:email]}) created!" if user
+    puts "user #{auth[:info][:name]} (#{auth[:info][:email]}) creation failed" unless user
     identity.update(user_id: user.id)
   end
 
