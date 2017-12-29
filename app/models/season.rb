@@ -7,7 +7,8 @@ class Season < ApplicationRecord
   enum season_type: [:bachelor, :bachelorette]
 
   def mvp
-    (contestants.sort_by {|cont| cont.season_points}).reverse.first
+    mvp = (contestants.sort_by {|cont| cont.season_points}).reverse.first
+    (mvp if mvp.season_points > 0) || nil
   end
 
   def contestant_with_biggest_play
