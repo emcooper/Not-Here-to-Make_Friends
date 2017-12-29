@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     put '/draft_picks', to: 'draft_picks#update'
   end
   namespace :admin do
-    get '/draft', to: 'team_contestants#show'
     resources :team_contestants, only: [:create]
     resources :seasons, only: [:create, :index, :show]
     resources :contestants, only: [:create]
