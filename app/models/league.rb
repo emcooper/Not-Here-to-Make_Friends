@@ -1,7 +1,7 @@
 class League < ApplicationRecord
   belongs_to :season
-  has_many :teams
-  has_many :comments
+  has_many :teams, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def team_of_user(user)
     teams.select("teams.*")
