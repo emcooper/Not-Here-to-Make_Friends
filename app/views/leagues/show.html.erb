@@ -133,7 +133,7 @@
   <div class="col-md-6 mvp">
     <div class="card">
       <div class="card-header">
-      <h4><i class="fa fa-star" aria-hidden="true"></i> Season MVP</h4>
+      <h4><i class="fa fa-star" aria-hidden="true"></i> Season MVP<i class="fa fa-star" aria-hidden="true"></i></h4>
     </div>
 
       <div class="card-body">
@@ -154,18 +154,21 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          <h4><i class="fa fa-star" aria-hidden="true"></i>
-Highest Scoring Play this Season</h4>
+          <h4><i class="fa fa-star" aria-hidden="true"></i> Highest Scoring Play this Season<i class="fa fa-star" aria-hidden="true"></i></h4>
         </div>
         <div class="card-body">
-          <div class="md-circle-img-container">
+          <% if current_season.contestant_with_biggest_play %>
+            <div class="md-circle-img-container">
+              <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
+            </div>
 
-          <img class = "img-responsive md-circular-cont-headshots" src="<%= current_season.contestant_with_biggest_play.headshot %> " alt="contestant headshot">
-        </div>
-
-          <h4><%= current_season.contestant_with_biggest_play.name %></h4>
-          <h5><%= current_season.contestant_with_biggest_play.biggest_play.description %> for <%= current_season.contestant_with_biggest_play.biggest_play.point_value %> Points</h5>
-          <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
+            <h4><%= current_season.contestant_with_biggest_play.name %></h4>
+            <h5><%= current_season.contestant_with_biggest_play.biggest_play.description %> for <%= current_season.contestant_with_biggest_play.biggest_play.point_value %> Points</h5>
+            <h5>Owned by team <%= @league.owner_of(current_season.contestant_with_biggest_play).name %></h5>
+          <% else %>
+            <br><br><br><br>
+            <h2>No points yet!</h2>
+          <% end %>
         </div>
       </div>
     </div>
