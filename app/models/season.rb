@@ -14,4 +14,6 @@ class Season < ApplicationRecord
   def contestant_with_biggest_play
     contestants.joins(actions: :play).order("point_value DESC").first
   end
+
+
 end

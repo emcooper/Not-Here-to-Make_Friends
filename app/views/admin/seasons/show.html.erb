@@ -22,9 +22,15 @@
 </div><br>
 <div class="row text-center">
   <div class=" col-md-3">
-    <% unless current_season && current_season.drafted %>
+    <% if current_season && current_season.drafted %>
+      <%= link_to "Initiate Draft", '#',  class: "btn btn-primary btn-lg btn-disabled" %>
+    <% else %>
       <%= link_to "Initiate Draft", admin_team_contestants_path, method: :post, class: "btn btn-primary btn-lg" %>
     <% end %><br><br>
+  </div>
+  <div class=" col-md-3">
+      <%= link_to "Add Contestants to First Episode", admin_weekly_contestants_path(season_id: @season.id), method: :post, class: "btn btn-primary btn-lg" %>
+  <br><br>
   </div>
 </div>
 
