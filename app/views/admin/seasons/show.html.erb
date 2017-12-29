@@ -20,6 +20,13 @@
     </div>
   </div>
 </div><br>
+<div class="row text-center">
+  <div class=" col-md-3">
+    <% unless current_season && current_season.drafted %>
+      <%= link_to "Initiate Draft", admin_team_contestants_path, method: :post, class: "btn btn-primary btn-lg" %>
+    <% end %><br><br>
+  </div>
+</div>
 
   <div class="row">
     <div class="col-md-6">
