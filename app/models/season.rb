@@ -1,7 +1,7 @@
 class Season < ApplicationRecord
-  has_many :leagues
-  has_many :weeks
-  has_many :contestants
+  has_many :leagues, dependent: :destroy
+  has_many :weeks, dependent: :destroy
+  has_many :contestants, dependent: :destroy
 
   enum status: [:active, :retired]
   enum season_type: [:bachelor, :bachelorette]
