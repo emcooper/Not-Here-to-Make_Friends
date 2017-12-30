@@ -15,7 +15,11 @@ class League < ApplicationRecord
 
   def team_points
     teams.map do |team|
-      points = season.weeks.order(:week_number).map {|week| team.week_points(week)}
+      points = []
+      10.times do |n|
+        week = season.weeks.find_by(week_number: n+1)
+        points << ((team.week_points(week) if week) || 0)
+      end
       {name: team.name, points: points}
     end
   end
