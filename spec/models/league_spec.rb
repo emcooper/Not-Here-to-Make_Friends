@@ -32,9 +32,9 @@ RSpec.describe League, type: :model do
       team_5 = Team.last
 
       expect(league_1.team_points.count).to eq(3)
-      expect(league_1.team_points.first).to eq({name: team_1.name, points: [6, 0]})
-      expect(league_1.team_points.second).to eq({name: team_2.name, points: [2, 2]})
-      expect(league_1.team_points.third).to eq({name: team_5.name, points: [6, 10]})
+      expect(league_1.team_points.first).to eq({name: team_1.name, points: [6, 0, 0, 0, 0, 0, 0, 0, 0, 0]})
+      expect(league_1.team_points.second).to eq({name: team_2.name, points: [2, 2, 0, 0, 0, 0, 0, 0, 0, 0]})
+      expect(league_1.team_points.third).to eq({name: team_5.name, points: [6, 10, 0, 0, 0, 0, 0, 0, 0, 0]})
     end
   end
 end

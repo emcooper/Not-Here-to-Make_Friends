@@ -14,7 +14,7 @@
     <a class="nav-link active" data-toggle="tab" href="#league-<%= @league.id %>-league" role="tab">League Overview</a>
   </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">Team Roster</a>
+      <a class="nav-link" data-toggle="tab" href="#league-<%= @league.id %>-team" role="tab">League Details</a>
     </li>
 
 </ul>
@@ -22,46 +22,62 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane" id="league-<%= @league.id %>-team" role="tabpanel">
-<div class="card">
-  <div class="card-header">
-    <h4 class = text-center>Team <%= @league.team_of_user(current_user).name %>'s Roster</h4>
-  </div>
-  <div class="card-body">
-    <table class="table table-responsive roster">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th class = "text-center">Points this Week</th>
-          <th class = "text-center">Total Points</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @league.team_of_user(current_user).contestants.each do |contestant| %>
-        <tr>
-          <td style="width:1%">
-            <div class="circle-img-container-table">
+    <% @league.teams.each do |team| %>
+      <div class="card">
+        <div class="card-header">
+          <h4 class = text-center>Team <%= team.name %></h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-responsive roster table-sm">
+            <thead>
+              <tr>
+              <p class ="text-center">Week</p>
+              </tr>
+              <tr>
+                <th>Players</th>
+                <% 10.times do |n| %>
+                <th class = "text-center"><%= n + 1 %></th>
+                <% end %>
+                <th class = "text-center">Season Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% team.contestants.each do |contestant| %>
+              <tr>
+                <td style="width:20%" class="text-left">
+                  <div class="d-flex ">
 
-            <img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot">
-          </div>
-        </td>
-          <td style="width:10%">
-          <p> <%= contestant.name %></p>
-        </td>
-        <td class = "text-center">
-          <p><%= contestant.weekly_points(current_week) %></p>
-        </td>
+                  <span class="circle-img-container-table">
+                    <img class = "circular-cont-headshots" src="<%= contestant.headshot %>" alt="contestant-headshot">
+                  </span>
+                  <span class="align-self-center" >&nbsp<%= contestant.name %></span>
+              </div>
+              </td>
+              <% 10.times do |n| %>
 
-          <td class = "text-center">
-          <p><%= contestant.season_points %></p>
-          </td>
-        </tr>
-        <% end %>
+                <td class = "text-center"><p><%= contestant.weekly_points(current_season.weeks.find_by(week_number: n+1)) %></p></td>
+              <% end %>
+              <td class = "text-center"><p><%= contestant.season_points %></p></td>
+              <% end %>
+            </tr>
+            <tr class="table-info">
+              <td class = "text-left">Total</td>
+              <% 10.times do |n| %>
+              <% if current_season.weeks.pluck(:week_number).include?(n+1) %>
+                  <td class = "text-center"><p><%= team.week_points(current_season.weeks.find_by(week_number: n+1)) %></p></td>
+                <% else %>
+                <td class = "text-center"><p>0</p></td>
+                <% end %>
+              <% end %>
+              <td class = "text-center"><p><%= team.season_points %></p></td>
+            </tr>
 
-      </tbody>
-    </table>
-  </div>
-</div>
+            </tbody>
+          </table>
+        </div>
+      </div><br>
+      <% end %>
+
   </div>
   <div class="tab-pane active" id="league-<%= @league.id %>-league" role="tabpanel">
     <div class="row">
