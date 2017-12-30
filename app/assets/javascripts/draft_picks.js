@@ -1,6 +1,7 @@
 $(document).ready(setDraftPicks)
 
 function setDraftPicks(){
+  if($('div').is('.sortable')){
   sortable('.sortable')[0].addEventListener('sortstop', function() {
     let updated_order = []
     $('.card.draft-card').each(function(i){
@@ -13,4 +14,5 @@ function setDraftPicks(){
           data: { order: updated_order }
     })
   })
+}
 }
