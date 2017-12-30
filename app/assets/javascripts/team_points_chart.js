@@ -27,6 +27,8 @@ $(document).ready(function(){
           },
 
           yAxis: {
+              min: 0,
+              max: 150,
              title: {
                  text: "Points"
              }},
