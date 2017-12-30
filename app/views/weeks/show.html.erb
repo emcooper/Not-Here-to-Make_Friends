@@ -43,6 +43,25 @@
       <%= link_to(contestant, class: "btn btn-primary cont-page-btn") do %>
         <span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= contestant.name %>'s Page</span>
       <% end %>
+      <a href = "#<%= contestant.id %>-score-entry" data-toggle="modal" data-target="#<%= contestant.id %>-score-entry" class="text-center btn btn-primary">Enter Points</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="<%= contestant.id %>-score-entry" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-scoring">
+        <div class="modal-header d-flex justify-content-center modal-scoring-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter Points for <%= contestant.name %></h5>
+
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+    <div class="row">
+      <%= render :partial => "weeks/scoring_system", locals: {contestant: contestant, week: @week} %>
+        </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
