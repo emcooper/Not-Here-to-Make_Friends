@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :seasons, only: [:create, :index, :show]
     resources :contestants, only: [:create]
     resources :weeks, only: [:create]
+    resources :actions, only: [:create]
   end
 
   namespace :api do

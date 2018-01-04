@@ -1,4 +1,4 @@
-# to run: rake db:seed:arry_season
+# rake db:seed:arry_season
 
 Season.destroy_all
 user_1 = User.find_by(name: "User 1")
