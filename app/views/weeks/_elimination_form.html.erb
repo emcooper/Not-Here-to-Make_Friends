@@ -1,0 +1,20 @@
+<div class="col-md-12">
+<%= form_for(:weekly_contestants, url: "/") do |f|  %>
+
+<%= f.hidden_field :week_id, :value => @week.id, :name => "weekly_actions[week_id][]" %>
+<div class="row">
+
+  <% week.contestants.each do |contestant| %>
+  <div class="col-md-4">
+    <p class ="no-padding"><label><%= f.check_box :play_count, :name => "weekly_actions[plays][#{contestant.id}][]" %></label><span class=" action-description"><%= contestant.name %></span></p>
+  </div>
+
+  <% end %>
+</div>
+
+<var></var>
+<div class="text-center">
+  <%= f.submit "Save Changes", :class => "btn btn-primary save-button" %>
+</div>
+<% end %>
+</div>
