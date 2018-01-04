@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :teams, only: [:index]
   end
   get '/start', to: 'start#show'
-  resources :actions, only: [:create]
   resources :weeks, only: [:show]
   resources :contestants, only: [:show]
   get '/league_search', to: 'league_search#show'
@@ -26,6 +25,7 @@ Rails.application.routes.draw do
     resources :seasons, only: [:create, :index, :show]
     resources :contestants, only: [:create]
     resources :weeks, only: [:create]
+    resources :actions, only: [:create]
   end
 
   namespace :api do

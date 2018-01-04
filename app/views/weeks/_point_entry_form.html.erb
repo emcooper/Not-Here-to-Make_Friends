@@ -1,21 +1,20 @@
 <div class="col-md-12">
+<%= form_for(:action, url: "/admin/actions") do |f|  %>
+<%= f.hidden_field :contestant_id, :value => contestant_id, :name => "weekly_actions[contestant_id][]" %>
 
-<%= form_for(:action, url: "/") do |f|  %>
-<!-- f.hidden_field :contestant_id, :value => contestant.id, :name => "action[contestant_id][]" -->
-
-<%= f.hidden_field :week_id, :value => @week.id, :name => "action[week_id][]" %>
+<%= f.hidden_field :week_id, :value => @week.id, :name => "weekly_actions[week_id][]" %>
 <div class="row">
 
 <div class="col-md-4">
   <h5 class ="text-center pts-milestones">Show Milestones</h5><br>
   <% Play.find_all(current_season.season_type, "show_milestones").each do |play| %>
-    <p class ="no-padding"><label><%= f.text_field :play_count, :name => "weekly_score[plays][#{play.id}][]", :size=>"2" %></label><span class=" action-description"><%= play.description.titleize %></span><span class="float-right"><%= play.point_value %></span></p>
+    <p class ="no-padding"><label><%= f.text_field :play_count, :name => "weekly_actions[plays][#{play.id}][]", :size=>"2" %></label><span class=" action-description"><%= play.description.titleize %></span><span class="float-right"><%= play.point_value %></span></p>
   <% end %>
 </div>
 <div class="col-md-4 middle-col">
   <h5 class ="text-center pts-do">Things They Do</h5><br>
   <% Play.find_all(current_season.season_type, "things_they_do").each do |play| %>
-  <p class ="no-padding"><label><%= f.text_field :play_count, :name => "weekly_score[plays][#{play.id}][]", :size=>"2" %></label><span class=" action-description"><%= play.description.titleize %></span><span class="float-right"><%= play.point_value %></span></p>
+  <p class ="no-padding"><label><%= f.text_field :play_count, :name => "weekly_actions[plays][#{play.id}][]", :size=>"2" %></label><span class=" action-description"><%= play.description.titleize %></span><span class="float-right"><%= play.point_value %></span></p>
 
   <% end %>
 </div>
@@ -23,7 +22,7 @@
 
   <h5 class ="text-center pts-say">Things They Say</h5><br>
   <% Play.find_all(current_season.season_type, "things_they_say").each do |play| %>
-  <p class ="no-padding"><label><%= f.text_field :play_count, :name => "weekly_score[plays][#{play.id}][]", :size=>"2" %></label><span class=" action-description"><%= play.description.titleize %></span><span class="float-right"><%= play.point_value %></span></p>
+  <p class ="no-padding"><label><%= f.text_field :play_count, :name => "weekly_actions[plays][#{play.id}][]", :size=>"2" %></label><span class=" action-description"><%= play.description.titleize %></span><span class="float-right"><%= play.point_value %></span></p>
 
   <% end %>
 
