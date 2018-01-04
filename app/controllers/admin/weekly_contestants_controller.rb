@@ -2,10 +2,11 @@ class Admin::WeeklyContestantsController < Admin::BaseController
 
   def create
     season = Season.find(params[:season_id])
-    first_week = season.weeks.find_by(week_number: 1)
-    season.contestants.all.each do |contestant|
-      unless contestant.weeks.include?(first_week)
-        contestant.weeks << first_week
+    week = Week.find(params[:week_id])
+    params[:contestant_ids].each do |id|
+      contestant = Contestant.find(id)
+      unless contestant.weeks.include?(week)
+        contestant.weeks << week
       end
     end
   end
