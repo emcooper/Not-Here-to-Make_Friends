@@ -11,4 +11,8 @@ class Week < ApplicationRecord
     Week.where(date: start_of_week..end_of_week).first
   end
 
+  def next_week
+    season.weeks.find_by(week_number: week_number+1)
+  end
+
 end

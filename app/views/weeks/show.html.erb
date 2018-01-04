@@ -1,8 +1,8 @@
 <h1 class = "d-flex justify-content-between page-header"><span>Episode <%= @week.week_number %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
 <div class="text-center">
   <a href ="#exampleModal" data-toggle="modal" data-target="#exampleModal" class="text-center"> <i class="fa fa-info-circle" aria-hidden="true"></i> Scoring System</a>
-  <% if current_admin? %>
-    <br><br><a href ="#eliminationModal" data-toggle="modal" data-target="#eliminationModal" class="text-center">Enter Eliminations</a>
+  <% if current_admin? && @week.next_week %>
+    <br><br><a href ="#rosterModal" data-toggle="modal" data-target="#rosterModal" class="text-center">Enter Next Week's Roster</a>
   <% end %>
 </div>
 <br>
@@ -24,24 +24,25 @@
     </div>
   </div>
 
-  <div class="modal fade" id="eliminationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <% if current_admin? && @week.next_week %>
+  <div class="modal fade" id="rosterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content modal-scoring">
         <div class="modal-header d-flex justify-content-center modal-scoring-header">
-          <h5 class="modal-title" id="exampleModalLabel">Check Off Eliminated Contestants</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Roster for Episode <%= @week.next_week.week_number %></h5>
 
         </div>
         <div class="modal-body">
           <div class="container-fluid">
     <div class="row">
-      <%= render :partial => "weeks/elimination_form", locals: {week: @week} %>
+      <%= render :partial => "weeks/enter_roster_form", locals: {week: @week} %>
         </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+<% end %>
 <div class="card-columns">
   <% @week.contestants.each do |contestant| %>
   <div class="card contestant-<%= contestant.id %> text-center" style="">
