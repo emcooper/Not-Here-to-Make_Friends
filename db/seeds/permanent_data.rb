@@ -17,7 +17,7 @@ bachelor_plays = {
                     "Wins" => 50,
                     "Attempts to Return to Show After Being Eliminated" => 45},
 
-  "things_they_do" => {"Cries" => 10,
+  "things_they_do" => {"Cries" => 5,
                     "Makes another Contestant Cry" => 20,
                     "Makes Bachelor Cry" => 30,
                     "Reveals tragic backstory" => 15,
@@ -56,7 +56,7 @@ bachelor_plays = {
                       "Wins" => 50,
                       "Attempts to Return to Show After Being Eliminated" => 45},
 
-    "things_they_do" => {"Cries" => 10,
+    "things_they_do" => {"Cries" => 5,
                       "Makes another Contestant Cry" => 20,
                       "Reveals tragic backstory" => 15,
                       "Requires medical attention" => 35,
