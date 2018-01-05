@@ -27,6 +27,8 @@ bachelor_plays = {
                     "Drunk at a rose ceremony" => 20,
                     "Involved in Physical Altercation" => 20,
                     "Full Nudity" => 20,
+                    "Caught Kissing on Group Date" => 10,
+                    "First to Kiss Bachelor" => 20
                   },
 
   "things_they_say" => {"Says 'I’m not here to make friends'" => 40,
@@ -63,6 +65,8 @@ bachelor_plays = {
                       "Drunk at a rose ceremony" => 20,
                       "Involved in Physical Altercation" => 20,
                       "Full Nudity" => 20,
+                      "Caught Kissing on Group Date" => 10,
+                      "First to Kiss Bachelorette" => 20
                     },
 
     "things_they_say" => {"Says 'I’m not here to make friends'" => 40,
