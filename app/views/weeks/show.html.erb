@@ -1,6 +1,16 @@
 <h1 class = "d-flex justify-content-between page-header"><span>Episode <%= @week.week_number %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <%= current_season.first_name %>'s Season</span></h1>
 <div class="text-center">
-  <a href ="#exampleModal" data-toggle="modal" data-target="#exampleModal" class="text-center"> <i class="fa fa-info-circle" aria-hidden="true"></i> Scoring System</a>
+  <div class="d-flex justify-content-between">
+<div class="">
+Jump to Episode:
+  <% current_season.weeks.order(:week_number).each do |week| %>
+    <%= link_to week.week_number, week, class: ("this-week-large" if week == @week) || "" %>
+  <% end %>
+</div>
+
+  <a href ="#exampleModal" data-toggle="modal" data-target="#exampleModal" class="top-margin-10"> <i class="fa fa-info-circle" aria-hidden="true"></i> Scoring System</a>
+</div>
+
   <% if current_admin? && @week.next_week %>
     <br><br><a href ="#rosterModal" data-toggle="modal" data-target="#rosterModal" class="text-center">Enter Next Week's Roster</a>
   <% end %>
