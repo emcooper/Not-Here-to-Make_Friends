@@ -28,11 +28,6 @@ class Contestant < ApplicationRecord
   end
 
   def all_weekly_points
-    # Week.select("weeks.week_number, sum(point_value * count) AS points")
-    #             .joins(actions: :play)
-    #             .where("contestant_id = ?", id)
-    #             .group("weeks.id")
-    #             .order("weeks.week_number")
     all_points = []
     10.times do |n|
       week = season.weeks.find_by(week_number: n+1)
@@ -78,7 +73,7 @@ class Contestant < ApplicationRecord
   def eliminated?
     if season.weeks != []
       latest_entered_week = season.weeks.joins(:contestants).order('week_number').last
-      !latest_entered_week.contestants.include?(self)
+      latest_entered_week && !latest_entered_week.contestants.include?(self)
     end
   end
 end
