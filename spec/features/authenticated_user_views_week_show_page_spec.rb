@@ -26,9 +26,11 @@ RSpec.feature "Authenticated user visits week show page" do
       visit root_path
       click_on "This Week"
 
-      expect(page).to have_content(contestant_2.name)
-      expect(page).to_not have_content(contestant_1.name)
-      expect(page).to have_content("Points this week: 2")
+      within(".card-columns") do
+        expect(page).to have_content(contestant_2.name)
+        expect(page).to_not have_content(contestant_1.name)
+        expect(page).to have_content("Points this week: 2")
+      end
     end
 
     scenario "they see a list of actions for each contestant" do

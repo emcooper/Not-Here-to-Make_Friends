@@ -5,11 +5,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :identities
 
-  # validates :password, :length => {:within => 8..20}
-
-  # validates :email, :uniqueness => true,
-  #                   :presence => true
-  # validates :name, :presence => true
+  validates :email, :presence => true
 
   enum role: %w(default admin)
 

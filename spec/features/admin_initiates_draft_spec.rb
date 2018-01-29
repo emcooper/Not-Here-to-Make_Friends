@@ -17,12 +17,10 @@ RSpec.feature "Admin initiates the draft" do
       expect(team_4.contestants.count).to eq(0)
       expect(team_5.contestants.count).to eq(0)
 
-      visit root_path
-      click_on "Draft"
+      visit "/admin/seasons/#{season.id}"
       click_on "Initiate Draft"
 
-      expect(page).to have_content("This season is now drafted.")
-      expect(page).to_not have_content("Start Draft")
+      expect(page).to have_content("Drafted: true")
       expect(team_1.contestants.count).to eq(6)
       expect(team_2.contestants.count).to eq(6)
       expect(team_3.contestants.count).to eq(4)
