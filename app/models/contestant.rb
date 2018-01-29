@@ -71,9 +71,7 @@ class Contestant < ApplicationRecord
   end
 
   def eliminated?
-    if season.weeks != []
-      latest_entered_week = season.weeks.joins(:contestants).order('week_number').last
-      latest_entered_week && !latest_entered_week.contestants.include?(self)
-    end
+    latest_entered_week = season.weeks.joins(:contestants).order('week_number').last
+    latest_entered_week && !latest_entered_week.contestants.include?(self)
   end
 end
