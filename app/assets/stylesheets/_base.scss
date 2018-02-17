@@ -21,11 +21,12 @@ body, .splash {
   // // background: url('http://static1.squarespace.com/static/54b71bcce4b069dab25320b5/t/559de385e4b02cc8af488516/1436410757760/tumblr_static_watercolor_texture3_by_valerianastock.jpg') no-repeat center center fixed;
   // background: url('https://s-media-cache-ak0.pinimg.com/originals/be/2a/94/be2a940c4ac312bf5abc0aa9677749de.jpg') no-repeat center center fixed;
   // background-image: url(<%= asset_path 'app/assets/images/pink_background.jpg' %>);
-  background: image-url('pink_background.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+  // background: image-url('blue_gradient_background.jpg') no-repeat center center fixed;
+  //   -webkit-background-size: cover;
+  //   -moz-background-size: cover;
+  //   background-size: cover;
+  //   -o-background-size: cover;
+  background-color: whitesmoke;
 
     .splash-title h1{
       font-size: 100px;
