@@ -4,42 +4,35 @@
 <h1 class = "text-center"> Draft Room</h1>
 <h3 class = "d-flex justify-content-between page-header"><span class="text">Team <%= @team.name %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <span class="text"><%= current_season.first_name %>'s Season</span> </span></h3>
 
-
-<div class="row">
-    <div class="col-md-1 align-middle">
-      <% @team.draft_picks.count.times do |n| %>
-      <div class="borderless-card">
-          <div class = "pick-number"> <%= n + 1 %></div>
-      </div>
-      <% end %>
-    </div>
-<div class="sortable col-md-10">
+<ol class="sortable">
     <% @team.draft_picks.order("rank").each do |pick| %>
+
+      <li>
       <div class="card draft-card" data-id="<%= pick.contestant.id %>">
         <div class="card-body d-flex justify-content-between">
             <div class="draft-img-container">
               <img class = "circular-cont-headshots" src="<%= pick.contestant.headshot %>" alt="contestant-headshot">
             </div>
 
-          <span class ="cont-name text"> <%= pick.contestant.name %></span>
+          <span class ="cont-name text"> <%= link_to pick.contestant.name, pick.contestant %></span>
 
 
-          <span class = "text">
+          <!-- <span class = "text">
             <% if pick.contestant.average_draft_rank.to_i < 6 %>
               <i class="fa fa-fire" aria-hidden="true"></i>
               <% else %>
               &#160;&#160;
             <% end %>
-              Ranked <span class="avg-rank"><%= pick.contestant.average_draft_rank %></span> on Average
-            </span>
-          <%= link_to(pick.contestant, class: "btn btn-primary draft-btn") do %>
+              Average Rank: <span class="avg-rank"><%= pick.contestant.average_draft_rank %></span>
+            </span> -->
+          <!-- <%= link_to(pick.contestant, class: "btn btn-primary draft-btn") do %>
             <span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> <%= pick.contestant.name %>'s Page</span>
-          <% end %>
+          <% end %> -->
         </div>
       </div>
+    </li>
     <% end %>
-  </div>
-</div><br>
+</ol>
 
 <div class="text-center">
   <%= link_to "Submit Draft Picks", league_path(@team.league), class: "btn btn-primary btn-lg" %>

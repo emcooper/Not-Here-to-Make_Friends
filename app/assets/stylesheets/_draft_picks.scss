@@ -1,13 +1,7 @@
 .draft-picks {
-  .sortable-placeholder {
-    border: 1px dashed #CCC;
-    background-color: #f9f9f9;
-    height: 80px;
-    margin-bottom: 10px;
-  }
 
   .card-body {
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: -10px;
 
     .cont-name {
@@ -24,7 +18,7 @@
   }
 
   .avg-rank {
-    font-size: 25px;
+    font-size: 15px;
     color: $navbar-pink;
   }
 
@@ -46,4 +40,35 @@
       color: $navbar-pink;
     }
   }
+  body.dragging, body.dragging * {
+    cursor: move !important;
+  }
+
+  .dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+  }
+
+  ol.sortable li.placeholder {
+    position: relative;
+    /** More li styles **/
+  }
+  ol.sortable li.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+  }
+  .sortable {
+    flex-direction: column;
+    display: flex;
+    height:600px;
+    flex-wrap: wrap;
+  }
+
+  .sortable li {
+    float: left;
+    width: 20%;
+    margin-left: 5px;
+  }
+
 }
