@@ -4,9 +4,8 @@
 <h1 class = "text-center"> Draft Room</h1>
 <h3 class = "d-flex justify-content-between page-header"><span class="text">Team <%= @team.name %></span><span class = "justify-content-end"> <img class = "circular-headshots" src="<%= current_season.headshot %>" alt="bachelor/bachelorette headshot"> <span class="text"><%= current_season.first_name %>'s Season</span> </span></h3>
 
-<ol class="sortable numbered-list">
+<ol class="sortable">
     <% @team.draft_picks.order("rank").each do |pick| %>
-
       <li>
       <div class="card draft-card" data-id="<%= pick.contestant.id %>">
         <div class="card-body d-flex ">

@@ -50,4 +50,19 @@
     margin-left: 5px;
   }
 
+// post-draft league index:
+  .draft-rank-list {
+    flex-direction: column;
+    display: flex;
+    height:490px;
+    flex-wrap: wrap;
+  }
+
+  .draft-rank-list li {
+    float: left;
+    width: 20%;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+
 }
