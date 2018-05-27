@@ -20,21 +20,7 @@
     </div>
   </div>
 </div><br>
-<div class="row text-center">
-  <div class=" col-md-3">
-    <% if current_season && current_season.drafted %>
-      <%= link_to "Initiate Draft", '#',  class: "btn btn-primary btn-lg btn-disabled" %>
-    <% else %>
-      <%= link_to "Initiate Draft", admin_team_contestants_path, method: :post, class: "btn btn-primary btn-lg" %>
-    <% end %><br><br>
-  </div>
-  <div class=" col-md-3">
-    <% if current_season.weeks.find_by(week_number: 1) %>
-      <%= link_to "Add Contestants to First Episode", admin_weekly_contestants_path(season_id: @season.id, week_id: current_season.weeks.find_by(week_number: 1).id, contestant_ids: current_season.contestants.pluck(:id)), method: :post, class: "btn btn-primary btn-lg" %>
-    <% end %>
-  <br><br>
-  </div>
-</div>
+
 
   <div class="row">
     <div class="col-md-6">
@@ -88,6 +74,21 @@
         </div>
     </div>
 
+    </div>
+  </div><br>
+  <div class="row text-center">
+    <div class=" col-md-3">
+      <% if current_season && current_season.drafted %>
+        <%= link_to "Initiate Draft", '#',  class: "btn btn-primary btn-lg btn-disabled" %>
+      <% else %>
+        <%= link_to "Initiate Draft", admin_team_contestants_path, method: :post, class: "btn btn-primary btn-lg" %>
+      <% end %><br><br>
+    </div>
+    <div class=" col-md-3">
+      <% if current_season.weeks.find_by(week_number: 1) %>
+        <%= link_to "Add Contestants to First Episode", admin_weekly_contestants_path(season_id: @season.id, week_id: current_season.weeks.find_by(week_number: 1).id, contestant_ids: current_season.contestants.pluck(:id)), method: :post, class: "btn btn-primary btn-lg" %>
+      <% end %>
+    <br><br>
     </div>
   </div>
 
