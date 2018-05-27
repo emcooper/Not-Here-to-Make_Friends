@@ -3,6 +3,7 @@
 <br>
 <% if current_season %>
   <h3 class="">The draft for <%= current_season.first_name %>'s season takes place on <%= current_season.draft_date.to_formatted_s(:long_ordinal) %></h3>
+<br>
   <div class="text-center">
 
   <img class = "big-square-headshot" src="<%= current_season.headshot %>" alt="contestant-headshot">
