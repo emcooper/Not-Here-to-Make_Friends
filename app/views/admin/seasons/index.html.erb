@@ -9,7 +9,10 @@
 
 <div class="text-center">
   <% @seasons.each do |season| %>
-    <h4><%= link_to "#{season.season_number} - #{season.first_name}", admin_season_path(season)  %></h4><br>
+    <h4><%= link_to "#{season.season_number} - #{season.first_name}", admin_season_path(season)  %>
+      <%= link_to season.status == "active" ? "Deactivate" : "Activate", admin_season_path(season), method: :put, class: "btn btn-primary" %>
+  </h4>
+    <br>
   <% end %>
 </div>
 

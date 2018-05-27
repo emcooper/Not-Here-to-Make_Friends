@@ -53,11 +53,12 @@
 }
 
 .draft-img-container {
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
     border-radius: 50%;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .md-circular-cont-headshots {
@@ -78,8 +79,7 @@
 }
 
 .big-square-headshot {
-  // height: 250%;
-  width: 50%;
+  width: 90%;
   object-fit: cover;
 }
 

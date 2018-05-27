@@ -1,31 +1,12 @@
 .draft-picks {
-  .sortable-placeholder {
-    border: 1px dashed #CCC;
-    background-color: #f9f9f9;
-    height: 80px;
-    margin-bottom: 10px;
-  }
 
   .card-body {
-    font-size: 20px;
-    margin-bottom: -10px;
+    font-size:17px;
+    margin-bottom: -8px;
 
     .cont-name {
-      margin-left: -120px;
+      padding-top: 8px;
     }
-  }
-
-  .fa-fire {
-    color: $fire-red;
-  }
-
-  .text {
-    margin-top: 14px;
-  }
-
-  .avg-rank {
-    font-size: 25px;
-    color: $navbar-pink;
   }
 
   .draft-btn {
@@ -36,14 +17,52 @@
     padding-top: 12px;
   }
 
-  .borderless-card {
-    border: 1px solid rgba(255,255,255,0);
-    height: 92.22px;
-    font-size: 25px;
+// sortable styling
 
-    .pick-number {
-      margin: 26.25px 0 26.25px 60px;
-      color: $navbar-pink;
-    }
+  body.dragging, body.dragging * {
+    cursor: move !important;
   }
+
+  .dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+  }
+
+  ol.sortable li.placeholder {
+    position: relative;
+    /** More li styles **/
+  }
+  ol.sortable li.placeholder:before {
+    position: absolute;
+    /** Define arrowhead **/
+  }
+  .sortable {
+    flex-direction: column;
+    display: flex;
+    height:600px;
+    flex-wrap: wrap;
+  }
+
+  .sortable li {
+    float: left;
+    width: 20%;
+    margin-left: 5px;
+  }
+
+// post-draft league index:
+  .draft-rank-list {
+    flex-direction: column;
+    display: flex;
+    height:490px;
+    flex-wrap: wrap;
+  }
+
+  .draft-rank-list li {
+    float: left;
+    width: 20%;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+
 }

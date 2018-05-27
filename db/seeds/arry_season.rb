@@ -53,10 +53,20 @@ season.contestants.create!(contestant_6)
 season.contestants.create!(contestant_7)
 season.contestants.create!(contestant_8)
 season.contestants.create!(contestant_9)
+
+# creates a full 30 contestants (must be before teams are created):
+21.times do |index|
+  contestant = contestant_1
+  contestant[:name] = "#{index} random "
+  season.contestants.create!(contestant)
+end
+
 league = season.leagues.create!(name: "test")
 t1 = league.teams.create!(name: "testy 1")
 t2 = league.teams.create!(name: "testy 2")
 t1.users << user_1
 t2.users << user_2
+
+
 
 puts "Seeding Successful"

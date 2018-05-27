@@ -16,6 +16,13 @@ class Admin::SeasonsController < Admin::BaseController
     end
   end
 
+  def update
+    season = Season.find(params[:id])
+    new_status = season.status == "active" ? "retired" : "active"
+    season.update(status: new_status)
+    redirect_to admin_seasons_path
+  end
+
   private
 
   def season_params

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :weekly_contestants, only: [:create]
     resources :team_contestants, only: [:create]
-    resources :seasons, only: [:create, :index, :show]
+    resources :seasons, only: [:create, :index, :show, :update]
     resources :contestants, only: [:create]
     resources :weeks, only: [:create]
     resources :actions, only: [:create]
