@@ -12,6 +12,7 @@ class WatsonService
   def personality_profile
     response = @conn.post do |req|
       req.headers['Content-Type'] = 'text/plain;charset=utf-8'
+      req.headers['Accept'] = 'application/json'
       req.body = @text
     end
     JSON.parse(response.body, symbolize_names: :true)
