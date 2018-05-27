@@ -9,15 +9,17 @@
 </div>
 
 <div class="col-md-6">
-<h1 class = "cont-name"><%= @contestant.name %></h1>
-<div class="contestant-info">
+    <h1 class = "cont-name"><%= @contestant.name %></h1>
+    <div class="contestant-info">
+        <p><i class="fa fa-heartbeat" aria-hidden="true"></i>  Age: <%= @contestant.age %></p>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i>   Hometown: <%= @contestant.hometown %></p>
+        <p><i class="fa fa-briefcase" aria-hidden="true"></i> Occupation: <%= @contestant.occupation %></p>
+    </div>
+  </div>
+  <div class="col-md-12"><br>
+    <p class="cont-bio"><%= @contestant.bio %></p>
 
-
-<p><i class="fa fa-heartbeat" aria-hidden="true"></i>  Age: <%= @contestant.age %></p>
-<p><i class="fa fa-map-marker" aria-hidden="true"></i>   Hometown: <%= @contestant.hometown %></p>
-<p><i class="fa fa-briefcase" aria-hidden="true"></i> Occupation: <%= @contestant.occupation %></p>
-</div>
-</div>
+  </div>
 </div>
 <br>
 
