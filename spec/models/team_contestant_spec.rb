@@ -38,12 +38,12 @@ RSpec.describe TeamContestant, type: :model do
       TeamContestant.initiate_draft(season)
 
       expect(team_1.contestants.count).to eq(3)
-      expect(team_1.contestants).to eq([c1, c2, c5])
-      expect(team_2.contestants).to eq([c3, c4, c6])
+      expect(team_1.contestants).to contain_exactly(c1, c2, c5)
+      expect(team_2.contestants).to contain_exactly(c3, c4, c6)
 
-      expect(team_3.contestants).to eq([c1, c2])
-      expect(team_4.contestants).to eq([c4, c6])
-      expect(team_5.contestants).to eq([c3, c5])
+      expect(team_3.contestants).to contain_exactly(c1, c2)
+      expect(team_4.contestants).to contain_exactly(c4, c6)
+      expect(team_5.contestants).to contain_exactly(c3, c5)
     end
   end
 end
