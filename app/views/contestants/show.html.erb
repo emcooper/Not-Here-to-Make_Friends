@@ -16,10 +16,6 @@
         <p><i class="fa fa-briefcase" aria-hidden="true"></i> Occupation: <%= @contestant.occupation %></p>
     </div>
   </div>
-  <div class="col-md-12"><br>
-    <p class="cont-bio"><%= @contestant.bio %></p>
-
-  </div>
 </div>
 <br>
 
@@ -30,13 +26,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
+        <a class="nav-link" href="#bio">Bio</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#stats">Season Stats</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#personality-profile">Personality Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#social-media">Social Media</a>
       </li>
     </ul>
   </div>
@@ -44,6 +40,12 @@
 
 
 <div class = "text-center contestant-details" data-spy="scroll" data-offset="0">
+  <div class="text-left section-header">
+      <h4 id="bio">Bio</h4>
+      <div class = "section-underline"></div>
+      <br>
+    <p class="cont-bio"><%= @contestant.bio %></p>
+  </div>
   <div class="text-left section-header">
     <h4 id="stats">Season Stats</h4>
     <div class = "section-underline"></div>
@@ -130,21 +132,13 @@
         </div>
       <% end %>
       <div class="col-md-12">
-        <small>Personality analysis powered by Watson and Twitter.</small>
+        <small>Personality analysis powered by Watson Personality Insights.</small>
       </div>
       <% if @contestant.contestant_qualities.empty? %>
-        <h4><%= @contestant.name %> isn't on twitter, so we can't do a personality analysis &#x1F61E; </h4>
+        <h4><%= @contestant.name %> doesn't have a personality &#x1F61E; </h4>
       <% end %>
-  </div>
-  <div class="text-left section-header">
-    <h4 id="social-media">Social Media</h4>
-    <div class = "section-underline"></div>
-  </div>
-  <p>
-    <% if @contestant.twitter_handle.length > 2 %>
-      <a class="twitter-timeline" href="https://twitter.com/<%= @contestant.twitter_handle %>">Recent Tweets by <%= @contestant.name %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <% else %>
-      <h4><%= @contestant.name %> isn't on twitter &#x1F615 </h4>
-    <% end %>
-  </p>
+  </div>    
 </div>
+
+
+
