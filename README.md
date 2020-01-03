@@ -18,7 +18,7 @@ The setups steps expect following tools installed on the system.
 ##### 1. Check out the repository
 
 ```bash
-git clone git@github.com:organization/project-name.git
+git clone https://github.com/emcooper/Not-Here-to-Make-Friends.git
 ```
 ##### 2. Install Dependencies
 
