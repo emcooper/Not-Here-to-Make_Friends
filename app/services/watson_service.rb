@@ -1,12 +1,12 @@
 class WatsonService
   def initialize(text, contestant)
-    @text = text.join
+    @text = text
     @contestant = contestant
-    @conn = Faraday.new(url: "https://gateway.watsonplatform.net/personality-insights/api/v3/profile?version=2016-10-20") do |faraday|
+    @conn = Faraday.new(url: "#{ENV["watson_url"]}/v3/profile?version=2017-10-13") do |faraday|
       faraday.adapter Faraday.default_adapter
       faraday.headers["data-binary"] = "text/plain;charset=utf-8"
     end
-    @conn.basic_auth("#{ENV["watson_username"]}", "#{ENV["watson_password"]}")
+    @conn.basic_auth("apikey", "#{ENV["watson_api_key"]}")
   end
 
   def personality_profile
