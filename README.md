@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 The setups steps expect following tools installed on the system.
 
-- Github
+- Git
 - Ruby 
 - Rails
 
